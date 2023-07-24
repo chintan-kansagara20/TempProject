@@ -2,18 +2,13 @@
 using DataAccessLayer.Interface;
 using EasyCrudLibrary.Model;
 using ManagersLayer.Interface;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ManagersLayer.Impl
 {
-    internal class CvInventoryTransfersRepeaterManager : ICvInventoryTransfersRepeaterManager
+    public class CvInventoryTransfersRepeaterManager : ICvInventoryTransfersRepeaterManager
     {
-        private readonly ICvAssembliesDataAccess DataAccess = null;
-        public CvInventoryTransfersRepeaterManager(ICvAssembliesDataAccess dataAccess)
+        private readonly ICvInventoryTransfersRepeaterDataAccess DataAccess = null;
+        public CvInventoryTransfersRepeaterManager(ICvInventoryTransfersRepeaterDataAccess dataAccess)
         {
             DataAccess = dataAccess;
         }

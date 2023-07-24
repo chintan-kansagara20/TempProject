@@ -12,8 +12,8 @@ namespace DataAccessLayer.Impl
     public class CvAssemblyDocumentMembersDataAccess : ICvAssemblyDocumentMembersDataAccess
     {
         private string ConnectionString { get; set; }
-
         private CommonFunctions cf { get; set; }
+
         public CvAssemblyDocumentMembersDataAccess(IHostingEnvironment env, IConfiguration configuration, IHttpContextAccessor httpContextAccessor)
         {
             try
@@ -42,7 +42,17 @@ namespace DataAccessLayer.Impl
 
         public int GetTotal(List<AdvanceFilterByModel> filtersList)
         {
-            throw new NotImplementedException();
+            var _EC = new EasyCrud(ConnectionString);
+
+            string WhereCondition = "";
+            string FilterCondtion = DataAccessHelper.ConvertAdvanceFilterToConditionString(filtersList);
+            if (!String.IsNullOrEmpty(FilterCondtion))
+            {
+                WhereCondition += " WHERE " + FilterCondtion;
+            }
+
+            var total = _EC.Count<cvAssemblyDocumentMembersModel>(WhereCondition, null, GSEnums.WithInQuery.NoLock);
+            return total;
         }
     }
 }

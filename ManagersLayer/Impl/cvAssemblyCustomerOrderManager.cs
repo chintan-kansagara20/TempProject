@@ -2,11 +2,6 @@
 using DataAccessLayer.Interface;
 using EasyCrudLibrary.Model;
 using ManagersLayer.Interface;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ManagersLayer.Impl
 {

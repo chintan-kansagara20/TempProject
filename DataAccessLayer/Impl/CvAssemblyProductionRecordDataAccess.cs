@@ -13,6 +13,7 @@ namespace DataAccessLayer.Impl
     {
         private string ConnectionString { get; set; }
         private CommonFunctions cf { get; set; }
+
         public CvAssemblyProductionRecordDataAccess(IHostingEnvironment env, IConfiguration configuration, IHttpContextAccessor httpContextAccessor)
         {
             try

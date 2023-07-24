@@ -2,18 +2,13 @@
 using DataAccessLayer.Interface;
 using EasyCrudLibrary.Model;
 using ManagersLayer.Interface;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ManagersLayer.Impl
 {
-    public class CvAssemblyProductionRecordManager : ICvAssemblyDocumentMembersManager
+    public class CvAssemblyProductionRecordManager : ICvAssemblyProductionRecordManager
     {
-        private readonly ICvAssembliesDataAccess DataAccess = null;
-        public CvAssemblyProductionRecordManager(ICvAssembliesDataAccess dataAccess)
+        private readonly ICvAssemblyProductionRecordDataAccess DataAccess = null;
+        public CvAssemblyProductionRecordManager(ICvAssemblyProductionRecordDataAccess dataAccess)
         {
             DataAccess = dataAccess;
         }
