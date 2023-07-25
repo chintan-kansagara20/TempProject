@@ -1,3 +1,7 @@
+using AuthLayer.DataAccess.Impl;
+using AuthLayer.DataAccess.Interface;
+using AuthLayer.Mangers.Impl;
+using AuthLayer.Mangers.Interface;
 using CrystalData.DataAccess.Impl;
 using CrystalData.DataAccess.Interface;
 using CrystalData.Manager.Impl;
@@ -14,6 +18,12 @@ builder.Services.AddSwaggerGen();
 
 #region Dependency
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
+builder.Services.AddTransient<IUserDataAccess, UserDataAccess>();
+builder.Services.AddTransient<IUserManager, UserManager>();
+
+builder.Services.AddTransient<IRoleDataAccess, RoleDataAccess>();
+builder.Services.AddTransient<IRoleManager, RoleManager>();
 
 builder.Services.AddTransient<ICvAssembliesManager, CvAssembliesManager>();
 builder.Services.AddTransient<ICvAssembliesDataAccess, CvAssembliesDataAccess>();
