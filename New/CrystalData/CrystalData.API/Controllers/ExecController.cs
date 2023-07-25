@@ -1,4 +1,5 @@
-﻿using AuthLayer.Utility;
+﻿using AuthLayer.ActionFilters;
+using AuthLayer.Utility;
 using CrystalData.Manager.Impl;
 using CrystalData.Manager.Interface;
 using CrystalData.Models;
@@ -9,6 +10,7 @@ using Newtonsoft.Json;
 namespace CrystalData.API.Controllers
 {
     [ApiController]
+    [FullAuthorization]
     public class ExecController : ControllerBase
     {
         ICvAssembliesManager _CvAssembliesManager { get; set; }

@@ -24,8 +24,8 @@ namespace CrystalData.DataAccess.Impl
             try
             {
                 cf = new CommonFunctions(configuration, env.ContentRootPath, httpContextAccessor);
-                //ConnectionString = _cf.GetNewConnectionString();
-                ConnectionString = "Server=dev2302.crystalsystems.work;Database=Acctivate$NAHSdev0306;User Id=sa;Password=ACCTivate!MSSQL;TrustServerCertificate=True;";
+                ConnectionString = cf.GetNewConnectionString();
+                //ConnectionString = "Server=dev2302.crystalsystems.work;Database=Acctivate$NAHSdev0306;User Id=sa;Password=ACCTivate!MSSQL;TrustServerCertificate=True;";
             }
             catch (Exception) { }
         }
