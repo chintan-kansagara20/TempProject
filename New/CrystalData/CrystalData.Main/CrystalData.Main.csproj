@@ -1,9 +1,9 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
-    <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
@@ -20,13 +20,11 @@
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.18.1" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.11" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.5" />
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.32.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CrystalData.Main\CrystalData.Main.csproj" />
     <ProjectReference Include="..\CrystalData.Manager\CrystalData.Manager.csproj" />
   </ItemGroup>
 
