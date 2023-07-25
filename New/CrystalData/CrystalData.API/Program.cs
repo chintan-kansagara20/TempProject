@@ -26,6 +26,12 @@ builder.Services.AddTransient<IAccessPermissionDataAccess, AccessPermissionDataA
 
 builder.Services.AddTransient<ICvAssemblyDetailsManager, CvAssemblyDetailsManager>();
 builder.Services.AddTransient<ICvAssemblyDetailsDataAccess, CvAssemblyDetailsDataAccess>();
+
+builder.Services.AddTransient<IAccessPermissionMasterManager, AccessPermissionMasterManager>();
+builder.Services.AddTransient<IAccessPermissionMasterDataAccess, AccessPermissionMasterDataAccess>();
+
+builder.Services.AddTransient<IBranchManager, BranchManager>();
+builder.Services.AddTransient<IBranchDataAccess, BranchDataAccess>();
 #endregion
 
 var app = builder.Build();

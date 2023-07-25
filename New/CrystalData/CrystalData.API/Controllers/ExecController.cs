@@ -15,12 +15,16 @@ namespace CrystalData.API.Controllers
         IAccessManager _AccessManager { get; set; }
         IAccessPermissionManager _AccessPermissionManager { get; set; }
         ICvAssemblyDetailsManager _CvAssemblyDetailsManager { get; set; }
-        public ExecController(ICvAssembliesManager cvAssembliesManager, IAccessManager AccessManager, ICvAssemblyDetailsManager CvAssemblyDetailsManager, IAccessPermissionManager accessPermissionManager)
+        IAccessPermissionMasterManager __AccessPermissionMasterManager { get; set; }
+        IBranchManager _BranchManager { get; set; }
+        public ExecController(ICvAssembliesManager cvAssembliesManager, IAccessManager AccessManager, ICvAssemblyDetailsManager CvAssemblyDetailsManager, IAccessPermissionManager accessPermissionManager, IAccessPermissionMasterManager accessPermissionMasterManager, IBranchManager branchManager)
         {
             _CvAssembliesManager = cvAssembliesManager;
             _AccessManager = AccessManager;
             _AccessPermissionManager = accessPermissionManager;
             _CvAssemblyDetailsManager = CvAssemblyDetailsManager;
+            __AccessPermissionMasterManager = accessPermissionMasterManager;
+            _BranchManager = branchManager;
         }
 
         [HttpPost]
@@ -80,6 +84,39 @@ namespace CrystalData.API.Controllers
                 if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
                 if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
                 return Ok(_AccessPermissionManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+
+        [HttpPost]
+        [Route("/api/Full/AccessPermissionMaster/Get")]
+        public ActionResult AccessPermissionMaster_Get(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(__AccessPermissionMasterManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/Branch/Get")]
+        public ActionResult Branch_Get(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_BranchManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
             }
             catch (Exception ex)
             {

@@ -14,12 +14,12 @@ using Microsoft.AspNetCore.Hosting;
 
 namespace CrystalData.DataAccess.Impl
 {
-    public class AccessPermissionMasterDataAccess : IAccessPermissionMasterDataAccess
+    public class BranchDataAccess : IBranchDataAccess
     {
         private string ConnectionString { get; set; }
         private CommonFunctions cf { get; set; }
 
-        public AccessPermissionMasterDataAccess(IHostingEnvironment env, IConfiguration configuration, IHttpContextAccessor httpContextAccessor)
+        public BranchDataAccess(IHostingEnvironment env, IConfiguration configuration, IHttpContextAccessor httpContextAccessor)
         {
             try
             {
@@ -30,7 +30,7 @@ namespace CrystalData.DataAccess.Impl
             catch (Exception) { }
         }
 
-        public List<AccessPermissionMasterModel> Get(int page, int itemsPerPage, List<OrderByModel> orderBy, List<AdvanceFilterByModel> filtersList)
+        public List<BranchModel> Get(int page, int itemsPerPage, List<OrderByModel> orderBy, List<AdvanceFilterByModel> filtersList)
         {
             var _EC = new EasyCrud(ConnectionString);
 
@@ -41,7 +41,7 @@ namespace CrystalData.DataAccess.Impl
                 WhereCondition += " WHERE " + FilterCondtion;
             }
 
-            var FinalReturn = _EC.GetList<AccessPermissionMasterModel>(page, itemsPerPage, orderBy, WhereCondition, null, GSEnums.WithInQuery.NoLock);
+            var FinalReturn = _EC.GetList<BranchModel>(page, itemsPerPage, orderBy, WhereCondition, null, GSEnums.WithInQuery.NoLock);
             return FinalReturn;
         }
 
@@ -56,7 +56,7 @@ namespace CrystalData.DataAccess.Impl
                 WhereCondition += " WHERE " + FilterCondtion;
             }
 
-            var total = _EC.Count<AccessPermissionMasterModel>(WhereCondition, null, GSEnums.WithInQuery.NoLock);
+            var total = _EC.Count<BranchModel>(WhereCondition, null, GSEnums.WithInQuery.NoLock);
             return total;
         }
     }
