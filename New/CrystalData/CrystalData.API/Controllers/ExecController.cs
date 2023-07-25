@@ -1,5 +1,6 @@
 ﻿using AuthLayer.ActionFilters;
 using AuthLayer.Utility;
+using CrystalData.DataAccess.Interface;
 using CrystalData.Manager.Impl;
 using CrystalData.Manager.Interface;
 using CrystalData.Models;
@@ -36,7 +37,15 @@ namespace CrystalData.API.Controllers
         ICvAssemblyDocumentMembersManager _CvAssemblyDocumentMembersManager { get; set; }
         ICvAssemblyProductionRecordManager _CvAssemblyProductionRecordManager { get; set; }
         ICvInventoryTransfersRepeaterManager _CvInventoryTransfersRepeaterManager { get; set; }
-        public ExecController(ICvAssembliesManager cvAssembliesManager, IAccessManager AccessManager, ICvAssemblyDetailsManager CvAssemblyDetailsManager, IAccessPermissionManager accessPermissionManager, IAccessPermissionMasterManager accessPermissionMasterManager, IBranchManager branchManager,IBusinessActivityHistoryManager businessActivityHistoryManager, IBusinessActivityManager businessActivityManager, IBusinessActivityRelatedItemsManager businessActivityRelatedItemsManager, IBusinessActivityTimeAndMaterialsManager businessActivityTimeAndMaterialsManager, ICarrierManager carrierManager, ICarrierBillingOptionsManager carrierBillingOptionsManager, ICarrierInsuranceOptionsManager carrierInsuranceOptionsManager, ICarrierServiceManager carrierServiceManager, ICarrierVoidOptionsManager carrierVoidOptionsManager, IChargeManager chargeManager, IClassManager classManager, IContractTypeManager contractTypeManager, ICostLayerIssuesManager costLayerIssues, ICvAssemblyCustomerOrderManager cvAssemblyCustomerOrder, ICvAssemblyDocumentMembersManager cvAssemblyDocumentMembersManager, ICvAssemblyProductionRecordManager cvAssemblyProductionRecordManager, ICvInventoryTransfersRepeaterManager cvInventoryTransfersRepeaterManager)
+        ICostLayerReceiptsManager _CostLayerReceiptsManager { get; set; }
+        ICostLayersManager _CostLayersManager { get; set; }
+        ICurrencyManager _CurrencyManager { get; set; }
+        ICustomDataListManager _CustomDataListManager { get; set; }
+        ICustomerManager _CustomerManager { get; set; }
+        ICustomerBalanceManager _CustomerBalanceManager { get; set; }
+        ICustomerChargeTotalDataAccess _CustomerChargeTotalDataAccess { get; set; }
+        ICustomerContactDataAccess _CustomerContactDataAccess { get; set; }
+        public ExecController(ICvAssembliesManager cvAssembliesManager, IAccessManager AccessManager, ICvAssemblyDetailsManager CvAssemblyDetailsManager, IAccessPermissionManager accessPermissionManager, IAccessPermissionMasterManager accessPermissionMasterManager, IBranchManager branchManager,IBusinessActivityHistoryManager businessActivityHistoryManager, IBusinessActivityManager businessActivityManager, IBusinessActivityRelatedItemsManager businessActivityRelatedItemsManager, IBusinessActivityTimeAndMaterialsManager businessActivityTimeAndMaterialsManager, ICarrierManager carrierManager, ICarrierBillingOptionsManager carrierBillingOptionsManager, ICarrierInsuranceOptionsManager carrierInsuranceOptionsManager, ICarrierServiceManager carrierServiceManager, ICarrierVoidOptionsManager carrierVoidOptionsManager, IChargeManager chargeManager, IClassManager classManager, IContractTypeManager contractTypeManager, ICostLayerIssuesManager costLayerIssues, ICvAssemblyCustomerOrderManager cvAssemblyCustomerOrder, ICvAssemblyDocumentMembersManager cvAssemblyDocumentMembersManager, ICvAssemblyProductionRecordManager cvAssemblyProductionRecordManager, ICvInventoryTransfersRepeaterManager cvInventoryTransfersRepeaterManager, ICostLayerReceiptsManager costLayerReceiptsManager, ICostLayersManager costLayersManager, ICurrencyManager currencyManager, ICustomDataListManager customDataListManager, ICustomerManager customerManager, ICustomerBalanceManager customerBalanceManager, ICustomerChargeTotalDataAccess customerChargeTotalDataAccess, ICustomerContactDataAccess customerContactDataAccess)
         {
             _CvAssembliesManager = cvAssembliesManager;
             _AccessManager = AccessManager;
@@ -61,6 +70,142 @@ namespace CrystalData.API.Controllers
             _CvAssemblyDocumentMembersManager = cvAssemblyDocumentMembersManager;
             _CvAssemblyProductionRecordManager = cvAssemblyProductionRecordManager;
             _CvInventoryTransfersRepeaterManager = cvInventoryTransfersRepeaterManager;
+            _CostLayerReceiptsManager = costLayerReceiptsManager;
+            _CostLayersManager = costLayersManager;
+            _CurrencyManager = currencyManager;
+            _CustomDataListManager = customDataListManager;
+            _CustomerManager = customerManager;
+            _CustomerBalanceManager = customerBalanceManager;
+            _CustomerChargeTotalDataAccess = customerChargeTotalDataAccess;
+            _CustomerContactDataAccess = customerContactDataAccess;
+        }
+
+        [HttpPost]
+        [Route("/api/Full/CustomerContact/Get")]
+        public ActionResult CustomerContactGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_CustomerContactDataAccess.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/CustomerChargeTotal/Get")]
+        public ActionResult CustomerChargeTotalGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_CustomerChargeTotalDataAccess.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/CustomerBalance/Get")]
+        public ActionResult CustomerBalanceGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_CustomerBalanceManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/Customer/Get")]
+        public ActionResult CustomerGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_CustomerManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/CustomDataList/Get")]
+        public ActionResult CustomDataListGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_CustomDataListManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/Currency/Get")]
+        public ActionResult CurrencyGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_CurrencyManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/CostLayers/Get")]
+        public ActionResult CostLayers_Get(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_CostLayersManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/CostLayerReceipts/Get")]
+        public ActionResult CostLayerReceipts_Get(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_CostLayerReceiptsManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
         }
 
         [HttpPost]

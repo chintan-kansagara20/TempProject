@@ -80,6 +80,30 @@ namespace CrystalData.Main
 
             Service.AddTransient<ICvInventoryTransfersRepeaterManager, CvInventoryTransfersRepeaterManager>();
             Service.AddTransient<ICvInventoryTransfersRepeaterDataAccess, CvInventoryTransfersRepeaterDataAccess>();
+
+            Service.AddTransient<ICostLayerReceiptsManager, CostLayerReceiptsManager>();
+            Service.AddTransient<ICostLayerReceiptsDataAccess, CostLayerReceiptsDataAccess>();
+
+            Service.AddTransient<ICostLayersManager, CostLayersManager>();
+            Service.AddTransient<ICostLayersDataAccess, CostLayersDataAccess>();
+
+            Service.AddTransient<ICurrencyManager, CurrencyManager>();
+            Service.AddTransient<ICurrencyDataAccess, CurrencyDataAccess>();
+
+            Service.AddTransient<ICustomDataListManager, CustomDataListManager>();
+            Service.AddTransient<ICustomDataListDataAccess, CustomDataListDataAccess>();
+
+            Service.AddTransient<ICustomerManager, CustomerManager>();
+            Service.AddTransient<ICustomerDataAccess, CustomerDataAccess>();
+
+            Service.AddTransient<ICustomerBalanceManager, CustomerBalanceManager>();
+            Service.AddTransient<ICustomerBalanceDataAccess, CustomerBalanceDataAccess>();
+
+            Service.AddTransient<ICustomerChargeTotalManager, CustomerChargeTotalManager>();
+            Service.AddTransient<ICustomerChargeTotalDataAccess, CustomerChargeTotalDataAccess>();
+
+            Service.AddTransient<ICustomerContactManager, CustomerContactManager>();
+            Service.AddTransient<ICustomerContactDataAccess, CustomerContactDataAccess>();
         }
     }
 }
