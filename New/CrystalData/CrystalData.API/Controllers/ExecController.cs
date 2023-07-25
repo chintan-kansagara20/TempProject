@@ -14,9 +14,8 @@ namespace CrystalData.API.Controllers
         ICvAssembliesManager _CvAssembliesManager { get; set; }
         IAccessManager _AccessManager { get; set; }
         IAccessPermissionManager _AccessPermissionManager { get; set; }
-        public ExecController(ICvAssembliesManager cvAssembliesManager, IAccessManager AccessManager, IAccessPermissionManager accessPermissionManager)
         ICvAssemblyDetailsManager _CvAssemblyDetailsManager { get; set; }
-        public ExecController(ICvAssembliesManager cvAssembliesManager, IAccessManager AccessManager, ICvAssemblyDetailsManager CvAssemblyDetailsManager)
+        public ExecController(ICvAssembliesManager cvAssembliesManager, IAccessManager AccessManager, ICvAssemblyDetailsManager CvAssemblyDetailsManager, IAccessPermissionManager accessPermissionManager)
         {
             _CvAssembliesManager = cvAssembliesManager;
             _AccessManager = AccessManager;
