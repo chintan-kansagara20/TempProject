@@ -18,6 +18,8 @@ builder.Services.AddTransient<ICvAssembliesManager, CvAssembliesManager>();
 builder.Services.AddTransient<ICvAssembliesDataAccess, CvAssembliesDataAccess>();
 builder.Services.AddTransient<IAccessManager, AccessManager>();
 builder.Services.AddTransient<IAccessDataAccess, AccessDataAccess>();
+builder.Services.AddTransient<IAccessPermissionManager, AccessPermissionManager>();
+builder.Services.AddTransient<IAccessPermissionDataAccess, AccessPermissionDataAccess>();
 #endregion
 
 var app = builder.Build();

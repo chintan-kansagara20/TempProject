@@ -13,10 +13,12 @@ namespace CrystalData.API.Controllers
     {
         ICvAssembliesManager _CvAssembliesManager { get; set; }
         IAccessManager _AccessManager { get; set; }
-        public ExecController(ICvAssembliesManager cvAssembliesManager, IAccessManager AccessManager)
+        IAccessPermissionManager _AccessPermissionManager { get; set; }
+        public ExecController(ICvAssembliesManager cvAssembliesManager, IAccessManager AccessManager, IAccessPermissionManager accessPermissionManager)
         {
             _CvAssembliesManager = cvAssembliesManager;
             _AccessManager = AccessManager;
+            _AccessPermissionManager = accessPermissionManager;
         }
 
         [HttpPost]
@@ -43,6 +45,22 @@ namespace CrystalData.API.Controllers
                 if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
                 if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
                 return Ok(_AccessManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/AccessPermission/Get")]
+        public ActionResult AccessPermissionGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_AccessPermissionManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
             }
             catch (Exception ex)
             {
