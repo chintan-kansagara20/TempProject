@@ -24,4 +24,10 @@
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.32.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="CrystalAuthLayer">
+      <HintPath>..\External DLLs\CrystalAuthLayer.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>
