@@ -63,6 +63,24 @@ builder.Services.AddTransient<ICarrierBillingOptionsDataAccess, CarrierBillingOp
 
 builder.Services.AddTransient<ICarrierInsuranceOptionsManager, CarrierInsuranceOptionsManager>();
 builder.Services.AddTransient<ICarrierInsuranceOptionsDataAccess, CarrierInsuranceOptionsDataAccess>();
+
+builder.Services.AddTransient<ICarrierServiceManager, CarrierServiceManager>();
+builder.Services.AddTransient<ICarrierServiceDataAccess, CarrierServiceDataAccess>();
+
+builder.Services.AddTransient<ICarrierVoidOptionsManager, CarrierVoidOptionsManager>();
+builder.Services.AddTransient<ICarrierVoidOptionsDataAccess, CarrierVoidOptionsDataAccess>();
+
+builder.Services.AddTransient<IChargeManager, ChargeManager>();
+builder.Services.AddTransient<IChargeDataAccess, ChargeDataAccess>();
+
+builder.Services.AddTransient<IClassManager, ClassManager>();
+builder.Services.AddTransient<IClassDataAccess, ClassDataAccess>();
+
+builder.Services.AddTransient<IContractTypeManager, ContractTypeManager>();
+builder.Services.AddTransient<IContractTypeDataAccess, ContractTypeDataAccess>();
+
+builder.Services.AddTransient<ICostLayerIssuesManager, CostLayerIssuesManager>();
+builder.Services.AddTransient<ICostLayerIssuesDataAccess, CostLayerIssuesDataAccess>();
 #endregion
 
 var app = builder.Build();
