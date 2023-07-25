@@ -1,5 +1,4 @@
 ﻿using AuthLayer.Utility;
-using CrystalData.DataAccess.Interface;
 using CrystalData.Models;
 using EasyCrudLibrary.Model;
 using EasyCrudLibrary;
@@ -10,16 +9,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CrystalData.DataAccess.Interface;
 using Microsoft.AspNetCore.Hosting;
 
 namespace CrystalData.DataAccess.Impl
 {
-    public class BranchDataAccess : IBranchDataAccess
+    public class CarrierServiceDataAccess : ICarrierServiceDataAccess
     {
         private string ConnectionString { get; set; }
         private CommonFunctions _cf { get; set; }
 
-        public BranchDataAccess(IHostingEnvironment env, IConfiguration configuration, IHttpContextAccessor httpContextAccessor)
+        public CarrierServiceDataAccess(IHostingEnvironment env, IConfiguration configuration, IHttpContextAccessor httpContextAccessor)
         {
             try
             {
@@ -29,7 +29,7 @@ namespace CrystalData.DataAccess.Impl
             catch (Exception) { }
         }
 
-        public List<BranchModel> Get(int page, int itemsPerPage, List<OrderByModel> orderBy, List<AdvanceFilterByModel> filtersList)
+        public List<CarrierServiceModel> Get(int page, int itemsPerPage, List<OrderByModel> orderBy, List<AdvanceFilterByModel> filtersList)
         {
             var _EC = new EasyCrud(ConnectionString);
 
@@ -40,7 +40,7 @@ namespace CrystalData.DataAccess.Impl
                 WhereCondition += " WHERE " + FilterCondtion;
             }
 
-            var FinalReturn = _EC.GetList<BranchModel>(page, itemsPerPage, orderBy, WhereCondition, null, GSEnums.WithInQuery.NoLock);
+            var FinalReturn = _EC.GetList<CarrierServiceModel>(page, itemsPerPage, orderBy, WhereCondition, null, GSEnums.WithInQuery.NoLock);
             return FinalReturn;
         }
 
@@ -55,7 +55,7 @@ namespace CrystalData.DataAccess.Impl
                 WhereCondition += " WHERE " + FilterCondtion;
             }
 
-            var total = _EC.Count<BranchModel>(WhereCondition, null, GSEnums.WithInQuery.NoLock);
+            var total = _EC.Count<CarrierServiceModel>(WhereCondition, null, GSEnums.WithInQuery.NoLock);
             return total;
         }
     }

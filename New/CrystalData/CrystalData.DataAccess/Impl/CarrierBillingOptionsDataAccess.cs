@@ -14,12 +14,12 @@ using Microsoft.AspNetCore.Hosting;
 
 namespace CrystalData.DataAccess.Impl
 {
-    public class BranchDataAccess : IBranchDataAccess
+    public class CarrierBillingOptionsDataAccess : ICarrierBillingOptionsDataAccess
     {
         private string ConnectionString { get; set; }
         private CommonFunctions _cf { get; set; }
 
-        public BranchDataAccess(IHostingEnvironment env, IConfiguration configuration, IHttpContextAccessor httpContextAccessor)
+        public CarrierBillingOptionsDataAccess(IHostingEnvironment env, IConfiguration configuration, IHttpContextAccessor httpContextAccessor)
         {
             try
             {
@@ -29,7 +29,7 @@ namespace CrystalData.DataAccess.Impl
             catch (Exception) { }
         }
 
-        public List<BranchModel> Get(int page, int itemsPerPage, List<OrderByModel> orderBy, List<AdvanceFilterByModel> filtersList)
+        public List<CarrierBillingOptionsModel> Get(int page, int itemsPerPage, List<OrderByModel> orderBy, List<AdvanceFilterByModel> filtersList)
         {
             var _EC = new EasyCrud(ConnectionString);
 
@@ -40,7 +40,7 @@ namespace CrystalData.DataAccess.Impl
                 WhereCondition += " WHERE " + FilterCondtion;
             }
 
-            var FinalReturn = _EC.GetList<BranchModel>(page, itemsPerPage, orderBy, WhereCondition, null, GSEnums.WithInQuery.NoLock);
+            var FinalReturn = _EC.GetList<CarrierBillingOptionsModel>(page, itemsPerPage, orderBy, WhereCondition, null, GSEnums.WithInQuery.NoLock);
             return FinalReturn;
         }
 
@@ -55,7 +55,7 @@ namespace CrystalData.DataAccess.Impl
                 WhereCondition += " WHERE " + FilterCondtion;
             }
 
-            var total = _EC.Count<BranchModel>(WhereCondition, null, GSEnums.WithInQuery.NoLock);
+            var total = _EC.Count<CarrierBillingOptionsModel>(WhereCondition, null, GSEnums.WithInQuery.NoLock);
             return total;
         }
     }
