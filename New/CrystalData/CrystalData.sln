@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33205.214
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrystalData.DataAccess", "CrystalData.DataAccess\CrystalData.DataAccess.csproj", "{6BF2C2AC-DA67-4110-BF9D-E7132151D97C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrystalData.Manager", "CrystalData.Manager\CrystalData.Manager.csproj", "{EB77BD52-EDDF-4F46-9482-D5EA178A153B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrystalData.Models", "CrystalData.Models\CrystalData.Models.csproj", "{ECCA9CF7-0FA5-4022-A3AE-92F416C6D3CE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrystalData.API", "CrystalData.API\CrystalData.API.csproj", "{6FA0913E-357C-42FB-A8FF-90FEBA05392A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6BF2C2AC-DA67-4110-BF9D-E7132151D97C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6BF2C2AC-DA67-4110-BF9D-E7132151D97C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6BF2C2AC-DA67-4110-BF9D-E7132151D97C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6BF2C2AC-DA67-4110-BF9D-E7132151D97C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB77BD52-EDDF-4F46-9482-D5EA178A153B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB77BD52-EDDF-4F46-9482-D5EA178A153B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB77BD52-EDDF-4F46-9482-D5EA178A153B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB77BD52-EDDF-4F46-9482-D5EA178A153B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ECCA9CF7-0FA5-4022-A3AE-92F416C6D3CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ECCA9CF7-0FA5-4022-A3AE-92F416C6D3CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ECCA9CF7-0FA5-4022-A3AE-92F416C6D3CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ECCA9CF7-0FA5-4022-A3AE-92F416C6D3CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6FA0913E-357C-42FB-A8FF-90FEBA05392A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6FA0913E-357C-42FB-A8FF-90FEBA05392A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6FA0913E-357C-42FB-A8FF-90FEBA05392A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6FA0913E-357C-42FB-A8FF-90FEBA05392A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {717D4037-2961-46F0-A959-AAB8903D9A1F}
+	EndGlobalSection
+EndGlobal
