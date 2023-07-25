@@ -14,10 +14,15 @@ builder.Services.AddSwaggerGen();
 
 #region Dependency
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
 builder.Services.AddTransient<ICvAssembliesManager, CvAssembliesManager>();
 builder.Services.AddTransient<ICvAssembliesDataAccess, CvAssembliesDataAccess>();
+
 builder.Services.AddTransient<IAccessManager, AccessManager>();
 builder.Services.AddTransient<IAccessDataAccess, AccessDataAccess>();
+
+builder.Services.AddTransient<ICvAssemblyDetailsManager, CvAssemblyDetailsManager>();
+builder.Services.AddTransient<ICvAssemblyDetailsDataAccess, CvAssemblyDetailsDataAccess>();
 #endregion
 
 var app = builder.Build();
