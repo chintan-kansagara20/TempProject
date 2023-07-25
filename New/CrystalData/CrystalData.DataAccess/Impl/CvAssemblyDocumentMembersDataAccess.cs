@@ -14,22 +14,22 @@ using Microsoft.AspNetCore.Hosting;
 
 namespace CrystalData.DataAccess.Impl
 {
-    public class CvAssemblyDetailsDataAccess : ICvAssemblyDetailsDataAccess
+    public class CvAssemblyDocumentMembersDataAccess : ICvAssemblyDocumentMembersDataAccess
     {
         private string ConnectionString { get; set; }
+        private CommonFunctions _cf { get; set; }
 
-        private CommonFunctions cf { get; set; }
-        public CvAssemblyDetailsDataAccess(IHostingEnvironment env, IConfiguration configuration, IHttpContextAccessor httpContextAccessor)
+        public CvAssemblyDocumentMembersDataAccess(IHostingEnvironment env, IConfiguration configuration, IHttpContextAccessor httpContextAccessor)
         {
             try
             {
-                cf = new CommonFunctions(configuration, env.ContentRootPath, httpContextAccessor);
-                ConnectionString = cf.GetNewConnectionString();
+                _cf = new CommonFunctions(configuration, env.ContentRootPath, httpContextAccessor);
+                ConnectionString = _cf.GetNewConnectionString();
             }
             catch (Exception) { }
         }
 
-        public List<cvAssemblyDetailsModel> Get(int page, int itemsPerPage, List<OrderByModel> orderBy, List<AdvanceFilterByModel> filtersList)
+        public List<cvAssemblyDocumentMembersModel> Get(int page, int itemsPerPage, List<OrderByModel> orderBy, List<AdvanceFilterByModel> filtersList)
         {
             var _EC = new EasyCrud(ConnectionString);
 
@@ -40,7 +40,7 @@ namespace CrystalData.DataAccess.Impl
                 WhereCondition += " WHERE " + FilterCondtion;
             }
 
-            var FinalReturn = _EC.GetList<cvAssemblyDetailsModel>(page, itemsPerPage, orderBy, WhereCondition, null, GSEnums.WithInQuery.NoLock);
+            var FinalReturn = _EC.GetList<cvAssemblyDocumentMembersModel>(page, itemsPerPage, orderBy, WhereCondition, null, GSEnums.WithInQuery.NoLock);
             return FinalReturn;
         }
 
@@ -55,7 +55,7 @@ namespace CrystalData.DataAccess.Impl
                 WhereCondition += " WHERE " + FilterCondtion;
             }
 
-            var total = _EC.Count<cvAssembliesModel>(WhereCondition, null, GSEnums.WithInQuery.NoLock);
+            var total = _EC.Count<cvAssemblyDocumentMembersModel>(WhereCondition, null, GSEnums.WithInQuery.NoLock);
             return total;
         }
     }

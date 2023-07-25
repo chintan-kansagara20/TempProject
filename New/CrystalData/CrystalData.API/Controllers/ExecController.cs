@@ -33,7 +33,10 @@ namespace CrystalData.API.Controllers
         IContractTypeManager _ContractTypeManager { get; set; }
         ICostLayerIssuesManager _CostLayerIssues { get; set; }
         ICvAssemblyCustomerOrderManager _CvAssemblyCustomerOrderManager { get; set; }
-        public ExecController(ICvAssembliesManager cvAssembliesManager, IAccessManager AccessManager, ICvAssemblyDetailsManager CvAssemblyDetailsManager, IAccessPermissionManager accessPermissionManager, IAccessPermissionMasterManager accessPermissionMasterManager, IBranchManager branchManager,IBusinessActivityHistoryManager businessActivityHistoryManager, IBusinessActivityManager businessActivityManager, IBusinessActivityRelatedItemsManager businessActivityRelatedItemsManager, IBusinessActivityTimeAndMaterialsManager businessActivityTimeAndMaterialsManager, ICarrierManager carrierManager, ICarrierBillingOptionsManager carrierBillingOptionsManager, ICarrierInsuranceOptionsManager carrierInsuranceOptionsManager, ICarrierServiceManager carrierServiceManager, ICarrierVoidOptionsManager carrierVoidOptionsManager, IChargeManager chargeManager, IClassManager classManager, IContractTypeManager contractTypeManager, ICostLayerIssuesManager costLayerIssues, ICvAssemblyCustomerOrderManager cvAssemblyCustomerOrder)
+        ICvAssemblyDocumentMembersManager _CvAssemblyDocumentMembersManager { get; set; }
+        ICvAssemblyProductionRecordManager _CvAssemblyProductionRecordManager { get; set; }
+        ICvInventoryTransfersRepeaterManager _CvInventoryTransfersRepeaterManager { get; set; }
+        public ExecController(ICvAssembliesManager cvAssembliesManager, IAccessManager AccessManager, ICvAssemblyDetailsManager CvAssemblyDetailsManager, IAccessPermissionManager accessPermissionManager, IAccessPermissionMasterManager accessPermissionMasterManager, IBranchManager branchManager,IBusinessActivityHistoryManager businessActivityHistoryManager, IBusinessActivityManager businessActivityManager, IBusinessActivityRelatedItemsManager businessActivityRelatedItemsManager, IBusinessActivityTimeAndMaterialsManager businessActivityTimeAndMaterialsManager, ICarrierManager carrierManager, ICarrierBillingOptionsManager carrierBillingOptionsManager, ICarrierInsuranceOptionsManager carrierInsuranceOptionsManager, ICarrierServiceManager carrierServiceManager, ICarrierVoidOptionsManager carrierVoidOptionsManager, IChargeManager chargeManager, IClassManager classManager, IContractTypeManager contractTypeManager, ICostLayerIssuesManager costLayerIssues, ICvAssemblyCustomerOrderManager cvAssemblyCustomerOrder, ICvAssemblyDocumentMembersManager cvAssemblyDocumentMembersManager, ICvAssemblyProductionRecordManager cvAssemblyProductionRecordManager, ICvInventoryTransfersRepeaterManager cvInventoryTransfersRepeaterManager)
         {
             _CvAssembliesManager = cvAssembliesManager;
             _AccessManager = AccessManager;
@@ -55,10 +58,61 @@ namespace CrystalData.API.Controllers
             _ContractTypeManager = contractTypeManager;
             _CostLayerIssues = costLayerIssues;
             _CvAssemblyCustomerOrderManager = cvAssemblyCustomerOrder;
+            _CvAssemblyDocumentMembersManager = cvAssemblyDocumentMembersManager;
+            _CvAssemblyProductionRecordManager = cvAssemblyProductionRecordManager;
+            _CvInventoryTransfersRepeaterManager = cvInventoryTransfersRepeaterManager;
         }
 
         [HttpPost]
-        [Route("/api/Full/CvAssemblies/Get")]
+        [Route("/api/Full/CvInventoryTransfersRepeater/Get")]
+        public ActionResult CvInventoryTransfersRepeater_Get(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_CvInventoryTransfersRepeaterManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/CvAssemblyProductionRecord/Get")]
+        public ActionResult CvAssemblyProductionRecord_Get(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_CvAssemblyProductionRecordManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/cvAssemblyDocumentMembers/Get")]
+        public ActionResult CvAssemblyDocumentMembers_Get(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_CvAssemblyDocumentMembersManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/CvAssemblyCustomerOrder/Get")]
         public ActionResult CvAssemblyCustomerOrder_Get(FullGetModel model)
         {
             try

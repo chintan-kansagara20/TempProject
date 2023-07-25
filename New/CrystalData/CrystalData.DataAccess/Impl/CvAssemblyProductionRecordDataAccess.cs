@@ -1,5 +1,4 @@
 ﻿using AuthLayer.Utility;
-using CrystalData.DataAccess.Interface;
 using CrystalData.Models;
 using EasyCrudLibrary.Model;
 using EasyCrudLibrary;
@@ -10,26 +9,27 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CrystalData.DataAccess.Interface;
 using Microsoft.AspNetCore.Hosting;
 
 namespace CrystalData.DataAccess.Impl
 {
-    public class CvAssemblyDetailsDataAccess : ICvAssemblyDetailsDataAccess
+    public class CvAssemblyProductionRecordDataAccess : ICvAssemblyProductionRecordDataAccess
     {
         private string ConnectionString { get; set; }
+        private CommonFunctions _cf { get; set; }
 
-        private CommonFunctions cf { get; set; }
-        public CvAssemblyDetailsDataAccess(IHostingEnvironment env, IConfiguration configuration, IHttpContextAccessor httpContextAccessor)
+        public CvAssemblyProductionRecordDataAccess(IHostingEnvironment env, IConfiguration configuration, IHttpContextAccessor httpContextAccessor)
         {
             try
             {
-                cf = new CommonFunctions(configuration, env.ContentRootPath, httpContextAccessor);
-                ConnectionString = cf.GetNewConnectionString();
+                _cf = new CommonFunctions(configuration, env.ContentRootPath, httpContextAccessor);
+                ConnectionString = _cf.GetNewConnectionString();
             }
             catch (Exception) { }
         }
 
-        public List<cvAssemblyDetailsModel> Get(int page, int itemsPerPage, List<OrderByModel> orderBy, List<AdvanceFilterByModel> filtersList)
+        public List<cvAssemblyProductionRecordModel> Get(int page, int itemsPerPage, List<OrderByModel> orderBy, List<AdvanceFilterByModel> filtersList)
         {
             var _EC = new EasyCrud(ConnectionString);
 
@@ -40,7 +40,7 @@ namespace CrystalData.DataAccess.Impl
                 WhereCondition += " WHERE " + FilterCondtion;
             }
 
-            var FinalReturn = _EC.GetList<cvAssemblyDetailsModel>(page, itemsPerPage, orderBy, WhereCondition, null, GSEnums.WithInQuery.NoLock);
+            var FinalReturn = _EC.GetList<cvAssemblyProductionRecordModel>(page, itemsPerPage, orderBy, WhereCondition, null, GSEnums.WithInQuery.NoLock);
             return FinalReturn;
         }
 
@@ -55,7 +55,7 @@ namespace CrystalData.DataAccess.Impl
                 WhereCondition += " WHERE " + FilterCondtion;
             }
 
-            var total = _EC.Count<cvAssembliesModel>(WhereCondition, null, GSEnums.WithInQuery.NoLock);
+            var total = _EC.Count<cvAssemblyProductionRecordModel>(WhereCondition, null, GSEnums.WithInQuery.NoLock);
             return total;
         }
     }
