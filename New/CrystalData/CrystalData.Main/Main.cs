@@ -12,8 +12,6 @@ namespace CrystalData.Main
     {
         public static void AddDependencies(IServiceCollection Service)
         {
-            Service.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-
             Service.AddTransient<ICvAssembliesManager, CvAssembliesManager>();
             Service.AddTransient<ICvAssembliesDataAccess, CvAssembliesDataAccess>();
 
