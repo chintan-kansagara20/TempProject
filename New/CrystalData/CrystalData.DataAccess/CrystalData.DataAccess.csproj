@@ -7,11 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Impl\" />
-    <Folder Include="Interface\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="EasyCrudLibrary" Version="1.0.8" />
     <PackageReference Include="FastMember" Version="1.5.0" />
     <PackageReference Include="ini-parser" Version="2.5.2" />
@@ -27,6 +22,10 @@
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.5" />
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.32.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CrystalData.Models\CrystalData.Models.csproj" />
   </ItemGroup>
 
   <ItemGroup>

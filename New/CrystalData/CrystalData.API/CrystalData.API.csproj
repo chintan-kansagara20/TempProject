@@ -26,6 +26,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\CrystalData.Manager\CrystalData.Manager.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Reference Include="CrystalAuthLayer">
       <HintPath>..\External DLLs\CrystalAuthLayer.dll</HintPath>
     </Reference>
