@@ -32,7 +32,8 @@ namespace TestAPI.Controllers
         IChargeManager _ChargeManager { get; set; }
         IClassManager _ClassManager { get; set; }
         IContractTypeManager _ContractTypeManager { get; set; }
-        public FullController(ICvAssembliesManager cvAssembliesManager, ICvAssemblyCustomerOrderManager CvAssemblyCustomerOrderManager, IAccessManager AccessManager, ICvAssemblyDocumentMembersManager cvAssemblyDocumentMembersManager, ICvAssemblyProductionRecordManager cvAssemblyProductionRecordManager, ICvInventoryTransfersRepeaterManager cvInventoryTransfersRepeaterManager, IAccessPermissionManager accessPermissionManager, IAccessPermissionMasterManager accessPermissionMasterManager, IBranchManager branchManager, IBusinessActivityManager businessActivityManager, IBusinessActivityHistoryManager businessActivityHistoryManager, IBusinessActivityRelatedItemsManager businessActivityRelatedItemsManager, IBusinessActivityTimeAndMaterialsManager businessActivityTimeAndMaterialsManager, ICarrierManager carrierManager, ICarrierBillingOptionsManager carrierBillingOptionsManager, ICarrierInsuranceOptionsManager carrierInsuranceOptionsManager, ICarrierServiceManager carrierServiceManager, ICarrierVoidOptionsManager carrierVoidOptionsManager, IChargeManager chargeManager, IClassManager classManager, IContractTypeManager contractTypeManager)
+        ICostLayerIssuesManager _CostLayerIssues { get; set; }
+        public FullController(ICvAssembliesManager cvAssembliesManager, ICvAssemblyCustomerOrderManager CvAssemblyCustomerOrderManager, IAccessManager AccessManager, ICvAssemblyDocumentMembersManager cvAssemblyDocumentMembersManager, ICvAssemblyProductionRecordManager cvAssemblyProductionRecordManager, ICvInventoryTransfersRepeaterManager cvInventoryTransfersRepeaterManager, IAccessPermissionManager accessPermissionManager, IAccessPermissionMasterManager accessPermissionMasterManager, IBranchManager branchManager, IBusinessActivityManager businessActivityManager, IBusinessActivityHistoryManager businessActivityHistoryManager, IBusinessActivityRelatedItemsManager businessActivityRelatedItemsManager, IBusinessActivityTimeAndMaterialsManager businessActivityTimeAndMaterialsManager, ICarrierManager carrierManager, ICarrierBillingOptionsManager carrierBillingOptionsManager, ICarrierInsuranceOptionsManager carrierInsuranceOptionsManager, ICarrierServiceManager carrierServiceManager, ICarrierVoidOptionsManager carrierVoidOptionsManager, IChargeManager chargeManager, IClassManager classManager, IContractTypeManager contractTypeManager, ICostLayerIssuesManager costLayerIssues)
         {
             _CvAssembliesManager = cvAssembliesManager;
             _CvAssemblyCustomerOrderManager = CvAssemblyCustomerOrderManager;
@@ -55,6 +56,7 @@ namespace TestAPI.Controllers
             _ChargeManager = chargeManager;
             _ClassManager = classManager;
             _ContractTypeManager = contractTypeManager;
+            _CostLayerIssues = costLayerIssues;
         }
 
         [HttpPost]
@@ -386,6 +388,22 @@ namespace TestAPI.Controllers
                 if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
                 if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
                 return Ok(_ContractTypeManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/CostLayerIssues/Get")]
+        public ActionResult CostLayerIssues_Get(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_CostLayerIssues.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
             }
             catch (Exception ex)
             {
