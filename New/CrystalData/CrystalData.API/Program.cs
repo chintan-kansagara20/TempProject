@@ -20,6 +20,8 @@ builder.Services.AddTransient<IUserManager, UserManager>();
 builder.Services.AddTransient<IRoleDataAccess, RoleDataAccess>();
 builder.Services.AddTransient<IRoleManager, RoleManager>();
 
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
 #region Dependency
 Main.AddDependencies(builder.Services);
 #endregion
