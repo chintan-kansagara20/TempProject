@@ -113,6 +113,12 @@ namespace CrystalData.Main
 
             Service.AddTransient<ICustomerCreditStatusManager, CustomerCreditStatusManager>();
             Service.AddTransient<ICustomerCreditStatusDataAccess, CustomerCreditStatusDataAccess>();
+
+            Service.AddTransient<ICustomerEmailAddressListManager, CustomerEmailAddressListManager>();
+            Service.AddTransient<ICustomerEmailAddressListDataAccess, CustomerEmailAddressListDataAccess>();
+
+            Service.AddTransient<IProductComponentManager, ProductComponentManager>();
+            Service.AddTransient<IProductComponentDataAccess, ProductComponentDataAccess>();
         }
     }
 }
