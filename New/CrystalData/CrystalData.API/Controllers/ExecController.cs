@@ -55,6 +55,10 @@ namespace CrystalData.API.Controllers
         ICustomerInvoiceTotalManager _CustomerInvoiceTotalManager { get; set; }
         ICustomerMarketingListXrefManager _CustomerMarketingListXrefManager { get; set; }
         ICustomerPaymentManager _CustomerPaymentManager { get; set; }
+        ICustomerPaymentAppliedTotalManager _CustomerPaymentAppliedTotalManager { get; set; }
+        ICustomerPaymentChargeTotalManager _CustomerPaymentChargeTotalManager { get; set; }
+        ICustomerPaymentInvoiceManager _CustomerPaymentInvoiceManager { get; set; }
+        ICustomerPaymentInvoiceTotalManager _CustomerPaymentInvoiceTotalManager { get; set; }
         public ExecController(
             ICvAssembliesManager cvAssembliesManager, 
             IAccessManager AccessManager,
@@ -96,8 +100,11 @@ namespace CrystalData.API.Controllers
             ICustomerInfoManager customerInfoManager,
             ICustomerInvoiceTotalManager customerInvoiceTotalManager,
             ICustomerMarketingListXrefManager customerMarketingListXrefManager,
-            ICustomerPaymentManager customerPaymentManager
-            )
+            ICustomerPaymentManager customerPaymentManager,
+            ICustomerPaymentAppliedTotalManager customerPaymentAppliedTotalManager,
+            ICustomerPaymentChargeTotalManager customerPaymentChargeTotalManager,
+            ICustomerPaymentInvoiceManager customerPaymentInvoiceManager,
+            ICustomerPaymentInvoiceTotalManager customerPaymentInvoiceTotalManager)
 
         {
             _CvAssembliesManager = cvAssembliesManager;
@@ -141,8 +148,75 @@ namespace CrystalData.API.Controllers
             _CustomerInvoiceTotalManager = customerInvoiceTotalManager;
             _CustomerMarketingListXrefManager = customerMarketingListXrefManager;
             _CustomerPaymentManager = customerPaymentManager;
+            _CustomerPaymentAppliedTotalManager = customerPaymentAppliedTotalManager;
+            _CustomerPaymentChargeTotalManager = customerPaymentChargeTotalManager;
+            _CustomerPaymentInvoiceManager = customerPaymentInvoiceManager;
+            _CustomerPaymentInvoiceTotalManager = customerPaymentInvoiceTotalManager;
         }
 
+        [HttpPost]
+        [Route("/api/Full/CustomerPaymentInvoiceTotal/Get")]
+        public ActionResult CustomerPaymentInvoiceTotalGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_CustomerPaymentInvoiceTotalManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/CustomerPaymentInvoice/Get")]
+        public ActionResult CustomerPaymentInvoiceGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_CustomerPaymentInvoiceManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/CustomerPaymentChargeTotal/Get")]
+        public ActionResult CustomerPaymentChargeTotalGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_CustomerPaymentChargeTotalManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/CustomerPaymentAppliedTotal/Get")]
+        public ActionResult CustomerPaymentAppliedTotalGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_CustomerPaymentAppliedTotalManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
 
         [HttpPost]
         [Route("/api/Full/CustomerPayment/Get")]
