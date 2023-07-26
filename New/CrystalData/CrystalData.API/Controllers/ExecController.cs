@@ -53,7 +53,8 @@ namespace CrystalData.API.Controllers
         ICustomerFullNameManager _CustomerFullNameManager { get; set; }
         ICustomerInfoManager _CustomerInfoManager { get; set; }
         ICustomerInvoiceTotalManager _CustomerInvoiceTotalManager { get; set; }
-
+        ICustomerMarketingListXrefManager _CustomerMarketingListXrefManager { get; set; }
+        ICustomerPaymentManager _CustomerPaymentManager { get; set; }
         public ExecController(
             ICvAssembliesManager cvAssembliesManager, 
             IAccessManager AccessManager,
@@ -93,7 +94,9 @@ namespace CrystalData.API.Controllers
             ICustomerExportManager customerExportManager,
             ICustomerFullNameManager customerFullNameManager,
             ICustomerInfoManager customerInfoManager,
-            ICustomerInvoiceTotalManager customerInvoiceTotalManager
+            ICustomerInvoiceTotalManager customerInvoiceTotalManager,
+            ICustomerMarketingListXrefManager customerMarketingListXrefManager,
+            ICustomerPaymentManager customerPaymentManager
             )
 
         {
@@ -136,6 +139,41 @@ namespace CrystalData.API.Controllers
             _CustomerFullNameManager = customerFullNameManager;
             _CustomerInfoManager = customerInfoManager;
             _CustomerInvoiceTotalManager = customerInvoiceTotalManager;
+            _CustomerMarketingListXrefManager = customerMarketingListXrefManager;
+            _CustomerPaymentManager = customerPaymentManager;
+        }
+
+
+        [HttpPost]
+        [Route("/api/Full/CustomerPayment/Get")]
+        public ActionResult CustomerPaymentGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_CustomerPaymentManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/CustomerMarketingListXref/Get")]
+        public ActionResult CustomerMarketingListXrefGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_CustomerMarketingListXrefManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
         }
 
         [HttpPost]
