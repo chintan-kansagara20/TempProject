@@ -105,6 +105,9 @@ namespace CrystalData.Main
             Service.AddTransient<ICustomerContactManager, CustomerContactManager>();
             Service.AddTransient<ICustomerContactDataAccess, CustomerContactDataAccess>();
 
+            Service.AddTransient<ITbINVRegisterManager, TbINVRegisterManager>();
+            Service.AddTransient<ITbINVRegisterDataAccess, TbINVRegisterDataAccess>();
+
             Service.AddTransient<ICustomerContractManager, CustomerContractManager>();
             Service.AddTransient<ICustomerContractDataAccess, CustomerContractDataAccess>();
 
