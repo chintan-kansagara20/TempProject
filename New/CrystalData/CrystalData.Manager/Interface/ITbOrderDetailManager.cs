@@ -12,8 +12,8 @@ namespace CrystalData.Manager.Interface
     public interface ITbOrderDetailManager
     {
         APIResponse Get(int page, int itemsPerPage, List<OrderByModel> orderBy, List<AdvanceFilterByModel> filtersList);
-        APIResponse Insert(tbProductModel model);
-        APIResponse Update(Guid GUIDOrderDetail, tbProductModel model);
+        APIResponse Insert(tbOrderDetailModel model);
+        APIResponse Update(Guid GUIDOrderDetail, tbOrderDetailModel model);
         APIResponse HardDelete(Guid GUIDOrderDetail);
     }
 }

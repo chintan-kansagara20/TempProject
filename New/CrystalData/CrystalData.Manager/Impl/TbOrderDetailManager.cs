@@ -34,7 +34,7 @@ namespace CrystalData.Manager.Impl
             }
         }
 
-        public APIResponse Insert(tbProductModel model)
+        public APIResponse Insert(tbOrderDetailModel model)
         {
             var result = DataAccess.Add(model);
             if (result != null)
@@ -47,7 +47,7 @@ namespace CrystalData.Manager.Impl
             }
         }
 
-        public APIResponse Update(Guid GUIDOrderDetail, tbProductModel model)
+        public APIResponse Update(Guid GUIDOrderDetail, tbOrderDetailModel model)
         {
             var result = DataAccess.Update(GUIDOrderDetail, model);
             if (result)
