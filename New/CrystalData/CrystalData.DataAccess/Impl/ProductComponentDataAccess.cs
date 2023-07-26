@@ -14,12 +14,12 @@ using Microsoft.AspNetCore.Hosting;
 
 namespace CrystalData.DataAccess.Impl
 {
-    public class CustomerEmailAddressListDataAccess : ICustomerEmailAddressListDataAccess
+    public class ProductComponentDataAccess : IProductComponentDataAccess
     {
         private string ConnectionString { get; set; }
         private CommonFunctions _cf { get; set; }
 
-        public CustomerEmailAddressListDataAccess(IHostingEnvironment env, IConfiguration configuration, IHttpContextAccessor httpContextAccessor)
+        public ProductComponentDataAccess(IHostingEnvironment env, IConfiguration configuration, IHttpContextAccessor httpContextAccessor)
         {
             try
             {
@@ -29,7 +29,7 @@ namespace CrystalData.DataAccess.Impl
             catch (Exception) { }
         }
 
-        public List<CustomerEmailAddressListModel> Get(int page, int itemsPerPage, List<OrderByModel> orderBy, List<AdvanceFilterByModel> filtersList)
+        public List<ProductComponentModel> Get(int page, int itemsPerPage, List<OrderByModel> orderBy, List<AdvanceFilterByModel> filtersList)
         {
             var _EC = new EasyCrud(ConnectionString);
 
@@ -40,7 +40,7 @@ namespace CrystalData.DataAccess.Impl
                 WhereCondition += " WHERE " + FilterCondtion;
             }
 
-            var FinalReturn = _EC.GetList<CustomerEmailAddressListModel>(page, itemsPerPage, orderBy, WhereCondition, null, GSEnums.WithInQuery.NoLock);
+            var FinalReturn = _EC.GetList<ProductComponentModel>(page, itemsPerPage, orderBy, WhereCondition, null, GSEnums.WithInQuery.NoLock);
             return FinalReturn;
         }
 
@@ -55,9 +55,8 @@ namespace CrystalData.DataAccess.Impl
                 WhereCondition += " WHERE " + FilterCondtion;
             }
 
-            var total = _EC.Count<CustomerEmailAddressListModel>(WhereCondition, null, GSEnums.WithInQuery.NoLock);
+            var total = _EC.Count<ProductComponentModel>(WhereCondition, null, GSEnums.WithInQuery.NoLock);
             return total;
         }
     }
 }
-

@@ -47,7 +47,9 @@ namespace CrystalData.API.Controllers
         ICustomerContactManager _CustomerContactDataAccess { get; set; }
         ICustomerContractManager _CustomerContractManager { get; set; }
         ICustomerCreditStatusManager _CustomerCreditStatusManager { get; set; }
-        public ExecController(ICvAssembliesManager cvAssembliesManager, IAccessManager AccessManager, ICvAssemblyDetailsManager CvAssemblyDetailsManager, IAccessPermissionManager accessPermissionManager, IAccessPermissionMasterManager accessPermissionMasterManager, IBranchManager branchManager,IBusinessActivityHistoryManager businessActivityHistoryManager, IBusinessActivityManager businessActivityManager, IBusinessActivityRelatedItemsManager businessActivityRelatedItemsManager, IBusinessActivityTimeAndMaterialsManager businessActivityTimeAndMaterialsManager, ICarrierManager carrierManager, ICarrierBillingOptionsManager carrierBillingOptionsManager, ICarrierInsuranceOptionsManager carrierInsuranceOptionsManager, ICarrierServiceManager carrierServiceManager, ICarrierVoidOptionsManager carrierVoidOptionsManager, IChargeManager chargeManager, IClassManager classManager, IContractTypeManager contractTypeManager, ICostLayerIssuesManager costLayerIssues, ICvAssemblyCustomerOrderManager cvAssemblyCustomerOrder, ICvAssemblyDocumentMembersManager cvAssemblyDocumentMembersManager, ICvAssemblyProductionRecordManager cvAssemblyProductionRecordManager, ICvInventoryTransfersRepeaterManager cvInventoryTransfersRepeaterManager, ICostLayerReceiptsManager costLayerReceiptsManager, ICostLayersManager costLayersManager, ICurrencyManager currencyManager, ICustomDataListManager customDataListManager, ICustomerManager customerManager, ICustomerBalanceManager customerBalanceManager, ICustomerChargeTotalManager customerChargeTotalDataAccess, ICustomerContactManager customerContactDataAccess, ICustomerContractManager customerContractManager, ICustomerCreditStatusManager customerCreditStatusManager)
+        ICustomerEmailAddressListManager _CustomerEmailAddressListManager { get; set; }
+        IProductComponentManager _ProductComponentManager { get; set; }
+        public ExecController(ICvAssembliesManager cvAssembliesManager, IAccessManager AccessManager, ICvAssemblyDetailsManager CvAssemblyDetailsManager, IAccessPermissionManager accessPermissionManager, IAccessPermissionMasterManager accessPermissionMasterManager, IBranchManager branchManager,IBusinessActivityHistoryManager businessActivityHistoryManager, IBusinessActivityManager businessActivityManager, IBusinessActivityRelatedItemsManager businessActivityRelatedItemsManager, IBusinessActivityTimeAndMaterialsManager businessActivityTimeAndMaterialsManager, ICarrierManager carrierManager, ICarrierBillingOptionsManager carrierBillingOptionsManager, ICarrierInsuranceOptionsManager carrierInsuranceOptionsManager, ICarrierServiceManager carrierServiceManager, ICarrierVoidOptionsManager carrierVoidOptionsManager, IChargeManager chargeManager, IClassManager classManager, IContractTypeManager contractTypeManager, ICostLayerIssuesManager costLayerIssues, ICvAssemblyCustomerOrderManager cvAssemblyCustomerOrder, ICvAssemblyDocumentMembersManager cvAssemblyDocumentMembersManager, ICvAssemblyProductionRecordManager cvAssemblyProductionRecordManager, ICvInventoryTransfersRepeaterManager cvInventoryTransfersRepeaterManager, ICostLayerReceiptsManager costLayerReceiptsManager, ICostLayersManager costLayersManager, ICurrencyManager currencyManager, ICustomDataListManager customDataListManager, ICustomerManager customerManager, ICustomerBalanceManager customerBalanceManager, ICustomerChargeTotalManager customerChargeTotalDataAccess, ICustomerContactManager customerContactDataAccess, ICustomerContractManager customerContractManager, ICustomerCreditStatusManager customerCreditStatusManager, ICustomerEmailAddressListManager customerEmailAddressListManager, IProductComponentManager productComponentManager)
         {
             _CvAssembliesManager = cvAssembliesManager;
             _AccessManager = AccessManager;
@@ -82,6 +84,40 @@ namespace CrystalData.API.Controllers
             _CustomerContactDataAccess = customerContactDataAccess;
             _CustomerContractManager = customerContractManager;
             _CustomerCreditStatusManager = customerCreditStatusManager;
+            _CustomerEmailAddressListManager = customerEmailAddressListManager;
+            _ProductComponentManager = productComponentManager;
+        }
+
+        [HttpPost]
+        [Route("/api/Full/ProductComponent/Get")]
+        public ActionResult ProductComponentGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_ProductComponentManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/CustomerEmailAddressList/Get")]
+        public ActionResult CustomerEmailAddressListGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_CustomerEmailAddressListManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
         }
 
         [HttpPost]
