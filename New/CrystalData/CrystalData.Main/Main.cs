@@ -164,6 +164,12 @@ namespace CrystalData.Main
 
             Service.AddTransient<ICustomerPaymentInvoiceTotalManager, CustomerPaymentInvoiceTotalManager>();
             Service.AddTransient<ICustomerPaymentInvoiceTotalDataAccess, CustomerPaymentInvoiceTotalDataAccess>();
+
+            Service.AddTransient<ICustomerPaymentTotalManager, CustomerPaymentTotalManager>();
+            Service.AddTransient<ICustomerPaymentTotalDataAccess, CustomerPaymentTotalDataAccess>();
+
+            Service.AddTransient<ICustomerPaymentViewManager, CustomerPaymentViewManager>();
+            Service.AddTransient<ICustomerPaymentViewDataAccess, CustomerPaymentViewDataAccess>();
         }
     }
 }
