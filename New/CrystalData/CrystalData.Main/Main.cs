@@ -173,6 +173,18 @@ namespace CrystalData.Main
 
             Service.AddTransient<ICustomerPaymentViewManager, CustomerPaymentViewManager>();
             Service.AddTransient<ICustomerPaymentViewDataAccess, CustomerPaymentViewDataAccess>();
+
+            Service.AddTransient<ICustomerProductManager, CustomerProductManager>();
+            Service.AddTransient<ICustomerProductDataAccess, CustomerProductDataAccess>();
+
+            Service.AddTransient<ICustomerShipManager, CustomerShipManager>();
+            Service.AddTransient<ICustomerShipDataAccess, CustomerShipDataAccess>();
+
+            Service.AddTransient<ICustomerShipToInfoManager, CustomerShipToInfoManager>();
+            Service.AddTransient<ICustomerShipToInfoDataAccess, CustomerShipToInfoDataAccess>();
+
+            Service.AddTransient<ICustomerShipViewManager, CustomerShipViewManager>();
+            Service.AddTransient<ICustomerShipViewDataAccess, CustomerShipViewDataAccess>();
         }
     }
 }
