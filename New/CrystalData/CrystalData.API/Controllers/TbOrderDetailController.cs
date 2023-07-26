@@ -22,7 +22,7 @@ namespace CrystalData.API.Controllers
         }
 
         [HttpPost]
-        [Route("/api/Full/TbProduct/Get")]
+        [Route("/api/Full/TbOrderDetail/Get")]
         public ActionResult Get(FullGetModel model)
         {
             try
@@ -38,8 +38,8 @@ namespace CrystalData.API.Controllers
         }
 
         [HttpPost]
-        [Route("/api/Full/TbProduct/Add")]
-        public ActionResult Add(tbProductModel model)
+        [Route("/api/Full/TbOrderDetail/Add")]
+        public ActionResult Add(tbOrderDetailModel model)
         {
             try
             {
@@ -52,8 +52,8 @@ namespace CrystalData.API.Controllers
         }
 
         [HttpPost]
-        [Route("/api/Full/TbProduct/Update")]
-        public ActionResult Update(Guid GUIDOrderDetail, tbProductModel model)
+        [Route("/api/Full/TbOrderDetail/Update")]
+        public ActionResult Update(Guid GUIDOrderDetail, tbOrderDetailModel model)
         {
             try
             {
@@ -66,7 +66,7 @@ namespace CrystalData.API.Controllers
         }
 
         [HttpDelete]
-        [Route("/api/Full/TbProduct/HardDelete")]
+        [Route("/api/Full/TbOrderDetail/HardDelete")]
         public ActionResult HardDelete(Guid GUIDOrderDetail)
         {
             try

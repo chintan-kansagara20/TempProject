@@ -34,7 +34,7 @@ namespace CrystalData.DataAccess.Impl
             catch (Exception) { }
         }
 
-        public List<tbProductModel> Get(int page, int itemsPerPage, List<OrderByModel> orderBy, List<AdvanceFilterByModel> filtersList)
+        public List<tbOrderDetailModel> Get(int page, int itemsPerPage, List<OrderByModel> orderBy, List<AdvanceFilterByModel> filtersList)
         {
             var _EC = new EasyCrud(ConnectionString);
 
@@ -45,7 +45,7 @@ namespace CrystalData.DataAccess.Impl
                 WhereCondition += " WHERE " + FilterCondtion;
             }
 
-            var FinalReturn = _EC.GetList<tbProductModel>(page, itemsPerPage, orderBy, WhereCondition, null, GSEnums.WithInQuery.NoLock);
+            var FinalReturn = _EC.GetList<tbOrderDetailModel>(page, itemsPerPage, orderBy, WhereCondition, null, GSEnums.WithInQuery.NoLock);
             return FinalReturn;
         }
 
@@ -64,7 +64,7 @@ namespace CrystalData.DataAccess.Impl
             return total;
         }
 
-        public string Add(tbProductModel model, bool AutoCommit = true, EasyCrud _EC = null)
+        public string Add(tbOrderDetailModel model, bool AutoCommit = true, EasyCrud _EC = null)
         {
             if (!AutoCommit && _EC == null) { throw new Exception("When AutoCommit is False EasyCrud Object Needs to be passed"); }
             if (_EC == null) { _EC = new EasyCrud(ConnectionString); }
@@ -72,7 +72,7 @@ namespace CrystalData.DataAccess.Impl
             return recs.ToString();
         }
 
-        public bool Update(Guid GUIDOrderDetail, tbProductModel model, bool AutoCommit = true, EasyCrud _EC = null)
+        public bool Update(Guid GUIDOrderDetail, tbOrderDetailModel model, bool AutoCommit = true, EasyCrud _EC = null)
         {
             if (!AutoCommit && _EC == null) { throw new Exception("When AutoCommit is False EasyCrud Object Needs to be passed"); }
             if (_EC == null) { _EC = new EasyCrud(ConnectionString); }

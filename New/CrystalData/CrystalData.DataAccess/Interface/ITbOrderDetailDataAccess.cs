@@ -11,10 +11,10 @@ namespace CrystalData.DataAccess.Interface
 {
     public interface ITbOrderDetailDataAccess
     {
-        List<tbProductModel> Get(int page, int itemsPerPage, List<OrderByModel> orderBy, List<AdvanceFilterByModel> filtersList);
+        List<tbOrderDetailModel> Get(int page, int itemsPerPage, List<OrderByModel> orderBy, List<AdvanceFilterByModel> filtersList);
         int GetTotal(List<AdvanceFilterByModel> filtersList);
-        string Add(tbProductModel model, bool AutoCommit = true, EasyCrud _EC = null);
-        bool Update(Guid GUIDOrderDetail, tbProductModel model, bool AutoCommit = true, EasyCrud _EC = null);
+        string Add(tbOrderDetailModel model, bool AutoCommit = true, EasyCrud _EC = null);
+        bool Update(Guid GUIDOrderDetail, tbOrderDetailModel model, bool AutoCommit = true, EasyCrud _EC = null);
         bool HardDelete(Guid GUIDOrderDetail, bool AutoCommit = true, EasyCrud _EC = null);
     }
 }
