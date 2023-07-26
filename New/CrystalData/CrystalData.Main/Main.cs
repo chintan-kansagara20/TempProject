@@ -80,6 +80,9 @@ namespace CrystalData.Main
 
             Service.AddTransient<ICvInventoryTransfersRepeaterManager, CvInventoryTransfersRepeaterManager>();
             Service.AddTransient<ICvInventoryTransfersRepeaterDataAccess, CvInventoryTransfersRepeaterDataAccess>();
+
+            Service.AddTransient<ITbINVRegisterManager, TbINVRegisterManager>();
+            Service.AddTransient<ITbINVRegisterDataAccess, TbINVRegisterDataAccess>();
         }
     }
 }
