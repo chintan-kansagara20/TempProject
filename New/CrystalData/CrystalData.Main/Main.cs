@@ -125,6 +125,15 @@ namespace CrystalData.Main
 
             Service.AddTransient<IProductComponentManager, ProductComponentManager>();
             Service.AddTransient<IProductComponentDataAccess, ProductComponentDataAccess>();
+
+            Service.AddTransient<ICustomerExportManager, CustomerExportManager>();
+            Service.AddTransient<ICustomerExportDataAccess, CustomerExportDataAccess>();
+
+            Service.AddTransient<ICustomerFullNameManager, CustomerFullNameManager>();
+            Service.AddTransient<ICustomerFullNameDataAccess, CustomerFullNameDataAccess>();
+
+            Service.AddTransient<ICustomerInfoManager, CustomerInfoManager>();
+            Service.AddTransient<ICustomerInfoDataAccess, CustomerInfoDataAccess>();
         }
     }
 }
