@@ -114,6 +114,9 @@ namespace CrystalData.Main
             Service.AddTransient<ITbINVLotSerialManager, TbINVLotSerialManager>();
             Service.AddTransient<ITbINVLotSerialDataAccess, TbINVLotSerialDataAccess>();
 
+            Service.AddTransient<ITbINVTransactionDetailManager, TbINVTransactionDetailManager>();
+            Service.AddTransient<ITbINVTransactionDetailDataAccess, TbINVTransactionDetailDataAccess>();
+
             Service.AddTransient<ICustomerContractManager, CustomerContractManager>();
             Service.AddTransient<ICustomerContractDataAccess, CustomerContractDataAccess>();
 
