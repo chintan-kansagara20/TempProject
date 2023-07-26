@@ -52,6 +52,8 @@ namespace CrystalData.API.Controllers
         ICustomerExportManager _CustomerExportManager { get; set; }
         ICustomerFullNameManager _CustomerFullNameManager { get; set; }
         ICustomerInfoManager _CustomerInfoManager { get; set; }
+        ICustomerInvoiceTotalManager _CustomerInvoiceTotalManager { get; set; }
+
         public ExecController(
             ICvAssembliesManager cvAssembliesManager, 
             IAccessManager AccessManager,
@@ -90,7 +92,8 @@ namespace CrystalData.API.Controllers
             IProductComponentManager productComponentManager,
             ICustomerExportManager customerExportManager,
             ICustomerFullNameManager customerFullNameManager,
-            ICustomerInfoManager customerInfoManager
+            ICustomerInfoManager customerInfoManager,
+            ICustomerInvoiceTotalManager customerInvoiceTotalManager
             )
 
         {
@@ -132,6 +135,23 @@ namespace CrystalData.API.Controllers
             _CustomerExportManager = customerExportManager;
             _CustomerFullNameManager = customerFullNameManager;
             _CustomerInfoManager = customerInfoManager;
+            _CustomerInvoiceTotalManager = customerInvoiceTotalManager;
+        }
+
+        [HttpPost]
+        [Route("/api/Full/CustomerInvoiceTotal/Get")]
+        public ActionResult CustomerInvoiceTotalGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_CustomerInvoiceTotalManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
         }
 
         [HttpPost]
