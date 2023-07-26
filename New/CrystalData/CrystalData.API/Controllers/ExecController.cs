@@ -61,6 +61,10 @@ namespace CrystalData.API.Controllers
         ICustomerPaymentInvoiceTotalManager _CustomerPaymentInvoiceTotalManager { get; set; }
         ICustomerPaymentTotalManager _CustomerPaymentTotalManager { get; set; }
         ICustomerPaymentViewManager _CustomerPaymentViewManager { get; set; }
+        ICustomerProductManager _CustomerProductManager { get; set; }
+        ICustomerShipManager _CustomerShipManager { get; set; }
+        ICustomerShipToInfoManager _CustomerShipToInfoManager { get; set; }
+        ICustomerShipViewManager _CustomerShipViewManager { get; set; }
         public ExecController(
             ICvAssembliesManager cvAssembliesManager, 
             IAccessManager AccessManager,
@@ -108,7 +112,11 @@ namespace CrystalData.API.Controllers
             ICustomerPaymentInvoiceManager customerPaymentInvoiceManager,
             ICustomerPaymentInvoiceTotalManager customerPaymentInvoiceTotalManager,
             ICustomerPaymentTotalManager customerPaymentTotalManager,
-            ICustomerPaymentViewManager customerPaymentViewManager)
+            ICustomerPaymentViewManager customerPaymentViewManager,
+            ICustomerProductManager customerProductManager,
+            ICustomerShipManager customerShipManager,
+            ICustomerShipToInfoManager customerShipToInfoManager,
+            ICustomerShipViewManager customerShipViewManager)
 
         {
             _CvAssembliesManager = cvAssembliesManager;
@@ -158,6 +166,74 @@ namespace CrystalData.API.Controllers
             _CustomerPaymentInvoiceTotalManager = customerPaymentInvoiceTotalManager;
             _CustomerPaymentTotalManager = customerPaymentTotalManager;
             _CustomerPaymentViewManager = customerPaymentViewManager;
+            _CustomerProductManager = customerProductManager;
+            _CustomerShipManager = customerShipManager;
+            _CustomerShipToInfoManager = customerShipToInfoManager;
+            _CustomerShipViewManager = customerShipViewManager;
+        }
+
+        [HttpPost]
+        [Route("/api/Full/CustomerShipView/Get")]
+        public ActionResult CustomerShipViewGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_CustomerShipViewManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/CustomerShipToInfo/Get")]
+        public ActionResult CustomerShipToInfoGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_CustomerShipToInfoManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/CustomerShip/Get")]
+        public ActionResult CustomerShipGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_CustomerShipManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/CustomerProduct/Get")]
+        public ActionResult CustomerProductGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_CustomerProductManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
         }
 
         [HttpPost]
