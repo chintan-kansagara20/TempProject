@@ -22,7 +22,7 @@ namespace CrystalData.API.Controllers
         }
 
         [HttpPost]
-        [Route("/api/Full/TbINVTransaction/Get")]
+        [Route("/api/Full/TbWarehouse/Get")]
         public ActionResult Get(FullGetModel model)
         {
             try
@@ -38,7 +38,7 @@ namespace CrystalData.API.Controllers
         }
 
         [HttpPost]
-        [Route("/api/Full/TbINVTransaction/Add")]
+        [Route("/api/Full/TbWarehouse/Add")]
         public ActionResult Add(tbWarehouseModel model)
         {
             try
@@ -52,7 +52,7 @@ namespace CrystalData.API.Controllers
         }
 
         [HttpPost]
-        [Route("/api/Full/TbINVTransaction/Update")]
+        [Route("/api/Full/TbWarehouse/Update")]
         public ActionResult Update(Guid GUIDWarehouse, tbWarehouseModel model)
         {
             try
@@ -66,7 +66,7 @@ namespace CrystalData.API.Controllers
         }
 
         [HttpDelete]
-        [Route("/api/Full/TbINVTransaction/HardDelete")]
+        [Route("/api/Full/TbWarehouse/HardDelete")]
         public ActionResult HardDelete(Guid GUIDWarehouse)
         {
             try
