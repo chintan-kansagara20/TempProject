@@ -12,13 +12,13 @@ namespace CrystalData.API.Controllers
 {
     [ApiController]
     [FullAuthorization]
-    public class TbINVTransactionController : ControllerBase
+    public class TbWarehouseController : ControllerBase
     {
-        ITbINVTransactionManager _TbINVTransactionManager { get; set; }
+        ITbWarehouseManager _TbWarehouseManager { get; set; }
 
-        public TbINVTransactionController(ITbINVTransactionManager TbINVTransactionManager)
+        public TbWarehouseController(ITbWarehouseManager TbWarehouseManager)
         {
-            _TbINVTransactionManager = TbINVTransactionManager;
+            _TbWarehouseManager = TbWarehouseManager;
         }
 
         [HttpPost]
@@ -29,7 +29,7 @@ namespace CrystalData.API.Controllers
             {
                 if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
                 if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
-                return Ok(_TbINVTransactionManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+                return Ok(_TbWarehouseManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
             }
             catch (Exception ex)
             {
@@ -39,11 +39,11 @@ namespace CrystalData.API.Controllers
 
         [HttpPost]
         [Route("/api/Full/TbINVTransaction/Add")]
-        public ActionResult Add(tbINVTransactionModel model)
+        public ActionResult Add(tbWarehouseModel model)
         {
             try
             {
-                return Ok(_TbINVTransactionManager.Insert(model));
+                return Ok(_TbWarehouseManager.Insert(model));
             }
             catch (Exception ex)
             {
@@ -53,11 +53,11 @@ namespace CrystalData.API.Controllers
 
         [HttpPost]
         [Route("/api/Full/TbINVTransaction/Update")]
-        public ActionResult Update(Guid GUIDINVTransaction, tbINVTransactionModel model)
+        public ActionResult Update(Guid GUIDWarehouse, tbWarehouseModel model)
         {
             try
             {
-                return Ok(_TbINVTransactionManager.Update(GUIDINVTransaction, model));
+                return Ok(_TbWarehouseManager.Update(GUIDWarehouse, model));
             }
             catch (Exception ex)
             {
@@ -67,11 +67,11 @@ namespace CrystalData.API.Controllers
 
         [HttpDelete]
         [Route("/api/Full/TbINVTransaction/HardDelete")]
-        public ActionResult HardDelete(Guid GUIDINVTransaction)
+        public ActionResult HardDelete(Guid GUIDWarehouse)
         {
             try
             {
-                return Ok(_TbINVTransactionManager.HardDelete(GUIDINVTransaction));
+                return Ok(_TbWarehouseManager.HardDelete(GUIDWarehouse));
             }
             catch (Exception ex)
             {
