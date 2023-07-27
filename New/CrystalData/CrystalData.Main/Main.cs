@@ -293,6 +293,9 @@ namespace CrystalData.Main
 
             Service.AddTransient<IcvINVTransferDetailsManager, cvINVTransferDetailsManager>();
             Service.AddTransient<IcvINVTransferDetailsDataAccess, cvINVTransferDetailsDataAccess>();
+
+            Service.AddTransient<IcvIssueManager, cvIssueManager>();
+            Service.AddTransient<IcvIssueDataAccess, cvIssueDataAccess>();
         }
     }
 }

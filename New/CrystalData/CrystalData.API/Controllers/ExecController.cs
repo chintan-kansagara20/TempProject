@@ -100,6 +100,7 @@ namespace CrystalData.API.Controllers
         IcvInvoiceBalanceManager _cvInvoiceBalanceManager { get; set; }
         IcvINVTransactionDetailCrystalControlManager _cvINVTransactionDetailCrystalControlManager { get; set; }
         IcvINVTransferDetailsManager _cvINVTransferDetailsManager { get; set; }
+        IcvIssueManager _cvIssueManager { get; set; }
         public ExecController(
             ICvAssembliesManager cvAssembliesManager, 
             IAccessManager AccessManager,
@@ -186,7 +187,8 @@ namespace CrystalData.API.Controllers
             IcvInventoryTransfersManager cvInventoryTransfersManager,
             IcvInvoiceBalanceManager cvInvoiceBalanceManager,
             IcvINVTransactionDetailCrystalControlManager cvINVTransactionDetailCrystalControlManager,
-            IcvINVTransferDetailsManager cvINVTransferDetailsManager)
+            IcvINVTransferDetailsManager cvINVTransferDetailsManager,
+            IcvIssueManager cvIssueManager)
 
         {
             _CvAssembliesManager = cvAssembliesManager;
@@ -275,6 +277,23 @@ namespace CrystalData.API.Controllers
             _cvInvoiceBalanceManager = cvInvoiceBalanceManager;
             _cvINVTransactionDetailCrystalControlManager = cvINVTransactionDetailCrystalControlManager;
             _cvINVTransferDetailsManager = cvINVTransferDetailsManager;
+            _cvIssueManager = cvIssueManager;
+        }
+
+        [HttpPost]
+        [Route("/api/Full/cvIssue/Get")]
+        public ActionResult cvIssueGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_cvIssueManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
         }
 
         [HttpPost]
