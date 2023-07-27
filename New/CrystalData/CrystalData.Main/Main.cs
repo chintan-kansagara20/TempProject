@@ -314,6 +314,9 @@ namespace CrystalData.Main
 
             Service.AddTransient<IcvIssueViewersManager, cvIssueViewersManager>();
             Service.AddTransient<IcvIssueViewersDataAccess, cvIssueViewersDataAccess>();
+
+            Service.AddTransient<IcvIssueViewersAssembliesManager, cvIssueViewersAssembliesManager>();
+            Service.AddTransient<IcvIssueViewersAssembliesDataAccess, cvIssueViewersAssembliesDataAccess>();
         }
     }
 }

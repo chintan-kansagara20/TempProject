@@ -106,6 +106,7 @@ namespace CrystalData.API.Controllers
         IcvIssuesForMfgManager _cvIssuesForMfgManager { get; set; }
         IcvIssuesForWarehouseManager _cvIssuesForWarehouseManager { get; set; }
         IcvIssueViewersManager _cvIssueViewersManager { get; set; }
+        IcvIssueViewersAssembliesManager _cvIssueViewersAssembliesManager { get; set; }
         public ExecController(
             ICvAssembliesManager cvAssembliesManager, 
             IAccessManager AccessManager,
@@ -198,7 +199,8 @@ namespace CrystalData.API.Controllers
             IcvIssueChangedAssignmentManager cvIssueChangedAssignmentManager,
             IcvIssuesForMfgManager cvIssuesForMfgManager,
             IcvIssuesForWarehouseManager cvIssuesForWarehouseManager,
-            IcvIssueViewersManager cvIssueViewersManager)
+            IcvIssueViewersManager cvIssueViewersManager,
+            IcvIssueViewersAssembliesManager cvIssueViewersAssembliesManager)
 
         {
             _CvAssembliesManager = cvAssembliesManager;
@@ -293,6 +295,23 @@ namespace CrystalData.API.Controllers
             _cvIssuesForMfgManager = cvIssuesForMfgManager;
             _cvIssuesForWarehouseManager = cvIssuesForWarehouseManager;
             _cvIssueViewersManager = cvIssueViewersManager;
+            _cvIssueViewersAssembliesManager = cvIssueViewersAssembliesManager;
+        }
+
+        [HttpPost]
+        [Route("/api/Full/cvIssueViewersAssemblies/Get")]
+        public ActionResult cvIssueViewersAssembliesGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_cvIssueViewersAssembliesManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
         }
 
         [HttpPost]
