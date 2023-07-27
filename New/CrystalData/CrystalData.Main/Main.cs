@@ -320,6 +320,9 @@ namespace CrystalData.Main
 
             Service.AddTransient<IcvIssueViewersAssembliesManager, cvIssueViewersAssembliesManager>();
             Service.AddTransient<IcvIssueViewersAssembliesDataAccess, cvIssueViewersAssembliesDataAccess>();
+
+            Service.AddTransient<IcvIssueViewersParentAssemblyManager, cvIssueViewersParentAssemblyManager>();
+            Service.AddTransient<IcvIssueViewersParentAssemblyDataAccess, cvIssueViewersParentAssemblyDataAccess>();
         }
     }
 }

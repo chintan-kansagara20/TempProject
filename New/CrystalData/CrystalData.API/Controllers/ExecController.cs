@@ -107,6 +107,7 @@ namespace CrystalData.API.Controllers
         IcvIssuesForWarehouseManager _cvIssuesForWarehouseManager { get; set; }
         IcvIssueViewersManager _cvIssueViewersManager { get; set; }
         IcvIssueViewersAssembliesManager _cvIssueViewersAssembliesManager { get; set; }
+        IcvIssueViewersParentAssemblyManager _cvIssueViewersParentAssemblyManager { get; set; }
         public ExecController(
             ICvAssembliesManager cvAssembliesManager, 
             IAccessManager AccessManager,
@@ -200,7 +201,8 @@ namespace CrystalData.API.Controllers
             IcvIssuesForMfgManager cvIssuesForMfgManager,
             IcvIssuesForWarehouseManager cvIssuesForWarehouseManager,
             IcvIssueViewersManager cvIssueViewersManager,
-            IcvIssueViewersAssembliesManager cvIssueViewersAssembliesManager)
+            IcvIssueViewersAssembliesManager cvIssueViewersAssembliesManager,
+            IcvIssueViewersParentAssemblyManager cvIssueViewersParentAssemblyManager)
 
         {
             _CvAssembliesManager = cvAssembliesManager;
@@ -296,6 +298,23 @@ namespace CrystalData.API.Controllers
             _cvIssuesForWarehouseManager = cvIssuesForWarehouseManager;
             _cvIssueViewersManager = cvIssueViewersManager;
             _cvIssueViewersAssembliesManager = cvIssueViewersAssembliesManager;
+            _cvIssueViewersParentAssemblyManager = cvIssueViewersParentAssemblyManager;
+        }
+
+        [HttpPost]
+        [Route("/api/Full/cvIssueViewersParentAssembly/Get")]
+        public ActionResult cvIssueViewersParentAssemblyGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_cvIssueViewersParentAssemblyManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
         }
 
         [HttpPost]
