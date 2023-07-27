@@ -101,6 +101,11 @@ namespace CrystalData.API.Controllers
         IcvINVTransactionDetailCrystalControlManager _cvINVTransactionDetailCrystalControlManager { get; set; }
         IcvINVTransferDetailsManager _cvINVTransferDetailsManager { get; set; }
         IcvIssueManager _cvIssueManager { get; set; }
+        IcvIssueAssemblyManager _cvIssueAssemblyManager { get; set; }
+        IcvIssueChangedAssignmentManager _cvIssueChangedAssignmentManager { get; set; }
+        IcvIssuesForMfgManager _cvIssuesForMfgManager { get; set; }
+        IcvIssuesForWarehouseManager _cvIssuesForWarehouseManager { get; set; }
+        IcvIssueViewersManager _cvIssueViewersManager { get; set; }
         public ExecController(
             ICvAssembliesManager cvAssembliesManager, 
             IAccessManager AccessManager,
@@ -188,7 +193,12 @@ namespace CrystalData.API.Controllers
             IcvInvoiceBalanceManager cvInvoiceBalanceManager,
             IcvINVTransactionDetailCrystalControlManager cvINVTransactionDetailCrystalControlManager,
             IcvINVTransferDetailsManager cvINVTransferDetailsManager,
-            IcvIssueManager cvIssueManager)
+            IcvIssueManager cvIssueManager,
+            IcvIssueAssemblyManager cvIssueAssemblyManager,
+            IcvIssueChangedAssignmentManager cvIssueChangedAssignmentManager,
+            IcvIssuesForMfgManager cvIssuesForMfgManager,
+            IcvIssuesForWarehouseManager cvIssuesForWarehouseManager,
+            IcvIssueViewersManager cvIssueViewersManager)
 
         {
             _CvAssembliesManager = cvAssembliesManager;
@@ -278,6 +288,75 @@ namespace CrystalData.API.Controllers
             _cvINVTransactionDetailCrystalControlManager = cvINVTransactionDetailCrystalControlManager;
             _cvINVTransferDetailsManager = cvINVTransferDetailsManager;
             _cvIssueManager = cvIssueManager;
+            _cvIssueAssemblyManager = cvIssueAssemblyManager;
+            _cvIssueChangedAssignmentManager = cvIssueChangedAssignmentManager;
+            _cvIssuesForMfgManager = cvIssuesForMfgManager;
+            _cvIssuesForWarehouseManager = cvIssuesForWarehouseManager;
+            _cvIssueViewersManager = cvIssueViewersManager;
+        }
+
+        [HttpPost]
+        [Route("/api/Full/cvIssueViewers/Get")]
+        public ActionResult cvIssueViewersGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_cvIssueViewersManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/cvIssuesForWarehouse/Get")]
+        public ActionResult cvIssuesForWarehouseGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_cvIssuesForWarehouseManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/cvIssuesForMfg/Get")]
+        public ActionResult cvIssuesForMfgGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_cvIssuesForMfgManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/cvIssueAssembly/Get")]
+        public ActionResult cvIssueAssemblyGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_cvIssueAssemblyManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
         }
 
         [HttpPost]
