@@ -12,11 +12,11 @@ namespace CrystalData.API.Controllers
 {
     [ApiController]
     [FullAuthorization]
-    public class TbWorkFlowStatusControlle : ControllerBase
+    public class TbWorkFlowStatusController : ControllerBase
     {
         ITbWorkFlowStatusManager _TbWorkFlowStatusManager { get; set; }
 
-        public TbWorkFlowStatusControlle(ITbWorkFlowStatusManager TbWorkFlowStatusManager)
+        public TbWorkFlowStatusController(ITbWorkFlowStatusManager TbWorkFlowStatusManager)
         {
             _TbWorkFlowStatusManager = TbWorkFlowStatusManager;
         }

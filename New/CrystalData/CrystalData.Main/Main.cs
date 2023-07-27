@@ -126,6 +126,9 @@ namespace CrystalData.Main
             Service.AddTransient<IStoredProcedureManager, StoredProcedureManager>();
             Service.AddTransient<IStoredProcedureDataAccess, StoredProcedureDataAccess>();
 
+            Service.AddTransient<ITbProductionWorkflowStatusManager, TbProductionWorkflowStatusManager>();
+            Service.AddTransient<ITbProductionWorkflowStatusDataAccess, TbProductionWorkflowStatusDataAccess>();
+
             Service.AddTransient<ITbWorkFlowStatusManager, TbWorkFlowStatusManager>();
             Service.AddTransient<ITbWorkFlowStatusDataAccess, TbWorkFlowStatusDataAccess>();
 
