@@ -287,6 +287,12 @@ namespace CrystalData.Main
 
             Service.AddTransient<IcvInvoiceBalanceManager, cvInvoiceBalanceManager>();
             Service.AddTransient<IcvInvoiceBalanceDataAccess, cvInvoiceBalanceDataAccess>();
+
+            Service.AddTransient<IcvINVTransactionDetailCrystalControlManager, cvINVTransactionDetailCrystalControlManager>();
+            Service.AddTransient<IcvINVTransactionDetailCrystalControlDataAccess, cvINVTransactionDetailCrystalControlDataAccess>();
+
+            Service.AddTransient<IcvINVTransferDetailsManager, cvINVTransferDetailsManager>();
+            Service.AddTransient<IcvINVTransferDetailsDataAccess, cvINVTransferDetailsDataAccess>();
         }
     }
 }

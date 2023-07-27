@@ -98,6 +98,8 @@ namespace CrystalData.API.Controllers
         IcvInventorySerialLotSummaryTransactionsManager _cvInventorySerialLotSummaryTransactionsManager { get; set; }
         IcvInventoryTransfersManager _cvInventoryTransfersManager { get; set; }
         IcvInvoiceBalanceManager _cvInvoiceBalanceManager { get; set; }
+        IcvINVTransactionDetailCrystalControlManager _cvINVTransactionDetailCrystalControlManager { get; set; }
+        IcvINVTransferDetailsManager _cvINVTransferDetailsManager { get; set; }
         public ExecController(
             ICvAssembliesManager cvAssembliesManager, 
             IAccessManager AccessManager,
@@ -182,7 +184,9 @@ namespace CrystalData.API.Controllers
             IcvIngredientClaimActivitiesManager cvIngredientClaimActivitiesManager,
             IcvInventorySerialLotSummaryTransactionsManager cvInventorySerialLotSummaryTransactionsManager,
             IcvInventoryTransfersManager cvInventoryTransfersManager,
-            IcvInvoiceBalanceManager cvInvoiceBalanceManager)
+            IcvInvoiceBalanceManager cvInvoiceBalanceManager,
+            IcvINVTransactionDetailCrystalControlManager cvINVTransactionDetailCrystalControlManager,
+            IcvINVTransferDetailsManager cvINVTransferDetailsManager)
 
         {
             _CvAssembliesManager = cvAssembliesManager;
@@ -269,6 +273,40 @@ namespace CrystalData.API.Controllers
             _cvInventorySerialLotSummaryTransactionsManager = cvInventorySerialLotSummaryTransactionsManager;
             _cvInventoryTransfersManager = cvInventoryTransfersManager;
             _cvInvoiceBalanceManager = cvInvoiceBalanceManager;
+            _cvINVTransactionDetailCrystalControlManager = cvINVTransactionDetailCrystalControlManager;
+            _cvINVTransferDetailsManager = cvINVTransferDetailsManager;
+        }
+
+        [HttpPost]
+        [Route("/api/Full/cvINVTransferDetails/Get")]
+        public ActionResult cvINVTransferDetailsGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_cvINVTransferDetailsManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/cvINVTransactionDetailCrystalControl/Get")]
+        public ActionResult cvINVTransactionDetailCrystalControlGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_cvINVTransactionDetailCrystalControlManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
         }
 
         [HttpPost]
