@@ -65,6 +65,17 @@ namespace CrystalData.API.Controllers
         ICustomerShipManager _CustomerShipManager { get; set; }
         ICustomerShipToInfoManager _CustomerShipToInfoManager { get; set; }
         ICustomerShipViewManager _CustomerShipViewManager { get; set; }
+        ICustomerStatementManager _CustomerStatementManager { get; set; }
+        ICustomerTypeInfoManager _CustomerTypeInfoManager { get; set; }
+        ICustomerViewManager _CustomerViewManager { get; set; }
+        ICustomFieldManager _CustomFeildManager { get; set; }
+        IcvAccessGroupManager _cvAccessGroupManager { get; set; }
+        IcvAccessGroupUsersManager _cvAccessGroupUsersManager { get; set; }
+        IcvAssemblyComponentAvailabilityManager _cvAssemblyComponentAvailabilityManager { get; set; }
+        IcvAssemblyComponentLotAvailabilityManager _cvAssemblyComponentLotAvailabilityManager { get; set; }
+        IcvAssemblyOrderDetManager _cvAssemblyOrderDetManager { get; set; }
+        IcvAssemblyOrderDetailManager _cvAssemblyOrderDetailManager { get; set; }
+        IcvAssemblyOrderDetailStatsManager _cvAssemblyOrderDetailStatsManager { get; set; }
         public ExecController(
             ICvAssembliesManager cvAssembliesManager, 
             IAccessManager AccessManager,
@@ -116,7 +127,18 @@ namespace CrystalData.API.Controllers
             ICustomerProductManager customerProductManager,
             ICustomerShipManager customerShipManager,
             ICustomerShipToInfoManager customerShipToInfoManager,
-            ICustomerShipViewManager customerShipViewManager)
+            ICustomerShipViewManager customerShipViewManager,
+            ICustomerStatementManager customerStatementManager,
+            ICustomerTypeInfoManager customerTypeInfoManager,
+            ICustomerViewManager customerViewManager,
+            ICustomFieldManager customFeildManager,
+            IcvAccessGroupManager cvAccessGroupManager,
+            IcvAccessGroupUsersManager cvAccessGroupUsersManager,
+            IcvAssemblyComponentAvailabilityManager cvAssemblyComponentAvailabilityManager,
+            IcvAssemblyComponentLotAvailabilityManager cvAssemblyComponentLotAvailabilityManager,
+            IcvAssemblyOrderDetManager cvAssemblyOrderDetManager,
+            IcvAssemblyOrderDetailManager cvAssemblyOrderDetailManager,
+            IcvAssemblyOrderDetailStatsManager cvAssemblyOrderDetailStatsManager)
 
         {
             _CvAssembliesManager = cvAssembliesManager;
@@ -170,6 +192,193 @@ namespace CrystalData.API.Controllers
             _CustomerShipManager = customerShipManager;
             _CustomerShipToInfoManager = customerShipToInfoManager;
             _CustomerShipViewManager = customerShipViewManager;
+            _CustomerStatementManager = customerStatementManager;
+            _CustomerTypeInfoManager = customerTypeInfoManager;
+            _CustomerViewManager = customerViewManager;
+            _CustomFeildManager = customFeildManager;
+            _cvAccessGroupManager = cvAccessGroupManager;
+            _cvAccessGroupUsersManager = cvAccessGroupUsersManager;
+            _cvAssemblyComponentAvailabilityManager = cvAssemblyComponentAvailabilityManager;
+            _cvAssemblyComponentLotAvailabilityManager = cvAssemblyComponentLotAvailabilityManager;
+            _cvAssemblyOrderDetManager = cvAssemblyOrderDetManager;
+            _cvAssemblyOrderDetailManager = cvAssemblyOrderDetailManager;
+            _cvAssemblyOrderDetailStatsManager = cvAssemblyOrderDetailStatsManager;
+        }
+
+        [HttpPost]
+        [Route("/api/Full/cvAssemblyOrderDetailStats/Get")]
+        public ActionResult cvAssemblyOrderDetailStatsGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_cvAssemblyOrderDetailStatsManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/cvAssemblyOrderDetail/Get")]
+        public ActionResult cvAssemblyOrderDetailGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_cvAssemblyOrderDetManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/cvAssemblyOrderDet/Get")]
+        public ActionResult cvAssemblyOrderDetGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_cvAssemblyOrderDetManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/cvAssemblyComponentLotAvailability/Get")]
+        public ActionResult cvAssemblyComponentLotAvailabilityGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_cvAssemblyComponentLotAvailabilityManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/cvAssemblyComponentAvailability/Get")]
+        public ActionResult cvAssemblyComponentAvailabilityGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_cvAssemblyComponentAvailabilityManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/cvAccessGroupUsers/Get")]
+        public ActionResult cvAccessGroupUsersGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_cvAccessGroupUsersManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/cvAccessGroup/Get")]
+        public ActionResult cvAccessGroupGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_cvAccessGroupManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/CustomField/Get")]
+        public ActionResult CustomFieldGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_CustomFeildManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/CustomerView/Get")]
+        public ActionResult CustomerViewGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_CustomerViewManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/CustomerTypeInfo/Get")]
+        public ActionResult CustomerTypeInfoGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_CustomerTypeInfoManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/CustomerStatement/Get")]
+        public ActionResult CustomerStatementGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_CustomerStatementManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
         }
 
         [HttpPost]

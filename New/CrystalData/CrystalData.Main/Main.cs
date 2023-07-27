@@ -185,6 +185,39 @@ namespace CrystalData.Main
 
             Service.AddTransient<ICustomerShipViewManager, CustomerShipViewManager>();
             Service.AddTransient<ICustomerShipViewDataAccess, CustomerShipViewDataAccess>();
+
+            Service.AddTransient<ICustomerStatementManager, CustomerStatementManager>();
+            Service.AddTransient<ICustomerStatementDataAccess, CustomerStatementDataAccess>();
+
+            Service.AddTransient<ICustomerTypeInfoManager, CustomerTypeInfoManager>();
+            Service.AddTransient<ICustomerTypeInfoDataAccess, CustomerTypeInfoDataAccess>();
+
+            Service.AddTransient<ICustomerViewManager, CustomerViewManager>();
+            Service.AddTransient<ICustomerViewDataAccess, CustomerViewDataAccess>();
+
+            Service.AddTransient<ICustomFieldManager, CustomFieldManager>();
+            Service.AddTransient<ICustomFieldDataAccess, CustomFieldDataAccess>();
+
+            Service.AddTransient<IcvAccessGroupManager, cvAccessGroupManager>();
+            Service.AddTransient<IcvAccessGroupDataAccess, cvAccessGroupDataAccess>();
+
+            Service.AddTransient<IcvAccessGroupUsersManager, cvAccessGroupUsersManager>();
+            Service.AddTransient<IcvAccessGroupUsersDataAccess, cvAccessGroupUsersDataAccess>();
+
+            Service.AddTransient<IcvAssemblyComponentAvailabilityManager, cvAssemblyComponentAvailabilityManager>();
+            Service.AddTransient<IcvAssemblyComponentAvailabilityDataAccess, cvAssemblyComponentAvailabilityDataAccess>();
+
+            Service.AddTransient<IcvAssemblyComponentLotAvailabilityManager, cvAssemblyComponentLotAvailabilityManager>();
+            Service.AddTransient<IcvAssemblyComponentLotAvailabilityDataAccess, cvAssemblyComponentLotAvailabilityDataAccess>();
+
+            Service.AddTransient<IcvAssemblyOrderDetManager, cvAssemblyOrderDetManager>();
+            Service.AddTransient<IcvAssemblyOrderDetDataAccess, cvAssemblyOrderDetDataAccess>();
+
+            Service.AddTransient<IcvAssemblyOrderDetailManager, cvAssemblyOrderDetailManager>();
+            Service.AddTransient<IcvAssemblyOrderDetailDataAccess, cvAssemblyOrderDetailDataAccess>();
+
+            Service.AddTransient<IcvAssemblyOrderDetailStatsManager, cvAssemblyOrderDetailStatsManager>();
+            Service.AddTransient<IcvAssemblyOrderDetailStatsDataAccess, cvAssemblyOrderDetailStatsDataAccess>();
         }
     }
 }
