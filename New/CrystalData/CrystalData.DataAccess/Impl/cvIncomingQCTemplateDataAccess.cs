@@ -1,25 +1,25 @@
 ﻿using AuthLayer.Utility;
+using CrystalData.DataAccess.Interface;
+using CrystalData.Models;
 using EasyCrudLibrary.Model;
 using EasyCrudLibrary;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
-using Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DataAccessLayer.Interface;
+using Microsoft.AspNetCore.Hosting;
 
-namespace DataAccessLayer.Impl
+namespace CrystalData.DataAccess.Impl
 {
-    public class AccessDataAccess : IAccessDataAccess
+    public class cvIncomingQCTemplateDataAccess : IcvIncomingQCTemplateDataAccess
     {
         private string ConnectionString { get; set; }
         private CommonFunctions _cf { get; set; }
 
-        public AccessDataAccess(IHostingEnvironment env, IConfiguration configuration, IHttpContextAccessor httpContextAccessor)
+        public cvIncomingQCTemplateDataAccess(IHostingEnvironment env, IConfiguration configuration, IHttpContextAccessor httpContextAccessor)
         {
             try
             {
@@ -29,7 +29,7 @@ namespace DataAccessLayer.Impl
             catch (Exception) { }
         }
 
-        public List<AccessModel> Get(int page, int itemsPerPage, List<OrderByModel> orderBy, List<AdvanceFilterByModel> filtersList)
+        public List<cvIncomingQCTemplateModel> Get(int page, int itemsPerPage, List<OrderByModel> orderBy, List<AdvanceFilterByModel> filtersList)
         {
             var _EC = new EasyCrud(ConnectionString);
 
@@ -40,7 +40,7 @@ namespace DataAccessLayer.Impl
                 WhereCondition += " WHERE " + FilterCondtion;
             }
 
-            var FinalReturn = _EC.GetList<AccessModel>(page, itemsPerPage, orderBy, WhereCondition, null, GSEnums.WithInQuery.NoLock);
+            var FinalReturn = _EC.GetList<cvIncomingQCTemplateModel>(page, itemsPerPage, orderBy, WhereCondition, null, GSEnums.WithInQuery.NoLock);
             return FinalReturn;
         }
 
@@ -55,7 +55,7 @@ namespace DataAccessLayer.Impl
                 WhereCondition += " WHERE " + FilterCondtion;
             }
 
-            var total = _EC.Count<AccessModel>(WhereCondition, null, GSEnums.WithInQuery.NoLock);
+            var total = _EC.Count<cvIncomingQCTemplateModel>(WhereCondition, null, GSEnums.WithInQuery.NoLock);
             return total;
         }
     }

@@ -218,6 +218,72 @@ namespace CrystalData.Main
 
             Service.AddTransient<IcvAssemblyOrderDetailStatsManager, cvAssemblyOrderDetailStatsManager>();
             Service.AddTransient<IcvAssemblyOrderDetailStatsDataAccess, cvAssemblyOrderDetailStatsDataAccess>();
+
+            Service.AddTransient<IcvAssemblyOrderDetailSummaryManager, cvAssemblyOrderDetailSummaryManager>();
+            Service.AddTransient<IcvAssemblyOrderDetailSummaryDataAccess, cvAssemblyOrderDetailSummaryDataAccess>();
+
+            Service.AddTransient<IcvAssemblyOrderHeaderManager, cvAssemblyOrderHeaderManager>();
+            Service.AddTransient<IcvAssemblyOrderHeaderDataAccess, cvAssemblyOrderHeaderDataAccess>();
+
+            Service.AddTransient<IcvAssemblyOrderMembersManager, cvAssemblyOrderMembersManager>();
+            Service.AddTransient<IcvAssemblyOrderMembersDataAccess, cvAssemblyOrderMembersDataAccess>();
+
+            Service.AddTransient<IcvAssemblyOrderPackagingManager, cvAssemblyOrderPackagingManager>();
+            Service.AddTransient<IcvAssemblyOrderPackagingDataAccess, cvAssemblyOrderPackagingDataAccess>();
+
+            Service.AddTransient<IcvAssemblyOrdersManager, cvAssemblyOrdersManager>();
+            Service.AddTransient<IcvAssemblyOrdersDataAccess, cvAssemblyOrdersDataAccess>();
+
+            Service.AddTransient<IcvAssemblyOrdersExtendedManager, cvAssemblyOrdersExtendedManager>();
+            Service.AddTransient<IcvAssemblyOrdersExtendedDataAccess, cvAssemblyOrdersExtendedDataAccess>();
+
+            Service.AddTransient<IcvAssemblyParentManager, cvAssemblyParentManager>();
+            Service.AddTransient<IcvAssemblyParentDataAccess, cvAssemblyParentDataAccess>();
+
+            Service.AddTransient<IcvAssemblyParentComponentManager, cvAssemblyParentComponentManager>();
+            Service.AddTransient<IcvAssemblyParentComponentDataAccess, cvAssemblyParentComponentDataAccess>();
+
+            Service.AddTransient<IcvAssemblyProductionPassFailManager, cvAssemblyProductionPassFailManager>();
+            Service.AddTransient<IcvAssemblyProductionPassFailDataAccess, cvAssemblyProductionPassFailDataAccess>();
+
+            Service.AddTransient<IcvAssemblyProductionReportManager, cvAssemblyProductionReportManager>();
+            Service.AddTransient<IcvAssemblyProductionReportDataAccess, cvAssemblyProductionReportDataAccess>();
+
+            Service.AddTransient<IcvAssemblyProductionReportInnerManager, cvAssemblyProductionReportInnerManager>();
+            Service.AddTransient<IcvAssemblyProductionReportInnerDataAccess, cvAssemblyProductionReportInnerDataAccess>();
+
+            Service.AddTransient<IcvAssemblyProductLabelManager, cvAssemblyProductLabelManager>();
+            Service.AddTransient<IcvAssemblyProductLabelDataAccess, cvAssemblyProductLabelDataAccess>();
+
+            Service.AddTransient<IcvAssemblySessionsManager, cvAssemblySessionsManager>();
+            Service.AddTransient<IcvAssemblySessionsDataAccess, cvAssemblySessionsDataAccess>();
+
+            Service.AddTransient<IcvAssemblyUnallocatedComponentsManager, cvAssemblyUnallocatedComponentsManager>();
+            Service.AddTransient<IcvAssemblyUnallocatedComponentsDataAccess, cvAssemblyUnallocatedComponentsDataAccess>();
+
+            Service.AddTransient<IcvBorsightTransfersForAssembliesManager, cvBorsightTransfersForAssembliesManager>();
+            Service.AddTransient<IcvBorsightTransfersForAssembliesDataAccess, cvBorsightTransfersForAssembliesDataAccess>();
+
+            Service.AddTransient<IcvCustomerContactCleanPhoneManager, cvCustomerContactCleanPhoneManager>();
+            Service.AddTransient<IcvCustomerContactCleanPhoneDataAccess, cvCustomerContactCleanPhoneDataAccess>();
+
+            Service.AddTransient<IcvIncomingInspectionBOMManager, cvIncomingInspectionBOMManager>();
+            Service.AddTransient<IcvIncomingInspectionBOMDataAccess, cvIncomingInspectionBOMDataAccess>();
+
+            Service.AddTransient<IcvIncomingQCTemplateManager, cvIncomingQCTemplateManager>();
+            Service.AddTransient<IcvIncomingQCTemplateDataAccess, cvIncomingQCTemplateDataAccess>();
+
+            Service.AddTransient<IcvIngredientClaimActivitiesManager, cvIngredientClaimActivitiesManager>();
+            Service.AddTransient<IcvIngredientClaimActivitiesDataAccess, cvIngredientClaimActivitiesDataAccess>();
+
+            Service.AddTransient<IcvInventorySerialLotSummaryTransactionsManager, cvInventorySerialLotSummaryTransactionsManager>();
+            Service.AddTransient<IcvInventorySerialLotSummaryTransactionsDataAccess, cvInventorySerialLotSummaryTransactionsDataAccess>();
+
+            Service.AddTransient<IcvInventoryTransfersManager, cvInventoryTransfersManager>();
+            Service.AddTransient<IcvInventoryTransfersDataAccess, cvInventoryTransfersDataAccess>();
+
+            Service.AddTransient<IcvInvoiceBalanceManager, cvInvoiceBalanceManager>();
+            Service.AddTransient<IcvInvoiceBalanceDataAccess, cvInvoiceBalanceDataAccess>();
         }
     }
 }

@@ -76,6 +76,28 @@ namespace CrystalData.API.Controllers
         IcvAssemblyOrderDetManager _cvAssemblyOrderDetManager { get; set; }
         IcvAssemblyOrderDetailManager _cvAssemblyOrderDetailManager { get; set; }
         IcvAssemblyOrderDetailStatsManager _cvAssemblyOrderDetailStatsManager { get; set; }
+        IcvAssemblyOrderDetailSummaryManager _cvAssemblyOrderDetailSummaryManager { get; set; }
+        IcvAssemblyOrderHeaderManager _cvAssemblyOrderHeaderManager { get; set; }
+        IcvAssemblyOrderMembersManager _cvAssemblyOrderMembersManager { get; set; }
+        IcvAssemblyOrderPackagingManager _cvAssemblyOrderPackagingManager { get; set; }
+        IcvAssemblyOrdersManager _cvAssemblyOrdersManager { get; set; }
+        IcvAssemblyOrdersExtendedManager _cvAssemblyOrdersExtendedManager { get; set; }
+        IcvAssemblyParentManager _cvAssemblyParentManager { get; set; }
+        IcvAssemblyParentComponentManager _cvAssemblyParentComponentManager { get; set; }
+        IcvAssemblyProductionPassFailManager _cvAssemblyProductionPassFailManager { get; set; }
+        IcvAssemblyProductionReportManager _cvAssemblyProductionReportManager { get; set; }
+        IcvAssemblyProductionReportInnerManager _cvAssemblyProductionReportInnerManager { get; set; }
+        IcvAssemblyProductLabelManager _cvAssemblyProductLabelManager { get; set; }
+        IcvAssemblySessionsManager _cvAssemblySessionsManager { get; set; }
+        IcvAssemblyUnallocatedComponentsManager _cvAssemblyUnallocatedComponentsManager { get; set; }
+        IcvBorsightTransfersForAssembliesManager _cvBorsightTransfersForAssembliesManager { get; set; }
+        IcvCustomerContactCleanPhoneManager _cvCustomerContactCleanPhoneManager { get; set; }
+        IcvIncomingInspectionBOMManager _cvIncomingInspectionBOMManager { get; set; }
+        IcvIncomingQCTemplateManager _cvIncomingQCTemplateManager { get; set; }
+        IcvIngredientClaimActivitiesManager _cvIngredientClaimActivitiesManager { get; set; }
+        IcvInventorySerialLotSummaryTransactionsManager _cvInventorySerialLotSummaryTransactionsManager { get; set; }
+        IcvInventoryTransfersManager _cvInventoryTransfersManager { get; set; }
+        IcvInvoiceBalanceManager _cvInvoiceBalanceManager { get; set; }
         public ExecController(
             ICvAssembliesManager cvAssembliesManager, 
             IAccessManager AccessManager,
@@ -138,7 +160,29 @@ namespace CrystalData.API.Controllers
             IcvAssemblyComponentLotAvailabilityManager cvAssemblyComponentLotAvailabilityManager,
             IcvAssemblyOrderDetManager cvAssemblyOrderDetManager,
             IcvAssemblyOrderDetailManager cvAssemblyOrderDetailManager,
-            IcvAssemblyOrderDetailStatsManager cvAssemblyOrderDetailStatsManager)
+            IcvAssemblyOrderDetailStatsManager cvAssemblyOrderDetailStatsManager,
+            IcvAssemblyOrderDetailSummaryManager cvAssemblyOrderDetailSummaryManager,
+            IcvAssemblyOrderHeaderManager cvAssemblyOrderHeaderManager,
+            IcvAssemblyOrderMembersManager cvAssemblyOrderMembersManager,
+            IcvAssemblyOrderPackagingManager cvAssemblyOrderPackagingManager,
+            IcvAssemblyOrdersManager cvAssemblyOrdersManager,
+            IcvAssemblyOrdersExtendedManager cvAssemblyOrdersExtendedManager,
+            IcvAssemblyParentManager cvAssemblyParentManager,
+            IcvAssemblyParentComponentManager cvAssemblyParentComponentManager,
+            IcvAssemblyProductionPassFailManager cvAssemblyProductionPassFailManager,
+            IcvAssemblyProductionReportManager cvAssemblyProductionReportManager,
+            IcvAssemblyProductionReportInnerManager cvAssemblyProductionReportInnerManager,
+            IcvAssemblyProductLabelManager cvAssemblyProductLabelManager,
+            IcvAssemblySessionsManager cvAssemblySessionsManager,
+            IcvAssemblyUnallocatedComponentsManager cvAssemblyUnallocatedComponentsManager,
+            IcvBorsightTransfersForAssembliesManager cvBorsightTransfersForAssembliesManager,
+            IcvCustomerContactCleanPhoneManager cvCustomerContactCleanPhoneManager,
+            IcvIncomingInspectionBOMManager cvIncomingInspectionBOMManager,
+            IcvIncomingQCTemplateManager cvIncomingQCTemplateManager,
+            IcvIngredientClaimActivitiesManager cvIngredientClaimActivitiesManager,
+            IcvInventorySerialLotSummaryTransactionsManager cvInventorySerialLotSummaryTransactionsManager,
+            IcvInventoryTransfersManager cvInventoryTransfersManager,
+            IcvInvoiceBalanceManager cvInvoiceBalanceManager)
 
         {
             _CvAssembliesManager = cvAssembliesManager;
@@ -203,6 +247,364 @@ namespace CrystalData.API.Controllers
             _cvAssemblyOrderDetManager = cvAssemblyOrderDetManager;
             _cvAssemblyOrderDetailManager = cvAssemblyOrderDetailManager;
             _cvAssemblyOrderDetailStatsManager = cvAssemblyOrderDetailStatsManager;
+            _cvAssemblyOrderDetailSummaryManager = cvAssemblyOrderDetailSummaryManager;
+            _cvAssemblyOrderHeaderManager = cvAssemblyOrderHeaderManager;
+            _cvAssemblyOrderMembersManager = cvAssemblyOrderMembersManager;
+            _cvAssemblyOrderPackagingManager = cvAssemblyOrderPackagingManager;
+            _cvAssemblyOrdersManager = cvAssemblyOrdersManager;
+            _cvAssemblyOrdersExtendedManager = cvAssemblyOrdersExtendedManager;
+            _cvAssemblyParentManager = cvAssemblyParentManager;
+            _cvAssemblyParentComponentManager = cvAssemblyParentComponentManager;
+            _cvAssemblyProductionPassFailManager = cvAssemblyProductionPassFailManager;
+            _cvAssemblyProductionReportManager = cvAssemblyProductionReportManager;
+            _cvAssemblyProductionReportInnerManager = cvAssemblyProductionReportInnerManager;
+            _cvAssemblyProductLabelManager = cvAssemblyProductLabelManager;
+            _cvAssemblySessionsManager = cvAssemblySessionsManager;
+            _cvAssemblyUnallocatedComponentsManager = cvAssemblyUnallocatedComponentsManager;
+            _cvBorsightTransfersForAssembliesManager = cvBorsightTransfersForAssembliesManager;
+            _cvCustomerContactCleanPhoneManager = cvCustomerContactCleanPhoneManager;
+            _cvIncomingInspectionBOMManager = cvIncomingInspectionBOMManager;
+            _cvIncomingQCTemplateManager = cvIncomingQCTemplateManager;
+            _cvIngredientClaimActivitiesManager = cvIngredientClaimActivitiesManager;
+            _cvInventorySerialLotSummaryTransactionsManager = cvInventorySerialLotSummaryTransactionsManager;
+            _cvInventoryTransfersManager = cvInventoryTransfersManager;
+            _cvInvoiceBalanceManager = cvInvoiceBalanceManager;
+        }
+
+        [HttpPost]
+        [Route("/api/Full/cvInvoiceBalance/Get")]
+        public ActionResult cvInvoiceBalanceGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_cvInvoiceBalanceManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/cvInventoryTransfers/Get")]
+        public ActionResult cvInventoryTransfersGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_cvInventoryTransfersManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/cvInventorySerialLotSummaryTransactions/Get")]
+        public ActionResult cvInventorySerialLotSummaryTransactionsGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_cvInventorySerialLotSummaryTransactionsManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/cvIngredientClaimActivities/Get")]
+        public ActionResult cvIngredientClaimActivitiesGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_cvIngredientClaimActivitiesManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/cvIncomingQCTemplate/Get")]
+        public ActionResult cvIncomingQCTemplateGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_cvIncomingQCTemplateManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/cvIncomingInspectionBOM/Get")]
+        public ActionResult cvIncomingInspectionBOMGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_cvIncomingInspectionBOMManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/cvCustomerContactCleanPhone/Get")]
+        public ActionResult cvCustomerContactCleanPhoneGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_cvCustomerContactCleanPhoneManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/cvBorsightTransfersForAssemblies/Get")]
+        public ActionResult cvBorsightTransfersForAssembliesGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_cvBorsightTransfersForAssembliesManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/cvAssemblyUnallocatedComponents/Get")]
+        public ActionResult cvAssemblyUnallocatedComponentsGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_cvAssemblyUnallocatedComponentsManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/cvAssemblySessions/Get")]
+        public ActionResult cvAssemblySessionsGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_cvAssemblySessionsManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/cvAssemblyProductLabel/Get")]
+        public ActionResult cvAssemblyProductLabelGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_cvAssemblyProductLabelManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/cvAssemblyProductionReport/Get")]
+        public ActionResult cvAssemblyProductionReportGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_cvAssemblyProductionReportManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/cvAssemblyProductionPassFail/Get")]
+        public ActionResult cvAssemblyProductionPassFailGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_cvAssemblyProductionPassFailManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/cvAssemblyParentComponent/Get")]
+        public ActionResult cvAssemblyParentComponentGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_cvAssemblyParentComponentManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/cvAssemblyParent/Get")]
+        public ActionResult cvAssemblyParentGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_cvAssemblyParentManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/cvAssemblyOrdersExtended/Get")]
+        public ActionResult cvAssemblyOrdersExtendedGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_cvAssemblyOrdersExtendedManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/cvAssemblyOrders/Get")]
+        public ActionResult cvAssemblyOrdersGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_cvAssemblyOrdersManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/cvAssemblyOrderPackaging/Get")]
+        public ActionResult cvAssemblyOrderPackagingGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_cvAssemblyOrderPackagingManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/cvAssemblyOrderMembers/Get")]
+        public ActionResult cvAssemblyOrderMembersGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_cvAssemblyOrderMembersManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/cvAssemblyOrderHeader/Get")]
+        public ActionResult cvAssemblyOrderHeaderGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_cvAssemblyOrderHeaderManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/cvAssemblyOrderDetailSummary/Get")]
+        public ActionResult cvAssemblyOrderDetailSummaryGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_cvAssemblyOrderDetailSummaryManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
         }
 
         [HttpPost]
