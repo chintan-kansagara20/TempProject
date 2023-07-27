@@ -296,6 +296,21 @@ namespace CrystalData.Main
 
             Service.AddTransient<IcvIssueManager, cvIssueManager>();
             Service.AddTransient<IcvIssueDataAccess, cvIssueDataAccess>();
+
+            Service.AddTransient<IcvIssueAssemblyManager, cvIssueAssemblyManager>();
+            Service.AddTransient<IcvIssueAssemblyDataAccess, cvIssueAssemblyDataAccess>();
+
+            Service.AddTransient<IcvIssueChangedAssignmentManager, cvIssueChangedAssignmentManager>();
+            Service.AddTransient<IcvIssueChangedAssignmentDataAccess, cvIssueChangedAssignmentDataAccess>();
+
+            Service.AddTransient<IcvIssuesForMfgManager, cvIssuesForMfgManager>();
+            Service.AddTransient<IcvIssuesForMfgDataAccess, cvIssuesForMfgDataAccess>();
+
+            Service.AddTransient<IcvIssuesForWarehouseManager, cvIssuesForWarehouseManager>();
+            Service.AddTransient<IcvIssuesForWarehouseDataAccess, cvIssuesForWarehouseDataAccess>();
+
+            Service.AddTransient<IcvIssueViewersManager, cvIssueViewersManager>();
+            Service.AddTransient<IcvIssueViewersDataAccess, cvIssueViewersDataAccess>();
         }
     }
 }
