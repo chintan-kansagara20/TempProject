@@ -108,6 +108,26 @@ namespace CrystalData.API.Controllers
         IcvIssueViewersManager _cvIssueViewersManager { get; set; }
         IcvIssueViewersAssembliesManager _cvIssueViewersAssembliesManager { get; set; }
         IcvIssueViewersParentAssemblyManager _cvIssueViewersParentAssemblyManager { get; set; }
+        IcvLastPOForProductManager _cvLastPOForProductManager { get; set; }
+        IcvLinkConfigManager _cvLinkConfigManager { get; set; }
+        IcvLinkConfigDocumentFoldersManager _cvLinkConfigDocumentFoldersManager { get; set; }
+        IcvLinkConfigDocumentsManager _cvLinkConfigDocumentsManager { get; set; }
+        IcvLinkConfigGuidesManager _cvLinkConfigGuidesManager { get; set; }
+        IcvLinkConfigLabelsManager _cvLinkConfigLabelsManager { get; set; }
+        IcvLinkConfigReportsManager _cvLinkConfigReportsManager { get; set; }
+        IcvLinkConfigXrefManager _cvLinkConfigXrefManager { get; set; }
+        IcvLinkProductSelectorManager _cvLinkProductSelectorManager { get; set; }
+        IcvLocationSummaryManager _cvLocationSummaryManager { get; set; }
+        IcvLotSerialInventoryManager _cvLotSerialInventoryManager { get; set; }
+        IcvLotSerialLocationSummaryManager _cvLotSerialLocationSummaryManager { get; set; }
+        IcvNegativeLotLocationManager _cvNegativeLotLocationManager { get; set; }
+        IcvNegativeLotLocationNAHSManager _cvNegativeLotLocationNAHSManager { get; set; }
+        IcvOptionGroupManager _cvOptionGroupManager { get; set; }
+        IcvOptionsManager _cvOptionsManager { get; set; }
+        IcvOptionTypeManager _cvOptionTypeManager { get; set; }
+        IcvOrderDetTranslationManager _cvOrderDetTranslationManager { get; set; }
+        IcvPODetWhereUsedManager _cvPODetWhereUsedManager { get; set; }
+        IcvPODetWithReceiptsAssyNeededManager _cvPODetWithReceiptsAssyNeededManager { get; set; }
         public ExecController(
             ICvAssembliesManager cvAssembliesManager, 
             IAccessManager AccessManager,
@@ -202,7 +222,27 @@ namespace CrystalData.API.Controllers
             IcvIssuesForWarehouseManager cvIssuesForWarehouseManager,
             IcvIssueViewersManager cvIssueViewersManager,
             IcvIssueViewersAssembliesManager cvIssueViewersAssembliesManager,
-            IcvIssueViewersParentAssemblyManager cvIssueViewersParentAssemblyManager)
+            IcvIssueViewersParentAssemblyManager cvIssueViewersParentAssemblyManager,
+            IcvLastPOForProductManager cvLastPOForProductManager,
+            IcvLinkConfigManager cvLinkConfigManager,
+            IcvLinkConfigDocumentFoldersManager cvLinkConfigDocumentFoldersManager,
+            IcvLinkConfigDocumentsManager cvLinkConfigDocumentsManager,
+            IcvLinkConfigGuidesManager cvLinkConfigGuidesManager,
+            IcvLinkConfigLabelsManager cvLinkConfigLabelsManager,
+            IcvLinkConfigReportsManager cvLinkConfigReportsManager,
+            IcvLinkConfigXrefManager cvLinkConfigXrefManager,
+            IcvLinkProductSelectorManager cvLinkProductSelectorManager,
+            IcvLocationSummaryManager cvLocationSummaryManager,
+            IcvLotSerialInventoryManager cvLotSerialInventoryManager,
+            IcvLotSerialLocationSummaryManager cvLotSerialLocationSummaryManager,
+            IcvNegativeLotLocationManager cvNegativeLotLocationManager,
+            IcvNegativeLotLocationNAHSManager cvNegativeLotLocationNAHSManager,
+            IcvOptionGroupManager cvOptionGroupManager,
+            IcvOptionsManager cvOptionsManager,
+            IcvOptionTypeManager cvOptionTypeManager,
+            IcvOrderDetTranslationManager cvOrderDetTranslationManager,
+            IcvPODetWhereUsedManager cvPODetWhereUsedManager,
+            IcvPODetWithReceiptsAssyNeededManager cvPODetWithReceiptsAssyNeededManager)
 
         {
             _CvAssembliesManager = cvAssembliesManager;
@@ -299,6 +339,330 @@ namespace CrystalData.API.Controllers
             _cvIssueViewersManager = cvIssueViewersManager;
             _cvIssueViewersAssembliesManager = cvIssueViewersAssembliesManager;
             _cvIssueViewersParentAssemblyManager = cvIssueViewersParentAssemblyManager;
+            _cvLastPOForProductManager = cvLastPOForProductManager;
+            _cvLinkConfigManager = cvLinkConfigManager;
+            _cvLinkConfigDocumentFoldersManager = cvLinkConfigDocumentFoldersManager;
+            _cvLinkConfigDocumentsManager = cvLinkConfigDocumentsManager;
+            _cvLinkConfigGuidesManager = cvLinkConfigGuidesManager;
+            _cvLinkConfigLabelsManager = cvLinkConfigLabelsManager;
+            _cvLinkConfigReportsManager = cvLinkConfigReportsManager;
+            _cvLinkConfigXrefManager = cvLinkConfigXrefManager;
+            _cvLinkProductSelectorManager = cvLinkProductSelectorManager;
+            _cvLocationSummaryManager = cvLocationSummaryManager;
+            _cvLotSerialInventoryManager = cvLotSerialInventoryManager;
+            _cvLotSerialLocationSummaryManager = cvLotSerialLocationSummaryManager;
+            _cvNegativeLotLocationManager = cvNegativeLotLocationManager;
+            _cvNegativeLotLocationNAHSManager = cvNegativeLotLocationNAHSManager;
+            _cvOptionGroupManager = cvOptionGroupManager;
+            _cvOptionsManager = cvOptionsManager;
+            _cvOptionTypeManager = cvOptionTypeManager;
+            _cvOrderDetTranslationManager = cvOrderDetTranslationManager;
+            _cvPODetWhereUsedManager = cvPODetWhereUsedManager;
+            _cvPODetWithReceiptsAssyNeededManager = cvPODetWithReceiptsAssyNeededManager;
+        }
+
+        [HttpPost]
+        [Route("/api/Full/cvPODetWithReceiptsAssyNeeded/Get")]
+        public ActionResult cvPODetWithReceiptsAssyNeededGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_cvPODetWithReceiptsAssyNeededManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/cvPODetWhereUsed/Get")]
+        public ActionResult cvPODetWhereUsedGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_cvPODetWhereUsedManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/cvOrderDetTranslation/Get")]
+        public ActionResult cvOrderDetTranslationGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_cvOrderDetTranslationManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/cvOptionType/Get")]
+        public ActionResult cvOptionTypeGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_cvOptionTypeManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/cvOptions/Get")]
+        public ActionResult cvOptionsGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_cvOptionsManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/cvOptionGroup/Get")]
+        public ActionResult cvOptionGroupGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_cvOptionGroupManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/cvNegativeLotLocationNAHS/Get")]
+        public ActionResult cvNegativeLotLocationNAHSGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_cvNegativeLotLocationNAHSManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/cvNegativeLotLocation/Get")]
+        public ActionResult cvNegativeLotLocationGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_cvNegativeLotLocationManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/cvLotSerialLocationSummary/Get")]
+        public ActionResult cvLotSerialLocationSummaryGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_cvLotSerialLocationSummaryManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/cvLocationSummary/Get")]
+        public ActionResult cvLocationSummaryGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_cvLocationSummaryManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/cvLinkProductSelector/Get")]
+        public ActionResult cvLinkProductSelectorGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_cvLinkProductSelectorManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }   
+
+        [HttpPost]
+        [Route("/api/Full/cvLinkConfigXref/Get")]
+        public ActionResult cvLinkConfigXrefGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_cvLinkConfigXrefManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/cvLinkConfigReports/Get")]
+        public ActionResult cvLinkConfigReportsGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_cvLinkConfigLabelsManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/cvLinkConfigLabels/Get")]
+        public ActionResult cvLinkConfigLabelsGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_cvLinkConfigLabelsManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/cvLinkConfigGuides/Get")]
+        public ActionResult cvLinkConfigGuidesGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_cvLinkConfigGuidesManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/cvLinkConfigDocuments/Get")]
+        public ActionResult cvLinkConfigDocumentsGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_cvLinkConfigDocumentsManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/cvLinkConfigDocumentFolders/Get")]
+        public ActionResult cvLinkConfigDocumentFoldersGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_cvLinkConfigDocumentFoldersManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/cvLinkConfig/Get")]
+        public ActionResult cvLinkConfigGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_cvLinkConfigManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/cvLastPOForProduct/Get")]
+        public ActionResult cvLastPOForProductGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_cvLastPOForProductManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
         }
 
         [HttpPost]

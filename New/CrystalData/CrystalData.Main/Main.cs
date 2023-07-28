@@ -4,6 +4,7 @@ using CrystalData.DataAccess.Interface;
 using CrystalData.Manager.Impl;
 using CrystalData.Manager.Interface;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace CrystalData.Main
@@ -323,6 +324,66 @@ namespace CrystalData.Main
 
             Service.AddTransient<IcvIssueViewersParentAssemblyManager, cvIssueViewersParentAssemblyManager>();
             Service.AddTransient<IcvIssueViewersParentAssemblyDataAccess, cvIssueViewersParentAssemblyDataAccess>();
+
+            Service.AddTransient<IcvLastPOForProductManager, cvLastPOForProductManager>();
+            Service.AddTransient<IcvLastPOForProductDataAccess, cvLastPOForProductDataAccess>();
+
+            Service.AddTransient<IcvLinkConfigManager, cvLinkConfigManager>();
+            Service.AddTransient<IcvLinkConfigDataAccess, cvLinkConfigDataAccess>();
+
+            Service.AddTransient<IcvLinkConfigDocumentFoldersManager, cvLinkConfigDocumentFoldersManager>();
+            Service.AddTransient<IcvLinkConfigDocumentFoldersDataAccess, cvLinkConfigDocumentFoldersDataAccess>();
+
+            Service.AddTransient<IcvLinkConfigDocumentsManager, cvLinkConfigDocumentsManager>();
+            Service.AddTransient<IcvLinkConfigDocumentsDataAccess, cvLinkConfigDocumentsDataAccess>();
+
+            Service.AddTransient<IcvLinkConfigGuidesManager, cvLinkConfigGuidesManager>();
+            Service.AddTransient<IcvLinkConfigGuidesDataAccess, cvLinkConfigGuidesDataAccess>();
+
+            Service.AddTransient<IcvLinkConfigLabelsManager, cvLinkConfigLabelsManager>();
+            Service.AddTransient<IcvLinkConfigLabelsDataAccess, cvLinkConfigLabelsDataAccess>();
+
+            Service.AddTransient<IcvLinkConfigReportsManager, cvLinkConfigReportsManager>();
+            Service.AddTransient<IcvLinkConfigReportsDataAccess, cvLinkConfigReportsDataAccess>();
+
+            Service.AddTransient<IcvLinkConfigXrefManager, cvLinkConfigXrefManager>();
+            Service.AddTransient<IcvLinkConfigXrefDataAccess, cvLinkConfigXrefDataAccess>();
+
+            Service.AddTransient<IcvLinkProductSelectorManager, cvLinkProductSelectorManager>();
+            Service.AddTransient<IcvLinkProductSelectorDataAccess, cvLinkProductSelectorDataAccess>();
+
+            Service.AddTransient<IcvLocationSummaryManager, cvLocationSummaryManager>();
+            Service.AddTransient<IcvLocationSummaryDataAccess, cvLocationSummaryDataAccess>();
+
+            Service.AddTransient<IcvLotSerialInventoryManager, cvLotSerialInventoryManager>();
+            Service.AddTransient<IcvLotSerialInventoryDataAccess, cvLotSerialInventoryDataAccess>();
+
+            Service.AddTransient<IcvLotSerialLocationSummaryManager, cvLotSerialLocationSummaryManager>();
+            Service.AddTransient<IcvLotSerialLocationSummaryDataAccess, cvLotSerialLocationSummaryDataAccess>();
+
+            Service.AddTransient<IcvNegativeLotLocationManager, cvNegativeLotLocationManager>();
+            Service.AddTransient<IcvNegativeLotLocationDataAccess, cvNegativeLotLocationDataAccess>();
+
+            Service.AddTransient<IcvNegativeLotLocationNAHSManager, cvNegativeLotLocationNAHSManager>();
+            Service.AddTransient<IcvNegativeLotLocationNAHSDataAccess, cvNegativeLotLocationNAHSDataAccess>();
+
+            Service.AddTransient<IcvOptionGroupManager, cvOptionGroupManager>();
+            Service.AddTransient<IcvOptionGroupDataAccess, cvOptionGroupDataAccess>();
+
+            Service.AddTransient<IcvOptionsManager, cvOptionsManager>();
+            Service.AddTransient<IcvOptionsDataAccess, cvOptionsDataAccess>();
+
+            Service.AddTransient<IcvOptionTypeManager, cvOptionTypeManager>();
+            Service.AddTransient<IcvOptionTypeDataAccess, cvOptionTypeDataAccess>();
+
+            Service.AddTransient<IcvOrderDetTranslationManager, cvOrderDetTranslationManager>();
+            Service.AddTransient<IcvOrderDetTranslationDataAccess, cvOrderDetTranslationDataAccess>();
+
+            Service.AddTransient<IcvPODetWhereUsedManager, cvPODetWhereUsedManager>();
+            Service.AddTransient<IcvPODetWhereUsedDataAccess, cvPODetWhereUsedDataAccess>();
+
+            Service.AddTransient<IcvPODetWithReceiptsAssyNeededManager, cvPODetWithReceiptsAssyNeededManager>();
+            Service.AddTransient<IcvPODetWithReceiptsAssyNeededDataAccess, cvPODetWithReceiptsAssyNeededDataAccess>();
         }
     }
 }
