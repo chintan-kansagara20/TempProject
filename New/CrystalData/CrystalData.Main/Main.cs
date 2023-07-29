@@ -387,6 +387,36 @@ namespace CrystalData.Main
 
             Service.AddTransient<IcvPODetWithReceiptsAssyNeededManager, cvPODetWithReceiptsAssyNeededManager>();
             Service.AddTransient<IcvPODetWithReceiptsAssyNeededDataAccess, cvPODetWithReceiptsAssyNeededDataAccess>();
+
+            Service.AddTransient<IcvPOReceiptManager, cvPOReceiptManager>();
+            Service.AddTransient<IcvPOReceiptDataAccess, cvPOReceiptDataAccess>();
+
+            Service.AddTransient<IcvPOReceiptsAssyNeededManager, cvPOReceiptsAssyNeededManager>();
+            Service.AddTransient<IcvPOReceiptsAssyNeededDataAccess, cvPOReceiptsAssyNeededDataAccess>();
+
+            Service.AddTransient<IcvPriorPOForProductManager, cvPriorPOForProductManager>();
+            Service.AddTransient<IcvPriorPOForProductDataAccess, cvPriorPOForProductDataAccess>();
+
+            Service.AddTransient<IcvproductManager, cvproductManager>();
+            Service.AddTransient<IcvproductDataAccess, cvproductDataAccess>();
+
+            Service.AddTransient<IcvProductAvailabilityManager, cvProductAvailabilityManager>();
+            Service.AddTransient<IcvProductAvailabilityDataAccess, cvProductAvailabilityDataAccess>();
+
+            Service.AddTransient<IcvProductBatchManager, cvProductBatchManager>();
+            Service.AddTransient<IcvProductBatchDataAccess, cvProductBatchDataAccess>();
+
+            Service.AddTransient<IcvProductComponentManager, cvProductComponentManager>();
+            Service.AddTransient<IcvProductComponentDataAccess, cvProductComponentDataAccess>();
+
+            Service.AddTransient<IcvProductEffectivePriceManager, cvProductEffectivePriceManager>();
+            Service.AddTransient<IcvProductEffectivePriceDataAccess, cvProductEffectivePriceDataAccess>();
+
+            Service.AddTransient<IcvProductExportNSSManager, cvProductExportNSSManager> ();
+            Service.AddTransient<IcvProductExportNSSDataAccess, cvProductExportNSSDataAccess>();
+
+            Service.AddTransient<IcvProductFinishedNSSManager, cvProductFinishedNSSManager>();
+            Service.AddTransient<IcvProductFinishedNSSDataAccess, cvProductFinishedNSSDataAccess>();
         }
     }
 }

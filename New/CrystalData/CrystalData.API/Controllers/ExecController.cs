@@ -128,6 +128,16 @@ namespace CrystalData.API.Controllers
         IcvOrderDetTranslationManager _cvOrderDetTranslationManager { get; set; }
         IcvPODetWhereUsedManager _cvPODetWhereUsedManager { get; set; }
         IcvPODetWithReceiptsAssyNeededManager _cvPODetWithReceiptsAssyNeededManager { get; set; }
+        IcvPOReceiptManager _cvPOReceiptManager { get; set; }
+        IcvPOReceiptsAssyNeededManager _cvPOReceiptsAssyNeededManager { get; set; }
+        IcvPriorPOForProductManager _cvPriorPOForProductManager { get; set; }
+        IcvproductManager _cvproductManager { get; set; }
+        IcvProductAvailabilityManager _cvProductAvailabilityManager { get; set; }
+        IcvProductBatchManager _cvProductBatchManager { get; set; }
+        IcvProductComponentManager _cvProductComponentManager { get; set; }
+        IcvProductEffectivePriceManager _cvProductEffectivePriceManager { get; set; }
+        IcvProductExportNSSManager _cvProductExportNSSManager { get; set; }
+        IcvProductFinishedNSSManager _cvProductFinishedNSSManager { get; set; }
         public ExecController(
             ICvAssembliesManager cvAssembliesManager, 
             IAccessManager AccessManager,
@@ -242,7 +252,17 @@ namespace CrystalData.API.Controllers
             IcvOptionTypeManager cvOptionTypeManager,
             IcvOrderDetTranslationManager cvOrderDetTranslationManager,
             IcvPODetWhereUsedManager cvPODetWhereUsedManager,
-            IcvPODetWithReceiptsAssyNeededManager cvPODetWithReceiptsAssyNeededManager)
+            IcvPODetWithReceiptsAssyNeededManager cvPODetWithReceiptsAssyNeededManager,
+            IcvPOReceiptManager cvPOReceiptManager,
+            IcvPOReceiptsAssyNeededManager cvPOReceiptsAssyNeededManager,
+            IcvPriorPOForProductManager cvPriorPOForProductManager,
+            IcvproductManager cvproductManager,
+            IcvProductAvailabilityManager cvProductAvailabilityManager,
+            IcvProductBatchManager cvProductBatchManager,
+            IcvProductComponentManager cvProductComponentManager,
+            IcvProductEffectivePriceManager cvProductEffectivePriceManager,
+            IcvProductExportNSSManager cvProductExportNSSManager,
+            IcvProductFinishedNSSManager cvProductFinishedNSSManager)
 
         {
             _CvAssembliesManager = cvAssembliesManager;
@@ -359,6 +379,144 @@ namespace CrystalData.API.Controllers
             _cvOrderDetTranslationManager = cvOrderDetTranslationManager;
             _cvPODetWhereUsedManager = cvPODetWhereUsedManager;
             _cvPODetWithReceiptsAssyNeededManager = cvPODetWithReceiptsAssyNeededManager;
+            _cvPOReceiptManager = cvPOReceiptManager;
+            _cvPOReceiptsAssyNeededManager = cvPOReceiptsAssyNeededManager;
+            _cvPriorPOForProductManager = cvPriorPOForProductManager;
+            _cvproductManager = cvproductManager;
+            _cvProductAvailabilityManager = cvProductAvailabilityManager;
+            _cvProductBatchManager = cvProductBatchManager;
+            _cvProductComponentManager = cvProductComponentManager;
+            _cvProductEffectivePriceManager = cvProductEffectivePriceManager;
+            _cvProductExportNSSManager = cvProductExportNSSManager;
+            _cvProductFinishedNSSManager = cvProductFinishedNSSManager;
+        }
+
+        [HttpPost]
+        [Route("/api/Full/cvProductFinishedNSS/Get")]
+        public ActionResult cvProductFinishedNSSGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_cvProductFinishedNSSManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/cvProductExportNSS/Get")]
+        public ActionResult cvProductExportNSSGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_cvProductExportNSSManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/cvProductBatch/Get")]
+        public ActionResult cvProductBatchGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_cvProductBatchManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/cvProductAvailability/Get")]
+        public ActionResult cvProductAvailabilityGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_cvProductAvailabilityManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/cvProduct/Get")]
+        public ActionResult cvProductGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_cvproductManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/cvPriorPOForProduct/Get")]
+        public ActionResult cvPriorPOForProductGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_cvPriorPOForProductManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/cvPOReceiptsAssyNeeded/Get")]
+        public ActionResult cvPOReceiptsAssyNeededGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_cvPOReceiptsAssyNeededManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/cvPOReceipt/Get")]
+        public ActionResult cvPOReceiptGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_cvPOReceiptManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
         }
 
         [HttpPost]
