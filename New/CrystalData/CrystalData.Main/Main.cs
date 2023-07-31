@@ -417,6 +417,120 @@ namespace CrystalData.Main
 
             Service.AddTransient<IcvProductFinishedNSSManager, cvProductFinishedNSSManager>();
             Service.AddTransient<IcvProductFinishedNSSDataAccess, cvProductFinishedNSSDataAccess>();
+
+            Service.AddTransient<IcvProductIngredientNSSManager, cvProductIngredientNSSManager>();
+            Service.AddTransient<IcvProductIngredientNSSDataAccess, cvProductIngredientNSSDataAccess>();
+
+            Service.AddTransient<IcvProductLocationSummaryManager, cvProductLocationSummaryManager>();
+            Service.AddTransient<IcvProductLocationSummaryDataAccess, cvProductLocationSummaryDataAccess>();
+
+            Service.AddTransient<IcvProductMetricsManager, cvProductMetricsManager>();
+            Service.AddTransient<IcvProductMetricsDataAccess, cvProductMetricsDataAccess>();
+
+            Service.AddTransient<IcvProductPackageUnitConversionManager, cvProductPackageUnitConversionManager>();
+            Service.AddTransient<IcvProductPackageUnitConversionDataAccess, cvProductPackageUnitConversionDataAccess>();
+
+            Service.AddTransient<IcvProductPackagingManager, cvProductPackagingManager>();
+            Service.AddTransient<IcvProductPackagingDataAccess, cvProductPackagingDataAccess>();
+
+            Service.AddTransient<IcvProductProcManager, cvProductProcManager>();
+            Service.AddTransient<IcvProductProcDataAccess, cvProductProcDataAccess>();
+
+            Service.AddTransient<IcvProductPurchaseUnitConversionManager, cvProductPurchaseUnitConversionManager>();
+            Service.AddTransient<IcvProductPurchaseUnitConversionDataAccess, cvProductPurchaseUnitConversionDataAccess>();
+
+            Service.AddTransient<IcvProductQCManager, cvProductQCManager>();
+            Service.AddTransient<IcvProductQCDataAccess, cvProductQCDataAccess>();
+
+            Service.AddTransient<IcvProductSpecAssembliesManager, cvProductSpecAssembliesManager>();
+            Service.AddTransient<IcvProductSpecAssembliesDataAccess, cvProductSpecAssembliesDataAccess>();
+
+            Service.AddTransient<IcvProductVendorPriceManager, cvProductVendorPriceManager>();
+            Service.AddTransient<IcvProductVendorPriceDataAccess, cvProductVendorPriceDataAccess>();
+
+            Service.AddTransient<IcvReceiptTransactionDetailManager, cvReceiptTransactionDetailManager>();
+            Service.AddTransient<IcvReceiptTransactionDetailDataAccess, cvReceiptTransactionDetailDataAccess>();
+
+            Service.AddTransient<IcvReceivingLogManager, cvReceivingLogManager>();
+            Service.AddTransient<IcvReceivingLogDataAccess, cvReceivingLogDataAccess>();
+
+            Service.AddTransient<IcvRoleAccessManager, cvRoleAccessManager>();
+            Service.AddTransient<IcvRoleAccessDataAccess, cvRoleAccessDataAccess>();
+
+            Service.AddTransient<IcvSuppManufactureManager, cvSuppManufactureManager>();
+            Service.AddTransient<IcvSuppManufactureDataAccess, cvSuppManufactureDataAccess>();
+
+            Service.AddTransient<IcvSuppManufactureYieldManager, cvSuppManufactureYieldManager>();
+            Service.AddTransient<IcvSuppManufactureYieldDataAccess, cvSuppManufactureYieldDataAccess>();
+
+            Service.AddTransient<IcvTrxDetailControlSeriesManager, cvTrxDetailControlSeriesManager>();
+            Service.AddTransient<IcvTrxDetailControlSeriesDataAccess, cvTrxDetailControlSeriesDataAccess>();
+
+            Service.AddTransient<IcvTrxDetailControlValuesManager, cvTrxDetailControlValuesManager>();
+            Service.AddTransient<IcvTrxDetailControlValuesDataAccess, cvTrxDetailControlValuesDataAccess>();
+
+            Service.AddTransient<IcvVendorRequestForQuotesManager, cvVendorRequestForQuotesManager>();
+            Service.AddTransient<IcvVendorRequestForQuotesDataAccess, cvVendorRequestForQuotesDataAccess>();
+
+            Service.AddTransient<IDocumentManager, DocumentManager>();
+            Service.AddTransient<IDocumentDataAccess, DocumentDataAccess>();
+
+            Service.AddTransient<IEDIAdditionalInformationManager, EDIAdditionalInformationManager>();
+            Service.AddTransient<IEDIAdditionalInformationDataAccess, EDIAdditionalInformationDataAccess>();
+
+            Service.AddTransient<IEDIOrderDetailExManager, EDIOrderDetailExManager>();
+            Service.AddTransient<IEDIOrderDetailExDataAccess, EDIOrderDetailExDataAccess>();
+
+            Service.AddTransient<IEDIOrdersExManager, EDIOrdersExManager>();
+            Service.AddTransient<IEDIOrdersExDataAccess, EDIOrdersExDataAccess>();
+
+            Service.AddTransient<IEmployeeManager, EmployeeManager>();
+            Service.AddTransient<IEmployeeDataAccess, EmployeeDataAccess>();
+
+            Service.AddTransient<IFIFOCostLayersManager, FIFOCostLayersManager>();
+            Service.AddTransient<IFIFOCostLayersDataAccess, FIFOCostLayersDataAccess>();
+
+            Service.AddTransient<IFlattenedKitComponentsManager, FlattenedKitComponentsManager>();
+            Service.AddTransient<IFlattenedKitComponentsDataAccess, FlattenedKitComponentsDataAccess>();
+
+            Service.AddTransient<IGLAccountManager, GLAccountManager>();
+            Service.AddTransient <IGLAccountDataAccess, GLAccountDataAccess>();
+
+            Service.AddTransient<IGLAccountSegmentManager, GLAccountSegmentManager>();
+            Service.AddTransient<IGLAccountSegmentDataAccess, GLAccountSegmentDataAccess>();
+
+            Service.AddTransient<IImpExpDocumentColumnManager, ImpExpDocumentColumnManager>();
+            Service.AddTransient<IImpExpDocumentColumnDataAccess, ImpExpDocumentColumnDataAccess>();
+
+            Service.AddTransient<IImpExpDocumentTableManager, ImpExpDocumentTableManager>();
+            Service.AddTransient<IImpExpDocumentTableDataAccess, ImpExpDocumentTableDataAccess>();
+
+            Service.AddTransient<IImpExpDocumentTypeManager, ImpExpDocumentTypeManager>();
+            Service.AddTransient<IImpExpDocumentTypeDataAccess, ImpExpDocumentTypeDataAccess>();
+
+            Service.AddTransient<IImportManager, ImportManager>();
+            Service.AddTransient<IImportDataAccess, ImportDataAccess>();
+
+            Service.AddTransient<IImportConversionManager, ImportConversionManager>();
+            Service.AddTransient<IImportConversionDataAccess, ImportConversionDataAccess>();
+
+            Service.AddTransient<IImportDefaultConversionManager, ImportDefaultConversionManager>();
+            Service.AddTransient<IImportDefaultConversionDataAccess, ImportDefaultConversionDataAccess>();
+
+            Service.AddTransient<IImportDefaultMapManager, ImportDefaultMapManager>();
+            Service.AddTransient<IImportDefaultMapDataAccess, ImportDefaultMapDataAccess>();
+
+            Service.AddTransient<IImportDefaultNamespaceManager, ImportDefaultNamespaceManager>();
+            Service.AddTransient<IImportDefaultNamespaceDataAccess, ImportDefaultNamespaceDataAccess>();
+
+            Service.AddTransient<IImportDefaultSourceFieldsManager, ImportDefaultSourceFieldsManager>();
+            Service.AddTransient<IImportDefaultSourceFieldsDataAccess, ImportDefaultSourceFieldsDataAccess>();
+
+            Service.AddTransient<IImportDefaultTableManager, ImportDefaultTableManager>();
+            Service.AddTransient<IImportDefaultTableDataAccess, ImportDefaultTableDataAccess>();
+
+            Service.AddTransient<IImportErrorsManager, ImportErrorsManager>();
+            Service.AddTransient<IImportErrorsDataAccess, ImportErrorsDataAccess>();
         }
     }
 }
