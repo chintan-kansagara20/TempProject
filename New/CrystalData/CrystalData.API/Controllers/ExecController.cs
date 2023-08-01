@@ -176,6 +176,35 @@ namespace CrystalData.API.Controllers
         IImportDefaultSourceFieldsManager _ImportDefaultSourceFieldsManager { get; set; }
         IImportDefaultTableManager _IImportDefaultTableManager { get; set; }
         IImportErrorsManager _ImportErrorsManager { get; set; }
+        IImportMapManager _ImportMapManager { get; set; }
+        IImportNamespaceManager _ImportNamespaceManager { get; set; }
+        IImportSkippedManager _ImportSkippedManager { get; set; }
+        IImportSourceFieldsManager _ImportSourceFieldsManager { get; set; }
+        IImportSourceFileManager _ImportSourceFileManager { get; set; }
+        IImportSourceRelateFieldsManager _ImportSourceRelateFieldsManager { get; set; }
+        IImportTableManager _ImportTableManager { get; set; }
+        IImportTemplateOptionsManager _ImportTemplateOptionsManager { get; set; }
+        IImportTransformationManager _ImportTransformationManager { get; set; }
+        IInventoryJournalManager _InventoryJournalManager { get; set; }
+        IInventoryJournalDetailManager _InventoryJournalDetailManager { get; set; }
+        IInventoryJournalDetail_NoAccountsManager _InventoryJournalDetail_NoAccountsManager { get; set; }
+        IInventoryJournalSummaryManager _InventoryJournalSummaryManager { get; set; }
+        IINVLotSerialTraceManager _INVLotSerialTraceManager { get; set; }
+        IINVLotSerialTraceDetailManager _INVLotSerialTraceDetailManager { get; set; }
+        IInvoiceManager _InvoiceManager { get; set; }
+        IInvoiceAmtSummaryManager _InvoiceAmtSummaryManager { get; set; }
+        IInvoiceDetailManager _InvoiceDetailManager { get; set; }
+        IInvoicesAndChargesManager _InvoicesAndChargesManager { get; set; }
+        IINVRegisterManager _INVRegisterManager { get; set; }
+        IINVTransactionManager _INVTransactionManager { get; set; }
+        IINVTransactionDetailManager _INVTransactionDetailManager { get; set; }
+        IINVTransactionDetailOnHandSummaryManager _INVTransactionDetailOnHandSummaryManager { get; set; }
+        IINVTransactionDetailSummaryManager _INVTransactionDetailSummaryManager { get; set; }
+        IIssueCodeManager _IssueCodeManager { get; set; }
+        IIssueManager _IssueManager { get; set; }
+        IIssueLogManager _IssueLogManager { get; set; }
+        IIssuePriorityCodeManager _IssuePriorityCodeManager { get; set; }
+        IIssueResolutionCodeManager _IssueResolutionCodeManager { get; set; }
         public ExecController(
             ICvAssembliesManager cvAssembliesManager, 
             IAccessManager AccessManager,
@@ -338,7 +367,36 @@ namespace CrystalData.API.Controllers
             IImportDefaultNamespaceManager importDefaultNamespaceManager,
             IImportDefaultSourceFieldsManager importDefaultSourceFieldsManager,
             IImportDefaultTableManager iImportDefaultTableManager,
-            IImportErrorsManager importErrorsManager)
+            IImportErrorsManager importErrorsManager,
+            IImportMapManager importMapManager,
+            IImportNamespaceManager importNamespaceManager,
+            IImportSkippedManager importSkippedManager,
+            IImportSourceFieldsManager importSourceFieldsManager,
+            IImportSourceFileManager importSourceFileManager,
+            IImportSourceRelateFieldsManager importSourceRelateFieldsManager,
+            IImportTableManager importTableManager,
+            IImportTemplateOptionsManager importTemplateOptionsManager,
+            IImportTransformationManager importTransformationManager,
+            IInventoryJournalManager inventoryJournalManager,
+            IInventoryJournalDetailManager inventoryJournalDetailManager,
+            IInventoryJournalDetail_NoAccountsManager inventoryJournalDetail_NoAccountsManager,
+            IInventoryJournalSummaryManager inventoryJournalSummaryManager,
+            IINVLotSerialTraceManager iNVLotSerialTraceManager,
+            IINVLotSerialTraceDetailManager iNVLotSerialTraceDetailManager,
+            IInvoiceManager invoiceManager,
+            IInvoiceAmtSummaryManager invoiceAmtSummaryManager,
+            IInvoiceDetailManager invoiceDetailManager,
+            IInvoicesAndChargesManager invoicesAndChargesManager,
+            IINVRegisterManager iNVRegisterManager,
+            IINVTransactionManager iNVTransactionManager,
+            IINVTransactionDetailManager iNVTransactionDetailManager,
+            IINVTransactionDetailOnHandSummaryManager iNVTransactionDetailOnHandSummaryManager,
+            IINVTransactionDetailSummaryManager iNVTransactionDetailSummaryManager,
+            IIssueManager issueManager,
+            IIssueCodeManager issueCodeManager,
+            IIssueLogManager issueLogManager,
+            IIssuePriorityCodeManager issuePriorityCodeManager,
+            IIssueResolutionCodeManager issueResolutionCodeManager)
 
         {
             _CvAssembliesManager = cvAssembliesManager;
@@ -503,6 +561,499 @@ namespace CrystalData.API.Controllers
             _ImportDefaultSourceFieldsManager = importDefaultSourceFieldsManager;
             _IImportDefaultTableManager = iImportDefaultTableManager;
             _ImportErrorsManager = importErrorsManager;
+            _ImportMapManager = importMapManager;
+            _ImportNamespaceManager = importNamespaceManager;
+            _ImportSkippedManager = importSkippedManager;
+            _ImportSourceFieldsManager = importSourceFieldsManager;
+            _ImportSourceFileManager = importSourceFileManager;
+            _ImportSourceRelateFieldsManager = importSourceRelateFieldsManager;
+            _ImportTableManager = importTableManager;
+            _ImportTemplateOptionsManager = importTemplateOptionsManager;
+            _ImportTransformationManager = importTransformationManager;
+            _InventoryJournalManager = inventoryJournalManager;
+            _InventoryJournalDetailManager = inventoryJournalDetailManager;
+            _InventoryJournalDetail_NoAccountsManager = inventoryJournalDetail_NoAccountsManager;
+            _InventoryJournalSummaryManager = inventoryJournalSummaryManager;
+            _INVLotSerialTraceManager = iNVLotSerialTraceManager;
+            _INVLotSerialTraceDetailManager = iNVLotSerialTraceDetailManager;
+            _InvoiceManager = invoiceManager;
+            _InvoiceAmtSummaryManager = invoiceAmtSummaryManager;
+            _InvoiceDetailManager = invoiceDetailManager;
+            _InvoicesAndChargesManager = invoicesAndChargesManager;
+            _INVRegisterManager = iNVRegisterManager;
+            _INVTransactionManager = iNVTransactionManager;
+            _INVTransactionDetailManager = iNVTransactionDetailManager;
+            _INVTransactionDetailOnHandSummaryManager = iNVTransactionDetailOnHandSummaryManager;
+            _INVTransactionDetailSummaryManager = iNVTransactionDetailSummaryManager;
+            _IssueManager = issueManager;
+            _IssueCodeManager = issueCodeManager;
+            _IssueLogManager = issueLogManager;
+            _IssuePriorityCodeManager = issuePriorityCodeManager;
+            _IssueResolutionCodeManager = issueResolutionCodeManager;
+        }
+
+        [HttpPost]
+        [Route("/api/Full/IssueResolutionCode/Get")]
+        public ActionResult IssueResolutionCodeGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_IssueResolutionCodeManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/IssuePriorityCode/Get")]
+        public ActionResult IssuePriorityCodeGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_IssuePriorityCodeManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/IssueLog/Get")]
+        public ActionResult IssueLogGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_IssueLogManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/IssueCode/Get")]
+        public ActionResult IssueCodeGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_IssueCodeManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/Issue/Get")]
+        public ActionResult IssueGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_IssueManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/INVTransactionDetailSummary/Get")]
+        public ActionResult INVTransactionDetailSummaryGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_INVTransactionDetailSummaryManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/INVTransactionDetailOnHandSummary/Get")]
+        public ActionResult INVTransactionDetailOnHandSummaryGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_INVTransactionDetailOnHandSummaryManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/INVTransactionDetail/Get")]
+        public ActionResult INVTransactionDetailGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_INVTransactionDetailManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/INVTransaction/Get")]
+        public ActionResult INVTransactionGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_INVTransactionManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/INVRegister/Get")]
+        public ActionResult INVRegisterGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_INVRegisterManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/InvoicesAndCharges/Get")]
+        public ActionResult InvoicesAndChargesGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_InvoicesAndChargesManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/InvoiceDetail/Get")]
+        public ActionResult InvoiceDetailGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_InvoiceDetailManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/InvoiceAmtSummary/Get")]
+        public ActionResult InvoiceAmtSummaryGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_InvoiceAmtSummaryManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/Invoice/Get")]
+        public ActionResult InvoiceGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_InvoiceManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/INVLotSerialTraceDetail/Get")]
+        public ActionResult INVLotSerialTraceDetailGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_INVLotSerialTraceDetailManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/INVLotSerialTrace/Get")]
+        public ActionResult INVLotSerialTraceGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_INVLotSerialTraceManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/InventoryJournalSummary/Get")]
+        public ActionResult InventoryJournalSummaryGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_InventoryJournalSummaryManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/InventoryJournalDetail_NoAccounts/Get")]
+        public ActionResult InventoryJournalDetail_NoAccountsGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_InventoryJournalDetail_NoAccountsManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/InventoryJournalDetail/Get")]
+        public ActionResult InventoryJournalDetailGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_InventoryJournalDetailManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/InventoryJournal/Get")]
+        public ActionResult InventoryJournalGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_InventoryJournalManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/ImportTransformation/Get")]
+        public ActionResult ImportTransformationGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_ImportTransformationManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/ImportTemplateOptions/Get")]
+        public ActionResult ImportTemplateOptionsGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_ImportTemplateOptionsManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/ImportTable/Get")]
+        public ActionResult ImportTableGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_ImportTableManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/ImportSourceRelateFields/Get")]
+        public ActionResult ImportSourceRelateFieldsGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_ImportSourceRelateFieldsManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/ImportSourceFile/Get")]
+        public ActionResult ImportSourceFileGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_ImportSourceFileManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/ImportSourceFields/Get")]
+        public ActionResult ImportSourceFieldsGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_ImportSourceFieldsManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/ImportSkipped/Get")]
+        public ActionResult ImportSkippedGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_ImportSkippedManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/ImportNamespace/Get")]
+        public ActionResult ImportNamespaceGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_ImportNamespaceManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/ImportMap/Get")]
+        public ActionResult ImportMapGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_ImportMapManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
         }
 
         [HttpPost]

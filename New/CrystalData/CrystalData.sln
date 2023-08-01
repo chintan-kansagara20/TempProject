@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CrystalData.Models", "Cryst
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CrystalData.API", "CrystalData.API\CrystalData.API.csproj", "{6FA0913E-357C-42FB-A8FF-90FEBA05392A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrystalData.Main", "CrystalData.Main\CrystalData.Main.csproj", "{AF1FD157-03AC-43CE-8F05-E73E9773BD3F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CrystalData.Main", "CrystalData.Main\CrystalData.Main.csproj", "{AF1FD157-03AC-43CE-8F05-E73E9773BD3F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

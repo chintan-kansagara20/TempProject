@@ -531,6 +531,93 @@ namespace CrystalData.Main
 
             Service.AddTransient<IImportErrorsManager, ImportErrorsManager>();
             Service.AddTransient<IImportErrorsDataAccess, ImportErrorsDataAccess>();
+
+            Service.AddTransient<IImportMapManager, ImportMapManager>();
+            Service.AddTransient<IImportMapDataAccess, ImportMapDataAccess>();
+
+            Service.AddTransient<IImportNamespaceManager, ImportNamespaceManager>();
+            Service.AddTransient<IImportNamespaceDataAccess, ImportNamespaceDataAccess>();
+
+            Service.AddTransient<IImportSkippedManager, ImportSkippedManager>();
+            Service.AddTransient<IImportSkippedDataAccess, ImportSkippedDataAccess>();
+
+            Service.AddTransient<IImportSourceFieldsManager, ImportSourceFieldsManager>();
+            Service.AddTransient<IImportSourceFieldsDataAccess, ImportSourceFieldsDataAccess>();
+
+            Service.AddTransient<IImportSourceFileManager, ImportSourceFileManager>();
+            Service.AddTransient<IImportSourceFileDataAccess, ImportSourceFileDataAccess>();
+
+            Service.AddTransient<IImportSourceRelateFieldsManager, ImportSourceRelateFieldsManager>();
+            Service.AddTransient<IImportSourceRelateFieldsDataAccess, ImportSourceRelateFieldsDataAccess>();
+
+            Service.AddTransient<IImportTableManager, ImportTableManager>();
+            Service.AddTransient<IImportTableDataAccess, ImportTableDataAccess>();
+
+            Service.AddTransient<IImportTemplateOptionsManager, ImportTemplateOptionsManager>();
+            Service.AddTransient<IImportTemplateOptionsDataAccess, ImportTemplateOptionsDataAccess>();
+
+            Service.AddTransient<IImportTransformationManager, ImportTransformationManager>();
+            Service.AddTransient<IImportTransformationDataAccess, ImportTransformationDataAccess>();
+
+            Service.AddTransient<IInventoryJournalManager, InventoryJournalManager>();
+            Service.AddTransient<IInventoryJournalDataAccess, InventoryJournalDataAccess>();
+
+            Service.AddTransient<IInventoryJournalDetailManager, InventoryJournalDetailManager>();
+            Service.AddTransient<IInventoryJournalDetailDataAccess, InventoryJournalDetailDataAccess>();
+
+            Service.AddTransient<IInventoryJournalDetail_NoAccountsManager, InventoryJournalDetail_NoAccountsManager>();
+            Service.AddTransient<IInventoryJournalDetail_NoAccountsDataAccess, InventoryJournalDetail_NoAccountsDataAccess>();
+
+            Service.AddTransient<IInventoryJournalSummaryManager, InventoryJournalSummaryManager>();
+            Service.AddTransient<IInventoryJournalSummaryDataAccess, InventoryJournalSummaryDataAccess>();
+
+            Service.AddTransient<IINVLotSerialTraceManager, INVLotSerialTraceManager>();
+            Service.AddTransient<IINVLotSerialTraceDataAccess, INVLotSerialTraceDataAccess>();
+
+            Service.AddTransient<IINVLotSerialTraceDetailManager, INVLotSerialTraceDetailManager>();
+            Service.AddTransient<IINVLotSerialTraceDetailDataAccess, INVLotSerialTraceDetailDataAccess>();
+
+            Service.AddTransient<IInvoiceManager, InvoiceManager>();
+            Service.AddTransient<IInvoiceDataAccess, InvoiceDataAccess>();
+
+            Service.AddTransient<IInvoiceAmtSummaryManager, InvoiceAmtSummaryManager>();
+            Service.AddTransient<IInvoiceAmtSummaryDataAccess, InvoiceAmtSummaryDataAccess>();
+
+            Service.AddTransient<IInvoiceDetailManager, InvoiceDetailManager>();
+            Service.AddTransient<IInvoiceDetailDataAccess, InvoiceDetailDataAccess>();
+
+            Service.AddTransient<IInvoicesAndChargesManager, InvoicesAndChargesManager>();
+            Service.AddTransient<IInvoicesAndChargesDataAccess, InvoicesAndChargesDataAccess>();
+
+            Service.AddTransient<IINVRegisterManager, INVRegisterManager>();
+            Service.AddTransient<IINVRegisterDataAccess, INVRegisterDataAccess>();
+
+            Service.AddTransient<IINVTransactionManager, INVTransactionManager>();
+            Service.AddTransient<IINVTransactionDataAccess, INVTransactionDataAccess>();
+
+            Service.AddTransient<IINVTransactionDetailManager, INVTransactionDetailManager>();
+            Service.AddTransient<IINVTransactionDetailDataAccess, INVTransactionDetailDataAccess>();
+
+            Service.AddTransient<IINVTransactionDetailOnHandSummaryManager, INVTransactionDetailOnHandSummaryManager>();
+            Service.AddTransient<IINVTransactionDetailOnHandSummaryDataAccess, INVTransactionDetailOnHandSummaryDataAccess>();
+
+            Service.AddTransient<IINVTransactionDetailSummaryManager, INVTransactionDetailSummaryManager>();
+            Service.AddTransient<IINVTransactionDetailSummaryDataAccess, INVTransactionDetailSummaryDataAccess>();
+
+            Service.AddTransient<IIssueManager, IssueManager>();
+            Service.AddTransient<IIssueDataAccess, IssueDataAccess>();
+
+            Service.AddTransient<IIssueCodeManager, IssueCodeManager>();
+            Service.AddTransient<IIssueCodeDataAccess, IssueCodeDataAccess>();
+
+            Service.AddTransient<IIssueLogManager, IssueLogManager>();
+            Service.AddTransient<IIssueLogDataAccess, IssueLogDataAccess>();
+
+            Service.AddTransient<IIssuePriorityCodeManager, IssuePriorityCodeManager>();
+            Service.AddTransient<IIssuePriorityCodeDataAccess, IssuePriorityCodeDataAccess>();
+
+            Service.AddTransient<IIssueResolutionCodeManager, IssueResolutionCodeManager>();
+            Service.AddTransient<IIssueResolutionCodeDataAccess, IssueResolutionCodeDataAccess>();
         }
     }
 }
