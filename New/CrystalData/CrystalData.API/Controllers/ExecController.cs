@@ -205,6 +205,36 @@ namespace CrystalData.API.Controllers
         IIssueLogManager _IssueLogManager { get; set; }
         IIssuePriorityCodeManager _IssuePriorityCodeManager { get; set; }
         IIssueResolutionCodeManager _IssueResolutionCodeManager { get; set; }
+        IIssueSchedulingClassManager _IssueSchedulingClassManager { get; set; }
+        IIssueStatusCodeManager _IssueStatusCodeManager { get; set; }
+        IIssueTypeManager _IssueTypeManager { get; set; }
+        IIssueTypeCodeXrefManager _IssueTypeCodeXrefManager { get; set; }
+        IIssueTypePriorityXrefManager _IssueTypePriorityXrefManager { get; set; }
+        IIssueTypeResolutionXrefManager _IssueTypeResolutionXrefManager { get; set; }
+        IIssueTypeSchedulingClassXrefManager _IssueTypeSchedulingClassXrefManager { get; set; }
+        IIssueTypeStatusXrefManager _IssueTypeStatusXrefManager { get; set; }
+        IIssueXrefManager _IssueXrefManager { get; set; }
+        IJournalManager _JournalManager { get; set; }
+        IJournalLineManager _JournalLineManager { get; set; }
+        ILIFOCostLayersManager _LIFOCostLayersManager { get; set; }
+        ILocationSummaryManager _LocationSummaryManager { get; set; }
+        ILocationSummaryNoAvailabilityManager _LocationSummaryNoAvailabilityManager { get; set; }
+        ILostBusinessManager _LostBusinessManager { get; set; }
+        ILotSerialDefaultLocationManager _LotSerialDefaultLocationManager { get; set; }
+        ILotSerialInventoryManager _LotSerialInventoryManager { get; set; }
+        ILotSerialInventoryIssuesManager _LotSerialInventoryIssuesManager { get; set; }
+        ILotSerialInventoryReceiptsManager _LotSerialInventoryReceiptsManager { get; set; }
+        ILotSerialInventoryWithoutLastReceiptManager _LotSerialInventoryWithoutLastReceiptManager { get; set; }
+        ILotSerialLocationManager _LotSerialLocationManager { get; set; }
+        ILotSerialLocationSummaryManager _LotSerialLocationSummaryManager { get; set; }
+        ILotSerialLocationSummaryNoAvailabilityManager _LotSerialLocationSummaryNoAvailabilityManager { get; set; }
+        ILotSerialSummaryManager _LotSerialSummaryManager { get; set; }
+        IMarketingCodeManager _MarketingCodeManager { get; set; }
+        IMarketingListCodeManager _MarketingListCodeManager { get; set; }
+        IMarketingListXrefManager _MarketingListXrefManager { get; set; }
+        IMessagesManager _MessagesManager { get; set; }
+        INoteCategoryManager _NoteCategoryManager { get; set; }
+        INotesManager _NotesManager { get; set; }
         public ExecController(
             ICvAssembliesManager cvAssembliesManager, 
             IAccessManager AccessManager,
@@ -396,7 +426,37 @@ namespace CrystalData.API.Controllers
             IIssueCodeManager issueCodeManager,
             IIssueLogManager issueLogManager,
             IIssuePriorityCodeManager issuePriorityCodeManager,
-            IIssueResolutionCodeManager issueResolutionCodeManager)
+            IIssueResolutionCodeManager issueResolutionCodeManager,
+            IIssueSchedulingClassManager issueSchedulingClassManager,
+            IIssueStatusCodeManager issueStatusCodeManager,
+            IIssueTypeManager issueTypeManager,
+            IIssueTypeCodeXrefManager issueTypeCodeXrefManager,
+            IIssueTypePriorityXrefManager issueTypePriorityXrefManager,
+            IIssueTypeResolutionXrefManager issueTypeResolutionXrefManager,
+            IIssueTypeSchedulingClassXrefManager issueTypeSchedulingClassXrefManager,
+            IIssueTypeStatusXrefManager issueTypeStatusXrefManager,
+            IIssueXrefManager issueXrefManager,
+            IJournalManager journalManager,
+            IJournalLineManager journalLineManager,
+            ILIFOCostLayersManager lIFOCostLayersManager,
+            ILocationSummaryManager locationSummaryManager,
+            ILocationSummaryNoAvailabilityManager locationSummaryNoAvailabilityManager,
+            ILostBusinessManager lostBusinessManager,
+            ILotSerialDefaultLocationManager lotSerialDefaultLocationManager,
+            ILotSerialInventoryManager lotSerialInventoryManager,
+            ILotSerialInventoryIssuesManager lotSerialInventoryIssuesManager,
+            ILotSerialInventoryReceiptsManager lotSerialInventoryReceiptsManager,
+            ILotSerialInventoryWithoutLastReceiptManager lotSerialInventoryWithoutLastReceiptManager,
+            ILotSerialLocationManager lotSerialLocationManager,
+            ILotSerialLocationSummaryManager lotSerialLocationSummaryManager,
+            ILotSerialLocationSummaryNoAvailabilityManager lotSerialLocationSummaryNoAvailabilityManager,
+            ILotSerialSummaryManager lotSerialSummaryManager,
+            IMarketingCodeManager marketingCodeManager,
+            IMarketingListCodeManager marketingListCodeManager,
+            IMarketingListXrefManager marketingListXrefManager,
+            IMessagesManager messagesManager,
+            INoteCategoryManager noteCategoryManager,
+            INotesManager notesManager)
 
         {
             _CvAssembliesManager = cvAssembliesManager;
@@ -590,6 +650,516 @@ namespace CrystalData.API.Controllers
             _IssueLogManager = issueLogManager;
             _IssuePriorityCodeManager = issuePriorityCodeManager;
             _IssueResolutionCodeManager = issueResolutionCodeManager;
+            _IssueSchedulingClassManager = issueSchedulingClassManager;
+            _IssueStatusCodeManager = issueStatusCodeManager;
+            _IssueTypeManager = issueTypeManager;
+            _IssueTypeCodeXrefManager = issueTypeCodeXrefManager;
+            _IssueTypePriorityXrefManager = issueTypePriorityXrefManager;
+            _IssueTypeResolutionXrefManager = issueTypeResolutionXrefManager;
+            _IssueTypeSchedulingClassXrefManager = issueTypeSchedulingClassXrefManager;
+            _IssueTypeStatusXrefManager = issueTypeStatusXrefManager;
+            _IssueXrefManager = issueXrefManager;
+            _JournalManager = journalManager;
+            _JournalLineManager = journalLineManager;
+            _LIFOCostLayersManager = lIFOCostLayersManager;
+            _LocationSummaryManager = locationSummaryManager;
+            _LocationSummaryNoAvailabilityManager = locationSummaryNoAvailabilityManager;
+            _LostBusinessManager = lostBusinessManager;
+            _LotSerialDefaultLocationManager = lotSerialDefaultLocationManager;
+            _LotSerialInventoryManager = lotSerialInventoryManager;
+            _LotSerialInventoryIssuesManager = lotSerialInventoryIssuesManager;
+            _LotSerialInventoryReceiptsManager = lotSerialInventoryReceiptsManager;
+            _LotSerialInventoryWithoutLastReceiptManager = lotSerialInventoryWithoutLastReceiptManager;
+            _LotSerialLocationManager = lotSerialLocationManager;
+            _LotSerialLocationSummaryManager = lotSerialLocationSummaryManager;
+            _LotSerialLocationSummaryNoAvailabilityManager = lotSerialLocationSummaryNoAvailabilityManager;
+            _LotSerialSummaryManager = lotSerialSummaryManager;
+            _MarketingCodeManager = marketingCodeManager;
+            _MarketingListCodeManager = marketingListCodeManager;
+            _MarketingListXrefManager = marketingListXrefManager;
+            _MessagesManager = messagesManager;
+            _NoteCategoryManager = noteCategoryManager;
+            _NotesManager = notesManager;
+        }
+
+        [HttpPost]
+        [Route("/api/Full/Notes/Get")]
+        public ActionResult NotesGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_NotesManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/NoteCategory/Get")]
+        public ActionResult NoteCategoryGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_NoteCategoryManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/Messages/Get")]
+        public ActionResult MessagesGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_MessagesManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/MarketingListXref/Get")]
+        public ActionResult MarketingListXrefGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_MarketingListXrefManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/MarketingListCode/Get")]
+        public ActionResult MarketingListCodeGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_MarketingListCodeManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/MarketingCode/Get")]
+        public ActionResult MarketingCodeGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_MarketingCodeManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/LotSerialSummary/Get")]
+        public ActionResult LotSerialSummaryGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_LotSerialSummaryManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/LotSerialLocationSummaryNoAvailability/Get")]
+        public ActionResult LotSerialLocationSummaryNoAvailabilityGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_LotSerialLocationSummaryNoAvailabilityManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/LotSerialLocationSummary/Get")]
+        public ActionResult LotSerialLocationSummaryGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_LotSerialLocationSummaryManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/LotSerialLocation/Get")]
+        public ActionResult LotSerialLocationGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_LotSerialLocationManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/LotSerialInventoryWithoutLastReceipt/Get")]
+        public ActionResult LotSerialInventoryWithoutLastReceiptGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_LotSerialInventoryWithoutLastReceiptManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/LotSerialInventoryReceipts/Get")]
+        public ActionResult LotSerialInventoryReceiptsGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_LotSerialInventoryReceiptsManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/LotSerialInventoryIssues/Get")]
+        public ActionResult LotSerialInventoryIssuesGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_LotSerialInventoryIssuesManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/LotSerialInventory/Get")]
+        public ActionResult LotSerialInventoryGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_LotSerialInventoryManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/LotSerialDefaultLocation/Get")]
+        public ActionResult LotSerialDefaultLocationGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_LotSerialDefaultLocationManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/LostBusiness/Get")]
+        public ActionResult LostBusinessGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_LostBusinessManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/LocationSummaryNoAvailability/Get")]
+        public ActionResult LocationSummaryNoAvailabilityGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_LocationSummaryNoAvailabilityManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/LocationSummary/Get")]
+        public ActionResult LocationSummaryGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_LocationSummaryManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/LIFOCostLayers/Get")]
+        public ActionResult LIFOCostLayersGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_LIFOCostLayersManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/JournalLine/Get")]
+        public ActionResult JournalLineGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_JournalLineManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/Journal/Get")]
+        public ActionResult JournalGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_JournalManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/IssueXref/Get")]
+        public ActionResult IssueXrefGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_IssueXrefManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/IssueTypeStatusXref/Get")]
+        public ActionResult IssueTypeStatusXrefGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_IssueTypeStatusXrefManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/IssueTypeSchedulingClassXref/Get")]
+        public ActionResult IssueTypeSchedulingClassXrefGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_IssueTypeSchedulingClassXrefManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/IssueTypeResolutionXref/Get")]
+        public ActionResult IssueTypeResolutionXrefGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_IssueTypeResolutionXrefManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/IssueTypePriorityXref/Get")]
+        public ActionResult IssueTypePriorityXrefGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_IssueTypePriorityXrefManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/IssueTypeCodeXref/Get")]
+        public ActionResult IssueTypeCodeXrefGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_IssueTypeCodeXrefManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/IssueType/Get")]
+        public ActionResult IssueTypeGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_IssueTypeManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/IssueStatusCode/Get")]
+        public ActionResult IssueStatusCodeGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_IssueStatusCodeManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/IssueSchedulingClass/Get")]
+        public ActionResult IssueSchedulingClassGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_IssueSchedulingClassManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
         }
 
         [HttpPost]

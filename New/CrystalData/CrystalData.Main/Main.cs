@@ -621,6 +621,96 @@ namespace CrystalData.Main
 
             Service.AddTransient<IIssueResolutionCodeManager, IssueResolutionCodeManager>();
             Service.AddTransient<IIssueResolutionCodeDataAccess, IssueResolutionCodeDataAccess>();
+
+            Service.AddTransient<IIssueSchedulingClassManager, IssueSchedulingClassManager>();
+            Service.AddTransient<IIssueSchedulingClassDataAccess, IssueSchedulingClassDataAccess>();
+
+            Service.AddTransient<IIssueStatusCodeManager, IssueStatusCodeManager>();
+            Service.AddTransient<IIssueStatusCodeDataAccess, IssueStatusCodeDataAccess>();
+
+            Service.AddTransient<IIssueTypeManager, IssueTypeManager>();
+            Service.AddTransient<IIssueTypeDataAccess, IssueTypeDataAccess>();
+
+            Service.AddTransient<IIssueTypeCodeXrefManager, IssueTypeCodeXrefManager>();
+            Service.AddTransient<IIssueTypeCodeXrefDataAccess, IssueTypeCodeXrefDataAccess>();
+
+            Service.AddTransient<IIssueTypePriorityXrefManager, IssueTypePriorityXrefManager>();
+            Service.AddTransient<IIssueTypePriorityXrefDataAccess, IssueTypePriorityXrefDataAccess>();
+
+            Service.AddTransient<IIssueTypeResolutionXrefManager, IssueTypeResolutionXrefManager>();
+            Service.AddTransient<IIssueTypeResolutionXrefDataAccess, IssueTypeResolutionXrefDataAccess>();
+
+            Service.AddTransient<IIssueTypeSchedulingClassXrefManager, IssueTypeSchedulingClassXrefManager>();
+            Service.AddTransient<IIssueTypeSchedulingClassXrefDataAccess, IssueTypeSchedulingClassXrefDataAccess>();
+
+            Service.AddTransient<IIssueTypeStatusXrefManager, IssueTypeStatusXrefManager>();
+            Service.AddTransient<IIssueTypeStatusXrefDataAccess, IssueTypeStatusXrefDataAccess>();
+
+            Service.AddTransient<IIssueXrefManager, IssueXrefManager>();
+            Service.AddTransient<IIssueXrefDataAccess, IssueXrefDataAccess>();
+
+            Service.AddTransient<IJournalManager, JournalManager>();
+            Service.AddTransient<IJournalDataAccess, JournalDataAccess>();
+
+            Service.AddTransient<IJournalLineManager, JournalLineManager>();
+            Service.AddTransient<IJournalLineDataAccess, JournalLineDataAccess>();
+
+            Service.AddTransient<ILIFOCostLayersManager, LIFOCostLayersManager>();
+            Service.AddTransient<ILIFOCostLayersDataAccess, LIFOCostLayersDataAccess>();
+
+            Service.AddTransient<ILocationSummaryManager, LocationSummaryManager>();
+            Service.AddTransient<ILocationSummaryDataAccess, LocationSummaryDataAccess>();
+
+            Service.AddTransient<ILocationSummaryNoAvailabilityManager, LocationSummaryNoAvailabilityManager>();
+            Service.AddTransient<ILocationSummaryNoAvailabilityDataAccess, LocationSummaryNoAvailabilityDataAccess>();
+
+            Service.AddTransient<ILostBusinessManager, LostBusinessManager>();
+            Service.AddTransient<ILostBusinessDataAccess, LostBusinessDataAccess>();
+
+            Service.AddTransient<ILotSerialDefaultLocationManager, LotSerialDefaultLocationManager>();
+            Service.AddTransient<ILotSerialDefaultLocationDataAccess, LotSerialDefaultLocationDataAccess>();
+
+            Service.AddTransient<ILotSerialInventoryManager, LotSerialInventoryManager>();
+            Service.AddTransient<ILotSerialInventoryDataAccess, LotSerialInventoryDataAccess>();
+
+            Service.AddTransient<ILotSerialInventoryIssuesManager, LotSerialInventoryIssuesManager>();
+            Service.AddTransient<ILotSerialInventoryIssuesDataAccess, LotSerialInventoryIssuesDataAccess>();
+
+            Service.AddTransient<ILotSerialInventoryReceiptsManager, LotSerialInventoryReceiptsManager>();
+            Service.AddTransient<ILotSerialInventoryReceiptsDataAccess, LotSerialInventoryReceiptsDataAccess>();
+
+            Service.AddTransient<ILotSerialInventoryWithoutLastReceiptManager, LotSerialInventoryWithoutLastReceiptManager>();
+            Service.AddTransient<ILotSerialInventoryWithoutLastReceiptDataAccess, LotSerialInventoryWithoutLastReceiptDataAccess>();
+
+            Service.AddTransient<ILotSerialLocationManager, LotSerialLocationManager>();
+            Service.AddTransient<ILotSerialLocationDataAccess, LotSerialLocationDataAccess>();
+
+            Service.AddTransient<ILotSerialLocationSummaryManager, LotSerialLocationSummaryManager>();
+            Service.AddTransient<ILotSerialLocationSummaryDataAccess, LotSerialLocationSummaryDataAccess>();
+
+            Service.AddTransient<ILotSerialLocationSummaryNoAvailabilityManager, LotSerialLocationSummaryNoAvailabilityManager>();
+            Service.AddTransient<ILotSerialLocationSummaryNoAvailabilityDataAccess, LotSerialLocationSummaryNoAvailabilityDataAccess>();
+
+            Service.AddTransient<ILotSerialSummaryManager, LotSerialSummaryManager>();
+            Service.AddTransient<ILotSerialSummaryDataAccess, LotSerialSummaryDataAccess>();
+
+            Service.AddTransient<IMarketingCodeManager, MarketingCodeManager>();
+            Service.AddTransient<IMarketingCodeDataAccess, MarketingCodeDataAccess>();
+
+            Service.AddTransient<IMarketingListCodeManager, MarketingListCodeManager>();
+            Service.AddTransient<IMarketingListCodeDataAccess, MarketingListCodeDataAccess>();
+
+            Service.AddTransient<IMarketingListXrefManager, MarketingListXrefManager>();
+            Service.AddTransient<IMarketingListXrefDataAccess, MarketingListXrefDataAccess>();
+
+            Service.AddTransient<IMessagesManager, MessagesManager>();
+            Service.AddTransient<IMessagesDataAccess, MessagesDataAccess>();
+
+            Service.AddTransient<INoteCategoryManager, NoteCategoryManager>();
+            Service.AddTransient<INoteCategoryDataAccess, NoteCategoryDataAccess>();
+
+            Service.AddTransient<INotesManager, NotesManager>();
+            Service.AddTransient<INotesDataAccess, NotesDataAccess>();
         }
     }
 }
