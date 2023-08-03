@@ -235,228 +235,284 @@ namespace CrystalData.API.Controllers
         IMessagesManager _MessagesManager { get; set; }
         INoteCategoryManager _NoteCategoryManager { get; set; }
         INotesManager _NotesManager { get; set; }
-        public ExecController(
-            ICvAssembliesManager cvAssembliesManager, 
-            IAccessManager AccessManager,
-            ICvAssemblyDetailsManager CvAssemblyDetailsManager,
-            IAccessPermissionManager accessPermissionManager,
-            IAccessPermissionMasterManager accessPermissionMasterManager,
-            IBranchManager branchManager,
-            IBusinessActivityHistoryManager businessActivityHistoryManager,
-            IBusinessActivityManager businessActivityManager,
-            IBusinessActivityRelatedItemsManager businessActivityRelatedItemsManager,
-            IBusinessActivityTimeAndMaterialsManager businessActivityTimeAndMaterialsManager,
-            ICarrierManager carrierManager,
-            ICarrierBillingOptionsManager carrierBillingOptionsManager,
-            ICarrierInsuranceOptionsManager carrierInsuranceOptionsManager,
-            ICarrierServiceManager carrierServiceManager,
-            ICarrierVoidOptionsManager carrierVoidOptionsManager,
-            IChargeManager chargeManager,
-            IClassManager classManager,
-            IContractTypeManager contractTypeManager,
-            ICostLayerIssuesManager costLayerIssues,
-            ICvAssemblyCustomerOrderManager cvAssemblyCustomerOrder,
-            ICvAssemblyDocumentMembersManager cvAssemblyDocumentMembersManager,
-            ICvAssemblyProductionRecordManager cvAssemblyProductionRecordManager,
-            ICvInventoryTransfersRepeaterManager cvInventoryTransfersRepeaterManager,
-            ICostLayerReceiptsManager costLayerReceiptsManager,
-            ICostLayersManager costLayersManager,
-            ICurrencyManager currencyManager,
-            ICustomDataListManager customDataListManager,
-            ICustomerManager customerManager,
-            ICustomerBalanceManager customerBalanceManager,
-            ICustomerChargeTotalManager customerChargeTotalDataAccess,
-            ICustomerContactManager customerContactDataAccess,
-            ICustomerContractManager customerContractManager,
-            ICustomerCreditStatusManager customerCreditStatusManager,
-            ICustomerEmailAddressListManager customerEmailAddressListManager,
-            IProductComponentManager productComponentManager,
-            ICustomerExportManager customerExportManager,
-            ICustomerFullNameManager customerFullNameManager,
-            ICustomerInfoManager customerInfoManager,
-            ICustomerInvoiceTotalManager customerInvoiceTotalManager,
-            ICustomerMarketingListXrefManager customerMarketingListXrefManager,
-            ICustomerPaymentManager customerPaymentManager,
-            ICustomerPaymentAppliedTotalManager customerPaymentAppliedTotalManager,
-            ICustomerPaymentChargeTotalManager customerPaymentChargeTotalManager,
-            ICustomerPaymentInvoiceManager customerPaymentInvoiceManager,
-            ICustomerPaymentInvoiceTotalManager customerPaymentInvoiceTotalManager,
-            ICustomerPaymentTotalManager customerPaymentTotalManager,
-            ICustomerPaymentViewManager customerPaymentViewManager,
-            ICustomerProductManager customerProductManager,
-            ICustomerShipManager customerShipManager,
-            ICustomerShipToInfoManager customerShipToInfoManager,
-            ICustomerShipViewManager customerShipViewManager,
-            ICustomerStatementManager customerStatementManager,
-            ICustomerTypeInfoManager customerTypeInfoManager,
-            ICustomerViewManager customerViewManager,
-            ICustomFieldManager customFeildManager,
-            IcvAccessGroupManager cvAccessGroupManager,
-            IcvAccessGroupUsersManager cvAccessGroupUsersManager,
-            IcvAssemblyComponentAvailabilityManager cvAssemblyComponentAvailabilityManager,
-            IcvAssemblyComponentLotAvailabilityManager cvAssemblyComponentLotAvailabilityManager,
-            IcvAssemblyOrderDetManager cvAssemblyOrderDetManager,
-            IcvAssemblyOrderDetailManager cvAssemblyOrderDetailManager,
-            IcvAssemblyOrderDetailStatsManager cvAssemblyOrderDetailStatsManager,
-            IcvAssemblyOrderDetailSummaryManager cvAssemblyOrderDetailSummaryManager,
-            IcvAssemblyOrderHeaderManager cvAssemblyOrderHeaderManager,
-            IcvAssemblyOrderMembersManager cvAssemblyOrderMembersManager,
-            IcvAssemblyOrderPackagingManager cvAssemblyOrderPackagingManager,
-            IcvAssemblyOrdersManager cvAssemblyOrdersManager,
-            IcvAssemblyOrdersExtendedManager cvAssemblyOrdersExtendedManager,
-            IcvAssemblyParentManager cvAssemblyParentManager,
-            IcvAssemblyParentComponentManager cvAssemblyParentComponentManager,
-            IcvAssemblyProductionPassFailManager cvAssemblyProductionPassFailManager,
-            IcvAssemblyProductionReportManager cvAssemblyProductionReportManager,
-            IcvAssemblyProductionReportInnerManager cvAssemblyProductionReportInnerManager,
-            IcvAssemblyProductLabelManager cvAssemblyProductLabelManager,
-            IcvAssemblySessionsManager cvAssemblySessionsManager,
-            IcvAssemblyUnallocatedComponentsManager cvAssemblyUnallocatedComponentsManager,
-            IcvBorsightTransfersForAssembliesManager cvBorsightTransfersForAssembliesManager,
-            IcvCustomerContactCleanPhoneManager cvCustomerContactCleanPhoneManager,
-            IcvIncomingInspectionBOMManager cvIncomingInspectionBOMManager,
-            IcvIncomingQCTemplateManager cvIncomingQCTemplateManager,
-            IcvIngredientClaimActivitiesManager cvIngredientClaimActivitiesManager,
-            IcvInventorySerialLotSummaryTransactionsManager cvInventorySerialLotSummaryTransactionsManager,
-            IcvInventoryTransfersManager cvInventoryTransfersManager,
-            IcvInvoiceBalanceManager cvInvoiceBalanceManager,
-            IcvINVTransactionDetailCrystalControlManager cvINVTransactionDetailCrystalControlManager,
-            IcvINVTransferDetailsManager cvINVTransferDetailsManager,
-            IcvIssueManager cvIssueManager,
-            IcvIssueAssemblyManager cvIssueAssemblyManager,
-            IcvIssueChangedAssignmentManager cvIssueChangedAssignmentManager,
-            IcvIssuesForMfgManager cvIssuesForMfgManager,
-            IcvIssuesForWarehouseManager cvIssuesForWarehouseManager,
-            IcvIssueViewersManager cvIssueViewersManager,
-            IcvIssueViewersAssembliesManager cvIssueViewersAssembliesManager,
-            IcvIssueViewersParentAssemblyManager cvIssueViewersParentAssemblyManager,
-            IcvLastPOForProductManager cvLastPOForProductManager,
-            IcvLinkConfigManager cvLinkConfigManager,
-            IcvLinkConfigDocumentFoldersManager cvLinkConfigDocumentFoldersManager,
-            IcvLinkConfigDocumentsManager cvLinkConfigDocumentsManager,
-            IcvLinkConfigGuidesManager cvLinkConfigGuidesManager,
-            IcvLinkConfigLabelsManager cvLinkConfigLabelsManager,
-            IcvLinkConfigReportsManager cvLinkConfigReportsManager,
-            IcvLinkConfigXrefManager cvLinkConfigXrefManager,
-            IcvLinkProductSelectorManager cvLinkProductSelectorManager,
-            IcvLocationSummaryManager cvLocationSummaryManager,
-            IcvLotSerialInventoryManager cvLotSerialInventoryManager,
-            IcvLotSerialLocationSummaryManager cvLotSerialLocationSummaryManager,
-            IcvNegativeLotLocationManager cvNegativeLotLocationManager,
-            IcvNegativeLotLocationNAHSManager cvNegativeLotLocationNAHSManager,
-            IcvOptionGroupManager cvOptionGroupManager,
-            IcvOptionsManager cvOptionsManager,
-            IcvOptionTypeManager cvOptionTypeManager,
-            IcvOrderDetTranslationManager cvOrderDetTranslationManager,
-            IcvPODetWhereUsedManager cvPODetWhereUsedManager,
-            IcvPODetWithReceiptsAssyNeededManager cvPODetWithReceiptsAssyNeededManager,
-            IcvPOReceiptManager cvPOReceiptManager,
-            IcvPOReceiptsAssyNeededManager cvPOReceiptsAssyNeededManager,
-            IcvPriorPOForProductManager cvPriorPOForProductManager,
-            IcvproductManager cvproductManager,
-            IcvProductAvailabilityManager cvProductAvailabilityManager,
-            IcvProductBatchManager cvProductBatchManager,
-            IcvProductComponentManager cvProductComponentManager,
-            IcvProductEffectivePriceManager cvProductEffectivePriceManager,
-            IcvProductExportNSSManager cvProductExportNSSManager,
-            IcvProductFinishedNSSManager cvProductFinishedNSSManager,
-            IcvProductIngredientNSSManager cvProductIngredientNSSManager,
-            IcvProductLocationSummaryManager cvProductLocationSummaryManager,
-            IcvProductMetricsManager cvProductMetricsManager,
-            IcvProductPackageUnitConversionManager cvProductPackageUnitConversionManager,
-            IcvProductPackagingManager cvProductPackagingManager,
-            IcvProductProcManager cvProductProcManager,
-            IcvProductPurchaseUnitConversionManager cvProductPurchaseUnitConversionManager,
-            IcvProductQCManager cvProductQCManager,
-            IcvProductSpecAssembliesManager cvProductSpecAssembliesManager,
-            IcvProductVendorPriceManager cvProductVendorPriceManager,
-            IcvReceiptTransactionDetailManager cvReceiptTransactionDetailManager,
-            IcvReceivingLogManager cvReceivingLogManager,
-            IcvRoleAccessManager cvRoleAccessManager,
-            IcvSuppManufactureManager cvSuppManufactureManager,
-            IcvSuppManufactureYieldManager cvSuppManufactureYieldManager,
-            IcvTrxDetailControlSeriesManager cvTrxDetailControlSeriesManager,
-            IcvTrxDetailControlValuesManager cvTrxDetailControlValuesManager,
-            IcvVendorRequestForQuotesManager cvVendorRequestForQuotesManager,
-            IDocumentManager documentManager,
-            IEDIAdditionalInformationManager eDIAdditionalInformationManager,
-            IEDIOrderDetailExManager eDIOrderDetailExManager,
-            IEDIOrdersExManager eDIOrdersExManager,
-            IEmployeeManager employeeManager,
-            IFIFOCostLayersManager fIFOCostLayersManager,
-            IFlattenedKitComponentsManager flattenedKitComponentsManager,
-            IGLAccountManager gLAccountManager,
-            IGLAccountSegmentManager gLAccountSegmentManager,
-            IImpExpDocumentColumnManager impExpDocumentColumnManager,
-            IImpExpDocumentTableManager impExpDocumentTableManager,
-            IImpExpDocumentTypeManager impExpDocumentTypeManager,
-            IImportManager importManager,
-            IImportConversionManager importConversionManager,
-            IImportDefaultConversionManager importDefaultConversionManager,
-            IImportDefaultMapManager importDefaultMapManager,
-            IImportDefaultNamespaceManager importDefaultNamespaceManager,
-            IImportDefaultSourceFieldsManager importDefaultSourceFieldsManager,
-            IImportDefaultTableManager iImportDefaultTableManager,
-            IImportErrorsManager importErrorsManager,
-            IImportMapManager importMapManager,
-            IImportNamespaceManager importNamespaceManager,
-            IImportSkippedManager importSkippedManager,
-            IImportSourceFieldsManager importSourceFieldsManager,
-            IImportSourceFileManager importSourceFileManager,
-            IImportSourceRelateFieldsManager importSourceRelateFieldsManager,
-            IImportTableManager importTableManager,
-            IImportTemplateOptionsManager importTemplateOptionsManager,
-            IImportTransformationManager importTransformationManager,
-            IInventoryJournalManager inventoryJournalManager,
-            IInventoryJournalDetailManager inventoryJournalDetailManager,
-            IInventoryJournalDetail_NoAccountsManager inventoryJournalDetail_NoAccountsManager,
-            IInventoryJournalSummaryManager inventoryJournalSummaryManager,
-            IINVLotSerialTraceManager iNVLotSerialTraceManager,
-            IINVLotSerialTraceDetailManager iNVLotSerialTraceDetailManager,
-            IInvoiceManager invoiceManager,
-            IInvoiceAmtSummaryManager invoiceAmtSummaryManager,
-            IInvoiceDetailManager invoiceDetailManager,
-            IInvoicesAndChargesManager invoicesAndChargesManager,
-            IINVRegisterManager iNVRegisterManager,
-            IINVTransactionManager iNVTransactionManager,
-            IINVTransactionDetailManager iNVTransactionDetailManager,
-            IINVTransactionDetailOnHandSummaryManager iNVTransactionDetailOnHandSummaryManager,
-            IINVTransactionDetailSummaryManager iNVTransactionDetailSummaryManager,
-            IIssueManager issueManager,
-            IIssueCodeManager issueCodeManager,
-            IIssueLogManager issueLogManager,
-            IIssuePriorityCodeManager issuePriorityCodeManager,
-            IIssueResolutionCodeManager issueResolutionCodeManager,
-            IIssueSchedulingClassManager issueSchedulingClassManager,
-            IIssueStatusCodeManager issueStatusCodeManager,
-            IIssueTypeManager issueTypeManager,
-            IIssueTypeCodeXrefManager issueTypeCodeXrefManager,
-            IIssueTypePriorityXrefManager issueTypePriorityXrefManager,
-            IIssueTypeResolutionXrefManager issueTypeResolutionXrefManager,
-            IIssueTypeSchedulingClassXrefManager issueTypeSchedulingClassXrefManager,
-            IIssueTypeStatusXrefManager issueTypeStatusXrefManager,
-            IIssueXrefManager issueXrefManager,
-            IJournalManager journalManager,
-            IJournalLineManager journalLineManager,
-            ILIFOCostLayersManager lIFOCostLayersManager,
-            ILocationSummaryManager locationSummaryManager,
-            ILocationSummaryNoAvailabilityManager locationSummaryNoAvailabilityManager,
-            ILostBusinessManager lostBusinessManager,
-            ILotSerialDefaultLocationManager lotSerialDefaultLocationManager,
-            ILotSerialInventoryManager lotSerialInventoryManager,
-            ILotSerialInventoryIssuesManager lotSerialInventoryIssuesManager,
-            ILotSerialInventoryReceiptsManager lotSerialInventoryReceiptsManager,
-            ILotSerialInventoryWithoutLastReceiptManager lotSerialInventoryWithoutLastReceiptManager,
-            ILotSerialLocationManager lotSerialLocationManager,
-            ILotSerialLocationSummaryManager lotSerialLocationSummaryManager,
-            ILotSerialLocationSummaryNoAvailabilityManager lotSerialLocationSummaryNoAvailabilityManager,
-            ILotSerialSummaryManager lotSerialSummaryManager,
-            IMarketingCodeManager marketingCodeManager,
-            IMarketingListCodeManager marketingListCodeManager,
-            IMarketingListXrefManager marketingListXrefManager,
-            IMessagesManager messagesManager,
-            INoteCategoryManager noteCategoryManager,
-            INotesManager notesManager)
+        INoteStatusManager _NoteStatusManager {  get; set; }
+        INotesViewManager _NotesViewManager { get; set; }
+        INumbersManager _NumbersManager { get; set; }
+        IOrderDetailManager _OrderDetailManager { get; set; }
+        IOrderDetailLotManager _OrderDetailLotManager { get; set; }
+        IOrderDetailSummaryManager _OrderDetailSummaryManager { get; set; }
+        IOrderDetailTopLevelComponentQuantityManager _OrderDetailTopLevelComponentQuantityManager { get; set; }
+        IOrderManagementSummaryManager _OrderManagementSummaryManager { get; set; }
+        IOrderPackagesManager _OrderPackagesManager { get; set; }
+        IOrderPendingAssembliesManager _OrderPendingAssembliesManager { get; set; }
+        IOrdersManager _OrdersManager { get; set; }
+        IOrdersAvailableToShipManager _OrdersAvailableToShipManager { get; set; }
+        IOrderWorkFlowStatusManager _OrderWorkFlowStatusManager { get; set; }
+        IPaymentMethodManager _PaymentMethodManager { get; set; }
+        IPicklistManager _PicklistManager { get; set; }
+        IPicklistDetailManager _PicklistDetailManager { get; set; }
+        IPicklistDetailLotManager _PicklistDetailLotManager { get; set; }
+        IPicklistOrderManager _PicklistOrderManager { get; set; }
+        IPOManager _POManager { get; set; }
+        IPODetailManager _PODetailManager { get; set; }
+        IPODetailInvoicedManager _PODetailInvoicedManager { get; set; }
+        IPODetailInvoiceSummaryManager _PODetailInvoiceSummaryManager { get; set; }
+        IPODetailReceiptSummaryManager _PODetailReceiptSummaryManager { get; set; }
+        IPODetailReceivedManager _PODetailReceivedManager { get; set; }
+        IPODetailSimpleManager _PODetailSimpleManager { get; set; }
+        IPOInvoiceManager _POInvoiceManager { get; set; }
+        IPOInvoiceDetailManager _POInvoiceDetailManager { get; set; }
+        IPOManagementSummaryManager _POManagementSummaryManager { get; set; }
+         public ExecController(
+       ICvAssembliesManager cvAssembliesManager,
+       IAccessManager AccessManager,
+       ICvAssemblyDetailsManager CvAssemblyDetailsManager,
+       IAccessPermissionManager accessPermissionManager,
+       IAccessPermissionMasterManager accessPermissionMasterManager,
+       IBranchManager branchManager,
+       IBusinessActivityHistoryManager businessActivityHistoryManager,
+       IBusinessActivityManager businessActivityManager,
+       IBusinessActivityRelatedItemsManager businessActivityRelatedItemsManager,
+       IBusinessActivityTimeAndMaterialsManager businessActivityTimeAndMaterialsManager,
+       ICarrierManager carrierManager,
+       ICarrierBillingOptionsManager carrierBillingOptionsManager,
+       ICarrierInsuranceOptionsManager carrierInsuranceOptionsManager,
+       ICarrierServiceManager carrierServiceManager,
+       ICarrierVoidOptionsManager carrierVoidOptionsManager,
+       IChargeManager chargeManager,
+       IClassManager classManager,
+       IContractTypeManager contractTypeManager,
+       ICostLayerIssuesManager costLayerIssues,
+       ICvAssemblyCustomerOrderManager cvAssemblyCustomerOrder,
+       ICvAssemblyDocumentMembersManager cvAssemblyDocumentMembersManager,
+       ICvAssemblyProductionRecordManager cvAssemblyProductionRecordManager,
+       ICvInventoryTransfersRepeaterManager cvInventoryTransfersRepeaterManager,
+       ICostLayerReceiptsManager costLayerReceiptsManager,
+       ICostLayersManager costLayersManager,
+       ICurrencyManager currencyManager,
+       ICustomDataListManager customDataListManager,
+       ICustomerManager customerManager,
+       ICustomerBalanceManager customerBalanceManager,
+       ICustomerChargeTotalManager customerChargeTotalDataAccess,
+       ICustomerContactManager customerContactDataAccess,
+       ICustomerContractManager customerContractManager,
+       ICustomerCreditStatusManager customerCreditStatusManager,
+       ICustomerEmailAddressListManager customerEmailAddressListManager,
+       IProductComponentManager productComponentManager,
+       ICustomerExportManager customerExportManager,
+       ICustomerFullNameManager customerFullNameManager,
+       ICustomerInfoManager customerInfoManager,
+       ICustomerInvoiceTotalManager customerInvoiceTotalManager,
+       ICustomerMarketingListXrefManager customerMarketingListXrefManager,
+       ICustomerPaymentManager customerPaymentManager,
+       ICustomerPaymentAppliedTotalManager customerPaymentAppliedTotalManager,
+       ICustomerPaymentChargeTotalManager customerPaymentChargeTotalManager,
+       ICustomerPaymentInvoiceManager customerPaymentInvoiceManager,
+       ICustomerPaymentInvoiceTotalManager customerPaymentInvoiceTotalManager,
+       ICustomerPaymentTotalManager customerPaymentTotalManager,
+       ICustomerPaymentViewManager customerPaymentViewManager,
+       ICustomerProductManager customerProductManager,
+       ICustomerShipManager customerShipManager,
+       ICustomerShipToInfoManager customerShipToInfoManager,
+       ICustomerShipViewManager customerShipViewManager,
+       ICustomerStatementManager customerStatementManager,
+       ICustomerTypeInfoManager customerTypeInfoManager,
+       ICustomerViewManager customerViewManager,
+       ICustomFieldManager customFeildManager,
+       IcvAccessGroupManager cvAccessGroupManager,
+       IcvAccessGroupUsersManager cvAccessGroupUsersManager,
+       IcvAssemblyComponentAvailabilityManager cvAssemblyComponentAvailabilityManager,
+       IcvAssemblyComponentLotAvailabilityManager cvAssemblyComponentLotAvailabilityManager,
+       IcvAssemblyOrderDetManager cvAssemblyOrderDetManager,
+       IcvAssemblyOrderDetailManager cvAssemblyOrderDetailManager,
+       IcvAssemblyOrderDetailStatsManager cvAssemblyOrderDetailStatsManager,
+       IcvAssemblyOrderDetailSummaryManager cvAssemblyOrderDetailSummaryManager,
+       IcvAssemblyOrderHeaderManager cvAssemblyOrderHeaderManager,
+       IcvAssemblyOrderMembersManager cvAssemblyOrderMembersManager,
+       IcvAssemblyOrderPackagingManager cvAssemblyOrderPackagingManager,
+       IcvAssemblyOrdersManager cvAssemblyOrdersManager,
+       IcvAssemblyOrdersExtendedManager cvAssemblyOrdersExtendedManager,
+       IcvAssemblyParentManager cvAssemblyParentManager,
+       IcvAssemblyParentComponentManager cvAssemblyParentComponentManager,
+       IcvAssemblyProductionPassFailManager cvAssemblyProductionPassFailManager,
+       IcvAssemblyProductionReportManager cvAssemblyProductionReportManager,
+       IcvAssemblyProductionReportInnerManager cvAssemblyProductionReportInnerManager,
+       IcvAssemblyProductLabelManager cvAssemblyProductLabelManager,
+       IcvAssemblySessionsManager cvAssemblySessionsManager,
+       IcvAssemblyUnallocatedComponentsManager cvAssemblyUnallocatedComponentsManager,
+       IcvBorsightTransfersForAssembliesManager cvBorsightTransfersForAssembliesManager,
+       IcvCustomerContactCleanPhoneManager cvCustomerContactCleanPhoneManager,
+       IcvIncomingInspectionBOMManager cvIncomingInspectionBOMManager,
+       IcvIncomingQCTemplateManager cvIncomingQCTemplateManager,
+       IcvIngredientClaimActivitiesManager cvIngredientClaimActivitiesManager,
+       IcvInventorySerialLotSummaryTransactionsManager cvInventorySerialLotSummaryTransactionsManager,
+       IcvInventoryTransfersManager cvInventoryTransfersManager,
+       IcvInvoiceBalanceManager cvInvoiceBalanceManager,
+       IcvINVTransactionDetailCrystalControlManager cvINVTransactionDetailCrystalControlManager,
+       IcvINVTransferDetailsManager cvINVTransferDetailsManager,
+       IcvIssueManager cvIssueManager,
+       IcvIssueAssemblyManager cvIssueAssemblyManager,
+       IcvIssueChangedAssignmentManager cvIssueChangedAssignmentManager,
+       IcvIssuesForMfgManager cvIssuesForMfgManager,
+       IcvIssuesForWarehouseManager cvIssuesForWarehouseManager,
+       IcvIssueViewersManager cvIssueViewersManager,
+       IcvIssueViewersAssembliesManager cvIssueViewersAssembliesManager,
+       IcvIssueViewersParentAssemblyManager cvIssueViewersParentAssemblyManager,
+       IcvLastPOForProductManager cvLastPOForProductManager,
+       IcvLinkConfigManager cvLinkConfigManager,
+       IcvLinkConfigDocumentFoldersManager cvLinkConfigDocumentFoldersManager,
+       IcvLinkConfigDocumentsManager cvLinkConfigDocumentsManager,
+       IcvLinkConfigGuidesManager cvLinkConfigGuidesManager,
+       IcvLinkConfigLabelsManager cvLinkConfigLabelsManager,
+       IcvLinkConfigReportsManager cvLinkConfigReportsManager,
+       IcvLinkConfigXrefManager cvLinkConfigXrefManager,
+       IcvLinkProductSelectorManager cvLinkProductSelectorManager,
+       IcvLocationSummaryManager cvLocationSummaryManager,
+       IcvLotSerialInventoryManager cvLotSerialInventoryManager,
+       IcvLotSerialLocationSummaryManager cvLotSerialLocationSummaryManager,
+       IcvNegativeLotLocationManager cvNegativeLotLocationManager,
+       IcvNegativeLotLocationNAHSManager cvNegativeLotLocationNAHSManager,
+       IcvOptionGroupManager cvOptionGroupManager,
+       IcvOptionsManager cvOptionsManager,
+       IcvOptionTypeManager cvOptionTypeManager,
+       IcvOrderDetTranslationManager cvOrderDetTranslationManager,
+       IcvPODetWhereUsedManager cvPODetWhereUsedManager,
+       IcvPODetWithReceiptsAssyNeededManager cvPODetWithReceiptsAssyNeededManager,
+       IcvPOReceiptManager cvPOReceiptManager,
+       IcvPOReceiptsAssyNeededManager cvPOReceiptsAssyNeededManager,
+       IcvPriorPOForProductManager cvPriorPOForProductManager,
+       IcvproductManager cvproductManager,
+       IcvProductAvailabilityManager cvProductAvailabilityManager,
+       IcvProductBatchManager cvProductBatchManager,
+       IcvProductComponentManager cvProductComponentManager,
+       IcvProductEffectivePriceManager cvProductEffectivePriceManager,
+       IcvProductExportNSSManager cvProductExportNSSManager,
+       IcvProductFinishedNSSManager cvProductFinishedNSSManager,
+       IcvProductIngredientNSSManager cvProductIngredientNSSManager,
+       IcvProductLocationSummaryManager cvProductLocationSummaryManager,
+       IcvProductMetricsManager cvProductMetricsManager,
+       IcvProductPackageUnitConversionManager cvProductPackageUnitConversionManager,
+       IcvProductPackagingManager cvProductPackagingManager,
+       IcvProductProcManager cvProductProcManager,
+       IcvProductPurchaseUnitConversionManager cvProductPurchaseUnitConversionManager,
+       IcvProductQCManager cvProductQCManager,
+       IcvProductSpecAssembliesManager cvProductSpecAssembliesManager,
+       IcvProductVendorPriceManager cvProductVendorPriceManager,
+       IcvReceiptTransactionDetailManager cvReceiptTransactionDetailManager,
+       IcvReceivingLogManager cvReceivingLogManager,
+       IcvRoleAccessManager cvRoleAccessManager,
+       IcvSuppManufactureManager cvSuppManufactureManager,
+       IcvSuppManufactureYieldManager cvSuppManufactureYieldManager,
+       IcvTrxDetailControlSeriesManager cvTrxDetailControlSeriesManager,
+       IcvTrxDetailControlValuesManager cvTrxDetailControlValuesManager,
+       IcvVendorRequestForQuotesManager cvVendorRequestForQuotesManager,
+       IDocumentManager documentManager,
+       IEDIAdditionalInformationManager eDIAdditionalInformationManager,
+       IEDIOrderDetailExManager eDIOrderDetailExManager,
+       IEDIOrdersExManager eDIOrdersExManager,
+       IEmployeeManager employeeManager,
+       IFIFOCostLayersManager fIFOCostLayersManager,
+       IFlattenedKitComponentsManager flattenedKitComponentsManager,
+       IGLAccountManager gLAccountManager,
+       IGLAccountSegmentManager gLAccountSegmentManager,
+       IImpExpDocumentColumnManager impExpDocumentColumnManager,
+       IImpExpDocumentTableManager impExpDocumentTableManager,
+       IImpExpDocumentTypeManager impExpDocumentTypeManager,
+       IImportManager importManager,
+       IImportConversionManager importConversionManager,
+       IImportDefaultConversionManager importDefaultConversionManager,
+       IImportDefaultMapManager importDefaultMapManager,
+       IImportDefaultNamespaceManager importDefaultNamespaceManager,
+       IImportDefaultSourceFieldsManager importDefaultSourceFieldsManager,
+       IImportDefaultTableManager iImportDefaultTableManager,
+       IImportErrorsManager importErrorsManager,
+       IImportMapManager importMapManager,
+       IImportNamespaceManager importNamespaceManager,
+       IImportSkippedManager importSkippedManager,
+       IImportSourceFieldsManager importSourceFieldsManager,
+       IImportSourceFileManager importSourceFileManager,
+       IImportSourceRelateFieldsManager importSourceRelateFieldsManager,
+       IImportTableManager importTableManager,
+       IImportTemplateOptionsManager importTemplateOptionsManager,
+       IImportTransformationManager importTransformationManager,
+       IInventoryJournalManager inventoryJournalManager,
+       IInventoryJournalDetailManager inventoryJournalDetailManager,
+       IInventoryJournalDetail_NoAccountsManager inventoryJournalDetail_NoAccountsManager,
+       IInventoryJournalSummaryManager inventoryJournalSummaryManager,
+       IINVLotSerialTraceManager iNVLotSerialTraceManager,
+       IINVLotSerialTraceDetailManager iNVLotSerialTraceDetailManager,
+       IInvoiceManager invoiceManager,
+       IInvoiceAmtSummaryManager invoiceAmtSummaryManager,
+       IInvoiceDetailManager invoiceDetailManager,
+       IInvoicesAndChargesManager invoicesAndChargesManager,
+       IINVRegisterManager iNVRegisterManager,
+       IINVTransactionManager iNVTransactionManager,
+       IINVTransactionDetailManager iNVTransactionDetailManager,
+       IINVTransactionDetailOnHandSummaryManager iNVTransactionDetailOnHandSummaryManager,
+       IINVTransactionDetailSummaryManager iNVTransactionDetailSummaryManager,
+       IIssueManager issueManager,
+       IIssueCodeManager issueCodeManager,
+       IIssueLogManager issueLogManager,
+       IIssuePriorityCodeManager issuePriorityCodeManager,
+       IIssueResolutionCodeManager issueResolutionCodeManager,
+       IIssueSchedulingClassManager issueSchedulingClassManager,
+       IIssueStatusCodeManager issueStatusCodeManager,
+       IIssueTypeManager issueTypeManager,
+       IIssueTypeCodeXrefManager issueTypeCodeXrefManager,
+       IIssueTypePriorityXrefManager issueTypePriorityXrefManager,
+       IIssueTypeResolutionXrefManager issueTypeResolutionXrefManager,
+       IIssueTypeSchedulingClassXrefManager issueTypeSchedulingClassXrefManager,
+       IIssueTypeStatusXrefManager issueTypeStatusXrefManager,
+       IIssueXrefManager issueXrefManager,
+       IJournalManager journalManager,
+       IJournalLineManager journalLineManager,
+       ILIFOCostLayersManager lIFOCostLayersManager,
+       ILocationSummaryManager locationSummaryManager,
+       ILocationSummaryNoAvailabilityManager locationSummaryNoAvailabilityManager,
+       ILostBusinessManager lostBusinessManager,
+       ILotSerialDefaultLocationManager lotSerialDefaultLocationManager,
+       ILotSerialInventoryManager lotSerialInventoryManager,
+       ILotSerialInventoryIssuesManager lotSerialInventoryIssuesManager,
+       ILotSerialInventoryReceiptsManager lotSerialInventoryReceiptsManager,
+       ILotSerialInventoryWithoutLastReceiptManager lotSerialInventoryWithoutLastReceiptManager,
+       ILotSerialLocationManager lotSerialLocationManager,
+       ILotSerialLocationSummaryManager lotSerialLocationSummaryManager,
+       ILotSerialLocationSummaryNoAvailabilityManager lotSerialLocationSummaryNoAvailabilityManager,
+       ILotSerialSummaryManager lotSerialSummaryManager,
+       IMarketingCodeManager marketingCodeManager,
+       IMarketingListCodeManager marketingListCodeManager,
+       IMarketingListXrefManager marketingListXrefManager,
+       IMessagesManager messagesManager,
+       INoteCategoryManager noteCategoryManager,
+       INotesManager notesManager,
+       INoteStatusManager noteStatusManager,
+       INotesViewManager notesViewManager,
+       INumbersManager numbersManager,
+       IOrderDetailManager orderDetailManager,
+       IOrderDetailLotManager orderDetailLotManager,
+       IOrderDetailSummaryManager orderDetailSummaryManager,
+       IOrderDetailTopLevelComponentQuantityManager orderDetailTopLevelComponentQuantityManager,
+       IOrderManagementSummaryManager orderManagementSummaryManager,
+       IOrderPackagesManager orderPackagesManager,
+       IOrderPendingAssembliesManager orderPendingAssembliesManager,
+       IOrdersManager ordersManager,
+       IOrdersAvailableToShipManager ordersAvailableToShipManager,
+       IOrderWorkFlowStatusManager orderWorkFlowStatusManager,
+       IPaymentMethodManager paymentMethodManager,
+       IPicklistManager picklistManager,
+       IPicklistDetailManager picklistDetailManager,
+       IPicklistDetailLotManager picklistDetailLotManager,
+       IPicklistOrderManager picklistOrderManager,
+       IPOManager pOManager,
+       IPODetailManager pODetailManager,
+       IPODetailInvoicedManager pODetailInvoicedManager,
+       IPODetailInvoiceSummaryManager pODetailInvoiceSummaryManager,
+       IPODetailReceiptSummaryManager pODetailReceiptSummaryManager,
+       IPODetailReceivedManager pODetailReceivedManager,
+       IPODetailSimpleManager pODetailSimpleManager,
+       IPOInvoiceManager pOInvoiceManager,
+       IPOInvoiceDetailManager pOInvoiceDetailManager,
+       IPOManagementSummaryManager pOManagementSummaryManager)
 
         {
             _CvAssembliesManager = cvAssembliesManager;
@@ -680,6 +736,482 @@ namespace CrystalData.API.Controllers
             _MessagesManager = messagesManager;
             _NoteCategoryManager = noteCategoryManager;
             _NotesManager = notesManager;
+            _NoteStatusManager = noteStatusManager;
+            _NotesViewManager = notesViewManager;
+            _NumbersManager = numbersManager;
+            _OrderDetailManager = orderDetailManager;
+            _OrderDetailLotManager = orderDetailLotManager;
+            _OrderDetailSummaryManager = orderDetailSummaryManager;
+            _OrderDetailTopLevelComponentQuantityManager = orderDetailTopLevelComponentQuantityManager;
+            _OrderManagementSummaryManager = orderManagementSummaryManager;
+            _OrderPackagesManager = orderPackagesManager;
+            _OrderPendingAssembliesManager = orderPendingAssembliesManager;
+            _OrdersManager = ordersManager;
+            _OrdersAvailableToShipManager = ordersAvailableToShipManager;
+            _OrderWorkFlowStatusManager = orderWorkFlowStatusManager;
+            _PaymentMethodManager = paymentMethodManager;
+            _PicklistManager = picklistManager;
+            _PicklistDetailManager = picklistDetailManager;
+            _PicklistDetailLotManager = picklistDetailLotManager;
+            _PicklistOrderManager = picklistOrderManager;
+            _POManager = pOManager;
+            _PODetailManager = pODetailManager;
+            _PODetailInvoicedManager = pODetailInvoicedManager;
+            _PODetailInvoiceSummaryManager = pODetailInvoiceSummaryManager;
+            _PODetailReceiptSummaryManager = pODetailReceiptSummaryManager;
+            _PODetailReceivedManager = pODetailReceivedManager;
+            _PODetailSimpleManager = pODetailSimpleManager;
+            _POInvoiceManager = pOInvoiceManager;
+            _POInvoiceDetailManager = pOInvoiceDetailManager;
+            _POManagementSummaryManager = pOManagementSummaryManager;
+        }
+
+        [HttpPost]
+        [Route("/api/Full/POManagementSummary/Get")]
+        public ActionResult POManagementSummaryGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_POManagementSummaryManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/POInvoiceDetail/Get")]
+        public ActionResult POInvoiceDetailGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_POInvoiceDetailManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/POInvoice/Get")]
+        public ActionResult POInvoiceGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_POInvoiceManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/PODetailSimple/Get")]
+        public ActionResult PODetailSimpleGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_PODetailSimpleManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/PODetailReceived/Get")]
+        public ActionResult PODetailReceivedGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_PODetailReceivedManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/PODetailReceiptSummary/Get")]
+        public ActionResult PODetailReceiptSummaryGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_PODetailReceiptSummaryManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/PODetailInvoiceSummary/Get")]
+        public ActionResult PODetailInvoiceSummaryGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_PODetailInvoiceSummaryManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/PODetailInvoiced/Get")]
+        public ActionResult PODetailInvoicedGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_PODetailInvoicedManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/PODetail/Get")]
+        public ActionResult PODetailGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_PODetailManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/PO/Get")]
+        public ActionResult POGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_POManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/PicklistOrder/Get")]
+        public ActionResult PicklistOrderGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_PicklistOrderManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/PicklistDetailLot/Get")]
+        public ActionResult PicklistDetailLotGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_PicklistDetailLotManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/PicklistDetail/Get")]
+        public ActionResult PicklistDetailGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_PicklistDetailManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/Picklist/Get")]
+        public ActionResult PicklistGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_PicklistManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/PaymentMethod/Get")]
+        public ActionResult PaymentMethodGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_PaymentMethodManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/OrderWorkFlowStatus/Get")]
+        public ActionResult OrderWorkFlowStatusGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_OrderWorkFlowStatusManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/OrdersAvailableToShip/Get")]
+        public ActionResult OrdersAvailableToShipGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_OrdersAvailableToShipManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/Orders/Get")]
+        public ActionResult OrdersGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_OrdersManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/OrderPendingAssemblies/Get")]
+        public ActionResult OrderPendingAssembliesGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_OrderPendingAssembliesManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/OrderPackages/Get")]
+        public ActionResult OrderPackagesGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_OrderPackagesManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/OrderManagementSummary/Get")]
+        public ActionResult OrderManagementSummaryGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_OrderManagementSummaryManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/OrderDetailTopLevelComponentQuantity/Get")]
+        public ActionResult OrderDetailTopLevelComponentQuantityGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_OrderDetailTopLevelComponentQuantityManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/OrderDetailSummary/Get")]
+        public ActionResult OrderDetailSummaryGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_OrderDetailSummaryManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/OrderDetailLot/Get")]
+        public ActionResult OrderDetailLotGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_OrderDetailLotManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/OrderDetail/Get")]
+        public ActionResult OrderDetailGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_OrderDetailManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/Numbers/Get")]
+        public ActionResult NumbersGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_NumbersManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/NotesView/Get")]
+        public ActionResult NotesViewGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_NotesViewManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/NoteStatus/Get")]
+        public ActionResult NoteStatusGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_NoteStatusManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
         }
 
         [HttpPost]

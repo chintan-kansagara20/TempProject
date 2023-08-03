@@ -711,6 +711,90 @@ namespace CrystalData.Main
 
             Service.AddTransient<INotesManager, NotesManager>();
             Service.AddTransient<INotesDataAccess, NotesDataAccess>();
+
+            Service.AddTransient<INoteStatusManager, NoteStatusManager>();
+            Service.AddTransient<INoteStatusDataAccess, NoteStatusDataAccess>();
+
+            Service.AddTransient<INotesViewManager, NotesViewManager>();
+            Service.AddTransient<INotesViewDataAccess, NotesViewDataAccess>();
+
+            Service.AddTransient<INumbersManager, NumbersManager>();
+            Service.AddTransient<INumbersDataAccess, NumbersDataAccess>();
+
+            Service.AddTransient<IOrderDetailManager, OrderDetailManager>();
+            Service.AddTransient<IOrderDetailDataAccess, OrderDetailDataAccess>();
+
+            Service.AddTransient<IOrderDetailLotManager, OrderDetailLotManager>();
+            Service.AddTransient<IOrderDetailLotDataAccess, OrderDetailLotDataAccess>();
+
+            Service.AddTransient<IOrderDetailSummaryManager, OrderDetailSummaryManager>();
+            Service.AddTransient<IOrderDetailSummaryDataAccess, OrderDetailSummaryDataAccess>();
+
+            Service.AddTransient<IOrderDetailTopLevelComponentQuantityManager, OrderDetailTopLevelComponentQuantityManager>();
+            Service.AddTransient<IOrderDetailTopLevelComponentQuantityDataAccess, OrderDetailTopLevelComponentQuantityDataAccess>();
+
+            Service.AddTransient<IOrderManagementSummaryManager, OrderManagementSummaryManager>();
+            Service.AddTransient<IOrderManagementSummaryDataAccess, OrderManagementSummaryDataAccess>();
+
+            Service.AddTransient<IOrderPackagesManager, OrderPackagesManager>();
+            Service.AddTransient<IOrderPackagesDataAccess, OrderPackagesDataAccess>();
+
+            Service.AddTransient<IOrderPendingAssembliesManager, OrderPendingAssembliesManager>();
+            Service.AddTransient<IOrderPendingAssembliesDataAccess, OrderPendingAssembliesDataAccess>();
+
+            Service.AddTransient<IOrdersManager, OrdersManager>();
+            Service.AddTransient<IOrdersDataAccess, OrdersDataAccess>();
+
+            Service.AddTransient<IOrdersAvailableToShipManager, OrdersAvailableToShipManager>();
+            Service.AddTransient<IOrdersAvailableToShipDataAccess, OrdersAvailableToShipDataAccess>();
+
+            Service.AddTransient<IOrderWorkFlowStatusManager, OrderWorkFlowStatusManager>();
+            Service.AddTransient<IOrderWorkFlowStatusDataAccess, OrderWorkFlowStatusDataAccess>();
+
+            Service.AddTransient<IPaymentMethodManager, PaymentMethodManager>();
+            Service.AddTransient<IPaymentMethodDataAccess, PaymentMethodDataAccess>();
+
+            Service.AddTransient<IPicklistManager, PicklistManager>();
+            Service.AddTransient<IPicklistDataAccess, PicklistDataAccess>();
+
+            Service.AddTransient<IPicklistDetailManager, PicklistDetailManager>();
+            Service.AddTransient<IPicklistDetailDataAccess, PicklistDetailDataAccess>();
+
+            Service.AddTransient<IPicklistDetailLotManager, PicklistDetailLotManager>();
+            Service.AddTransient<IPicklistDetailLotDataAccess, PicklistDetailLotDataAccess>();
+
+            Service.AddTransient<IPicklistOrderManager, PicklistOrderManager>();
+            Service.AddTransient<IPicklistOrderDataAccess, PicklistOrderDataAccess>();
+
+            Service.AddTransient<IPOManager, POManager>();
+            Service.AddTransient<IPODataAccess, PODataAccess>();
+
+            Service.AddTransient<IPODetailManager, PODetailManager>();
+            Service.AddTransient<IPODetailDataAccess, PODetailDataAccess>();
+
+            Service.AddTransient<IPODetailInvoicedManager, PODetailInvoicedManager>();
+            Service.AddTransient<IPODetailInvoicedDataAccess, PODetailInvoicedDataAccess>();
+
+            Service.AddTransient<IPODetailInvoiceSummaryManager, PODetailInvoiceSummaryManager>();
+            Service.AddTransient<IPODetailInvoiceSummaryDataAccess, PODetailInvoiceSummaryDataAccess>();
+
+            Service.AddTransient<IPODetailReceiptSummaryManager, PODetailReceiptSummaryManager>();
+            Service.AddTransient<IPODetailReceiptSummaryDataAccess, PODetailReceiptSummaryDataAccess>();
+
+            Service.AddTransient<IPODetailReceivedManager, PODetailReceivedManager>();
+            Service.AddTransient<IPODetailReceivedDataAccess, PODetailReceivedDataAccess>();
+
+            Service.AddTransient<IPODetailSimpleManager, PODetailSimpleManager>();
+            Service.AddTransient<IPODetailSimpleDataAccess, PODetailSimpleDataAccess>();
+
+            Service.AddTransient<IPOInvoiceManager, POInvoiceManager>();
+            Service.AddTransient<IPOInvoiceDataAccess, POInvoiceDataAccess>();
+
+            Service.AddTransient<IPOInvoiceDetailManager, POInvoiceDetailManager>();
+            Service.AddTransient<IPOInvoiceDetailDataAccess, POInvoiceDetailDataAccess>();
+
+            Service.AddTransient<IPOManagementSummaryManager, POManagementSummaryManager>();
+            Service.AddTransient<IPOManagementSummaryDataAccess, POManagementSummaryDataAccess>();
         }
     }
 }
