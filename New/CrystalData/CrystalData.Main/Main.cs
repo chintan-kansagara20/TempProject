@@ -795,6 +795,9 @@ namespace CrystalData.Main
 
             Service.AddTransient<IPOManagementSummaryManager, POManagementSummaryManager>();
             Service.AddTransient<IPOManagementSummaryDataAccess, POManagementSummaryDataAccess>();
+
+            Service.AddTransient<IWarehouseLocationManager, WarehouseLocationManager>();
+            Service.AddTransient<IWarehouseLocationDataAccess, WarehouseLocationDataAccess>();
         }
     }
 }
