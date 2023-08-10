@@ -819,6 +819,39 @@ namespace CrystalData.Main
 
             Service.AddTransient<IcvPureFishComponentsForOrdersManager, cvPureFishComponentsForOrdersManager>();
             Service.AddTransient<IcvPureFishComponentsForOrdersDataAccess, cvPureFishComponentsForOrdersDataAccess>();
+
+            Service.AddTransient<IProductAltUnitManager, ProductAltUnitManager>();
+            Service.AddTransient<IProductAltUnitDataAccess, ProductAltUnitDataAccess>();
+
+            Service.AddTransient<IProductAnalysisByMonthManager, ProductAnalysisByMonthManager>();
+            Service.AddTransient<IProductAnalysisByMonthDataAccess, ProductAnalysisByMonthDataAccess>();
+
+            Service.AddTransient<IProductAnalysisByWeekManager, ProductAnalysisByWeekManager>();
+            Service.AddTransient<IProductAnalysisByWeekDataAccess, ProductAnalysisByWeekDataAccess>();
+
+            Service.AddTransient<IProductAvailabilityByTemplateManager, ProductAvailabilityByTemplateManager>();
+            Service.AddTransient<IProductAvailabilityByTemplateDataAccess, ProductAvailabilityByTemplateDataAccess>();
+
+            Service.AddTransient<IProductClassManager, ProductClassManager>();
+            Service.AddTransient<IProductClassDataAccess, ProductClassDataAccess>();
+
+            Service.AddTransient<IProductControlTypeManager, ProductControlTypeManager>();
+            Service.AddTransient<IProductControlTypeDataAccess, ProductControlTypeDataAccess>();
+
+            Service.AddTransient<IProductCostMethodManager, ProductCostMethodManager>();
+            Service.AddTransient<IProductCostMethodDataAccess, ProductCostMethodDataAccess>();
+
+            Service.AddTransient<IProductCustomerManager, ProductCustomerManager>();
+            Service.AddTransient<IProductCustomerDataAccess, ProductCustomerDataAccess>();
+
+            Service.AddTransient<IProductDocumentHistoryManager, ProductDocumentHistoryManager>();
+            Service.AddTransient<IProductDocumentHistoryDataAccess, ProductDocumentHistoryDataAccess>();
+
+            Service.AddTransient<IProductExportManager, ProductExportManager>();
+            Service.AddTransient<IProductExportDataAccess, ProductExportDataAccess>();
+
+            Service.AddTransient<IProductKitSummaryManager, ProductKitSummaryManager>();
+            Service.AddTransient<IProductKitSummaryDataAccess, ProductKitSummaryDataAccess>();
         }
     }
 }
