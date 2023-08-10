@@ -795,6 +795,24 @@ namespace CrystalData.Main
 
             Service.AddTransient<IPOManagementSummaryManager, POManagementSummaryManager>();
             Service.AddTransient<IPOManagementSummaryDataAccess, POManagementSummaryDataAccess>();
+
+            Service.AddTransient<IPOOnOrderManager, POOnOrderManager>();
+            Service.AddTransient<IPOOnOrderDataAccess, POOnOrderDataAccess>();
+
+            Service.AddTransient<IPriceCodeManager, PriceCodeManager>();
+            Service.AddTransient<IPriceCodeDataAccess, PriceCodeDataAccess>();
+
+            Service.AddTransient<IPrinterAssignmentManager, PrinterAssignmentManager>();
+            Service.AddTransient<IPrinterAssignmentDataAccess, PrinterAssignmentDataAccess>();
+
+            Service.AddTransient<IProductManager, ProductManager>();
+            Service.AddTransient<IProductDataAccess, ProductDataAccess>();
+
+            Service.AddTransient<IProductAltManager, ProductAltManager>();
+            Service.AddTransient<IProductAltDataAccess, ProductAltDataAccess>();
+
+            Service.AddTransient<IProductAltIDManager, ProductAltIDManager>();
+            Service.AddTransient<IProductAltIDDataAccess, ProductAltIDDataAccess>();
         }
     }
 }

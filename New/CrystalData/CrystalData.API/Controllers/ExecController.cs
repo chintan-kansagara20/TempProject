@@ -263,256 +263,268 @@ namespace CrystalData.API.Controllers
         IPOInvoiceManager _POInvoiceManager { get; set; }
         IPOInvoiceDetailManager _POInvoiceDetailManager { get; set; }
         IPOManagementSummaryManager _POManagementSummaryManager { get; set; }
-         public ExecController(
-       ICvAssembliesManager cvAssembliesManager,
-       IAccessManager AccessManager,
-       ICvAssemblyDetailsManager CvAssemblyDetailsManager,
-       IAccessPermissionManager accessPermissionManager,
-       IAccessPermissionMasterManager accessPermissionMasterManager,
-       IBranchManager branchManager,
-       IBusinessActivityHistoryManager businessActivityHistoryManager,
-       IBusinessActivityManager businessActivityManager,
-       IBusinessActivityRelatedItemsManager businessActivityRelatedItemsManager,
-       IBusinessActivityTimeAndMaterialsManager businessActivityTimeAndMaterialsManager,
-       ICarrierManager carrierManager,
-       ICarrierBillingOptionsManager carrierBillingOptionsManager,
-       ICarrierInsuranceOptionsManager carrierInsuranceOptionsManager,
-       ICarrierServiceManager carrierServiceManager,
-       ICarrierVoidOptionsManager carrierVoidOptionsManager,
-       IChargeManager chargeManager,
-       IClassManager classManager,
-       IContractTypeManager contractTypeManager,
-       ICostLayerIssuesManager costLayerIssues,
-       ICvAssemblyCustomerOrderManager cvAssemblyCustomerOrder,
-       ICvAssemblyDocumentMembersManager cvAssemblyDocumentMembersManager,
-       ICvAssemblyProductionRecordManager cvAssemblyProductionRecordManager,
-       ICvInventoryTransfersRepeaterManager cvInventoryTransfersRepeaterManager,
-       ICostLayerReceiptsManager costLayerReceiptsManager,
-       ICostLayersManager costLayersManager,
-       ICurrencyManager currencyManager,
-       ICustomDataListManager customDataListManager,
-       ICustomerManager customerManager,
-       ICustomerBalanceManager customerBalanceManager,
-       ICustomerChargeTotalManager customerChargeTotalDataAccess,
-       ICustomerContactManager customerContactDataAccess,
-       ICustomerContractManager customerContractManager,
-       ICustomerCreditStatusManager customerCreditStatusManager,
-       ICustomerEmailAddressListManager customerEmailAddressListManager,
-       IProductComponentManager productComponentManager,
-       ICustomerExportManager customerExportManager,
-       ICustomerFullNameManager customerFullNameManager,
-       ICustomerInfoManager customerInfoManager,
-       ICustomerInvoiceTotalManager customerInvoiceTotalManager,
-       ICustomerMarketingListXrefManager customerMarketingListXrefManager,
-       ICustomerPaymentManager customerPaymentManager,
-       ICustomerPaymentAppliedTotalManager customerPaymentAppliedTotalManager,
-       ICustomerPaymentChargeTotalManager customerPaymentChargeTotalManager,
-       ICustomerPaymentInvoiceManager customerPaymentInvoiceManager,
-       ICustomerPaymentInvoiceTotalManager customerPaymentInvoiceTotalManager,
-       ICustomerPaymentTotalManager customerPaymentTotalManager,
-       ICustomerPaymentViewManager customerPaymentViewManager,
-       ICustomerProductManager customerProductManager,
-       ICustomerShipManager customerShipManager,
-       ICustomerShipToInfoManager customerShipToInfoManager,
-       ICustomerShipViewManager customerShipViewManager,
-       ICustomerStatementManager customerStatementManager,
-       ICustomerTypeInfoManager customerTypeInfoManager,
-       ICustomerViewManager customerViewManager,
-       ICustomFieldManager customFeildManager,
-       IcvAccessGroupManager cvAccessGroupManager,
-       IcvAccessGroupUsersManager cvAccessGroupUsersManager,
-       IcvAssemblyComponentAvailabilityManager cvAssemblyComponentAvailabilityManager,
-       IcvAssemblyComponentLotAvailabilityManager cvAssemblyComponentLotAvailabilityManager,
-       IcvAssemblyOrderDetManager cvAssemblyOrderDetManager,
-       IcvAssemblyOrderDetailManager cvAssemblyOrderDetailManager,
-       IcvAssemblyOrderDetailStatsManager cvAssemblyOrderDetailStatsManager,
-       IcvAssemblyOrderDetailSummaryManager cvAssemblyOrderDetailSummaryManager,
-       IcvAssemblyOrderHeaderManager cvAssemblyOrderHeaderManager,
-       IcvAssemblyOrderMembersManager cvAssemblyOrderMembersManager,
-       IcvAssemblyOrderPackagingManager cvAssemblyOrderPackagingManager,
-       IcvAssemblyOrdersManager cvAssemblyOrdersManager,
-       IcvAssemblyOrdersExtendedManager cvAssemblyOrdersExtendedManager,
-       IcvAssemblyParentManager cvAssemblyParentManager,
-       IcvAssemblyParentComponentManager cvAssemblyParentComponentManager,
-       IcvAssemblyProductionPassFailManager cvAssemblyProductionPassFailManager,
-       IcvAssemblyProductionReportManager cvAssemblyProductionReportManager,
-       IcvAssemblyProductionReportInnerManager cvAssemblyProductionReportInnerManager,
-       IcvAssemblyProductLabelManager cvAssemblyProductLabelManager,
-       IcvAssemblySessionsManager cvAssemblySessionsManager,
-       IcvAssemblyUnallocatedComponentsManager cvAssemblyUnallocatedComponentsManager,
-       IcvBorsightTransfersForAssembliesManager cvBorsightTransfersForAssembliesManager,
-       IcvCustomerContactCleanPhoneManager cvCustomerContactCleanPhoneManager,
-       IcvIncomingInspectionBOMManager cvIncomingInspectionBOMManager,
-       IcvIncomingQCTemplateManager cvIncomingQCTemplateManager,
-       IcvIngredientClaimActivitiesManager cvIngredientClaimActivitiesManager,
-       IcvInventorySerialLotSummaryTransactionsManager cvInventorySerialLotSummaryTransactionsManager,
-       IcvInventoryTransfersManager cvInventoryTransfersManager,
-       IcvInvoiceBalanceManager cvInvoiceBalanceManager,
-       IcvINVTransactionDetailCrystalControlManager cvINVTransactionDetailCrystalControlManager,
-       IcvINVTransferDetailsManager cvINVTransferDetailsManager,
-       IcvIssueManager cvIssueManager,
-       IcvIssueAssemblyManager cvIssueAssemblyManager,
-       IcvIssueChangedAssignmentManager cvIssueChangedAssignmentManager,
-       IcvIssuesForMfgManager cvIssuesForMfgManager,
-       IcvIssuesForWarehouseManager cvIssuesForWarehouseManager,
-       IcvIssueViewersManager cvIssueViewersManager,
-       IcvIssueViewersAssembliesManager cvIssueViewersAssembliesManager,
-       IcvIssueViewersParentAssemblyManager cvIssueViewersParentAssemblyManager,
-       IcvLastPOForProductManager cvLastPOForProductManager,
-       IcvLinkConfigManager cvLinkConfigManager,
-       IcvLinkConfigDocumentFoldersManager cvLinkConfigDocumentFoldersManager,
-       IcvLinkConfigDocumentsManager cvLinkConfigDocumentsManager,
-       IcvLinkConfigGuidesManager cvLinkConfigGuidesManager,
-       IcvLinkConfigLabelsManager cvLinkConfigLabelsManager,
-       IcvLinkConfigReportsManager cvLinkConfigReportsManager,
-       IcvLinkConfigXrefManager cvLinkConfigXrefManager,
-       IcvLinkProductSelectorManager cvLinkProductSelectorManager,
-       IcvLocationSummaryManager cvLocationSummaryManager,
-       IcvLotSerialInventoryManager cvLotSerialInventoryManager,
-       IcvLotSerialLocationSummaryManager cvLotSerialLocationSummaryManager,
-       IcvNegativeLotLocationManager cvNegativeLotLocationManager,
-       IcvNegativeLotLocationNAHSManager cvNegativeLotLocationNAHSManager,
-       IcvOptionGroupManager cvOptionGroupManager,
-       IcvOptionsManager cvOptionsManager,
-       IcvOptionTypeManager cvOptionTypeManager,
-       IcvOrderDetTranslationManager cvOrderDetTranslationManager,
-       IcvPODetWhereUsedManager cvPODetWhereUsedManager,
-       IcvPODetWithReceiptsAssyNeededManager cvPODetWithReceiptsAssyNeededManager,
-       IcvPOReceiptManager cvPOReceiptManager,
-       IcvPOReceiptsAssyNeededManager cvPOReceiptsAssyNeededManager,
-       IcvPriorPOForProductManager cvPriorPOForProductManager,
-       IcvproductManager cvproductManager,
-       IcvProductAvailabilityManager cvProductAvailabilityManager,
-       IcvProductBatchManager cvProductBatchManager,
-       IcvProductComponentManager cvProductComponentManager,
-       IcvProductEffectivePriceManager cvProductEffectivePriceManager,
-       IcvProductExportNSSManager cvProductExportNSSManager,
-       IcvProductFinishedNSSManager cvProductFinishedNSSManager,
-       IcvProductIngredientNSSManager cvProductIngredientNSSManager,
-       IcvProductLocationSummaryManager cvProductLocationSummaryManager,
-       IcvProductMetricsManager cvProductMetricsManager,
-       IcvProductPackageUnitConversionManager cvProductPackageUnitConversionManager,
-       IcvProductPackagingManager cvProductPackagingManager,
-       IcvProductProcManager cvProductProcManager,
-       IcvProductPurchaseUnitConversionManager cvProductPurchaseUnitConversionManager,
-       IcvProductQCManager cvProductQCManager,
-       IcvProductSpecAssembliesManager cvProductSpecAssembliesManager,
-       IcvProductVendorPriceManager cvProductVendorPriceManager,
-       IcvReceiptTransactionDetailManager cvReceiptTransactionDetailManager,
-       IcvReceivingLogManager cvReceivingLogManager,
-       IcvRoleAccessManager cvRoleAccessManager,
-       IcvSuppManufactureManager cvSuppManufactureManager,
-       IcvSuppManufactureYieldManager cvSuppManufactureYieldManager,
-       IcvTrxDetailControlSeriesManager cvTrxDetailControlSeriesManager,
-       IcvTrxDetailControlValuesManager cvTrxDetailControlValuesManager,
-       IcvVendorRequestForQuotesManager cvVendorRequestForQuotesManager,
-       IDocumentManager documentManager,
-       IEDIAdditionalInformationManager eDIAdditionalInformationManager,
-       IEDIOrderDetailExManager eDIOrderDetailExManager,
-       IEDIOrdersExManager eDIOrdersExManager,
-       IEmployeeManager employeeManager,
-       IFIFOCostLayersManager fIFOCostLayersManager,
-       IFlattenedKitComponentsManager flattenedKitComponentsManager,
-       IGLAccountManager gLAccountManager,
-       IGLAccountSegmentManager gLAccountSegmentManager,
-       IImpExpDocumentColumnManager impExpDocumentColumnManager,
-       IImpExpDocumentTableManager impExpDocumentTableManager,
-       IImpExpDocumentTypeManager impExpDocumentTypeManager,
-       IImportManager importManager,
-       IImportConversionManager importConversionManager,
-       IImportDefaultConversionManager importDefaultConversionManager,
-       IImportDefaultMapManager importDefaultMapManager,
-       IImportDefaultNamespaceManager importDefaultNamespaceManager,
-       IImportDefaultSourceFieldsManager importDefaultSourceFieldsManager,
-       IImportDefaultTableManager iImportDefaultTableManager,
-       IImportErrorsManager importErrorsManager,
-       IImportMapManager importMapManager,
-       IImportNamespaceManager importNamespaceManager,
-       IImportSkippedManager importSkippedManager,
-       IImportSourceFieldsManager importSourceFieldsManager,
-       IImportSourceFileManager importSourceFileManager,
-       IImportSourceRelateFieldsManager importSourceRelateFieldsManager,
-       IImportTableManager importTableManager,
-       IImportTemplateOptionsManager importTemplateOptionsManager,
-       IImportTransformationManager importTransformationManager,
-       IInventoryJournalManager inventoryJournalManager,
-       IInventoryJournalDetailManager inventoryJournalDetailManager,
-       IInventoryJournalDetail_NoAccountsManager inventoryJournalDetail_NoAccountsManager,
-       IInventoryJournalSummaryManager inventoryJournalSummaryManager,
-       IINVLotSerialTraceManager iNVLotSerialTraceManager,
-       IINVLotSerialTraceDetailManager iNVLotSerialTraceDetailManager,
-       IInvoiceManager invoiceManager,
-       IInvoiceAmtSummaryManager invoiceAmtSummaryManager,
-       IInvoiceDetailManager invoiceDetailManager,
-       IInvoicesAndChargesManager invoicesAndChargesManager,
-       IINVRegisterManager iNVRegisterManager,
-       IINVTransactionManager iNVTransactionManager,
-       IINVTransactionDetailManager iNVTransactionDetailManager,
-       IINVTransactionDetailOnHandSummaryManager iNVTransactionDetailOnHandSummaryManager,
-       IINVTransactionDetailSummaryManager iNVTransactionDetailSummaryManager,
-       IIssueManager issueManager,
-       IIssueCodeManager issueCodeManager,
-       IIssueLogManager issueLogManager,
-       IIssuePriorityCodeManager issuePriorityCodeManager,
-       IIssueResolutionCodeManager issueResolutionCodeManager,
-       IIssueSchedulingClassManager issueSchedulingClassManager,
-       IIssueStatusCodeManager issueStatusCodeManager,
-       IIssueTypeManager issueTypeManager,
-       IIssueTypeCodeXrefManager issueTypeCodeXrefManager,
-       IIssueTypePriorityXrefManager issueTypePriorityXrefManager,
-       IIssueTypeResolutionXrefManager issueTypeResolutionXrefManager,
-       IIssueTypeSchedulingClassXrefManager issueTypeSchedulingClassXrefManager,
-       IIssueTypeStatusXrefManager issueTypeStatusXrefManager,
-       IIssueXrefManager issueXrefManager,
-       IJournalManager journalManager,
-       IJournalLineManager journalLineManager,
-       ILIFOCostLayersManager lIFOCostLayersManager,
-       ILocationSummaryManager locationSummaryManager,
-       ILocationSummaryNoAvailabilityManager locationSummaryNoAvailabilityManager,
-       ILostBusinessManager lostBusinessManager,
-       ILotSerialDefaultLocationManager lotSerialDefaultLocationManager,
-       ILotSerialInventoryManager lotSerialInventoryManager,
-       ILotSerialInventoryIssuesManager lotSerialInventoryIssuesManager,
-       ILotSerialInventoryReceiptsManager lotSerialInventoryReceiptsManager,
-       ILotSerialInventoryWithoutLastReceiptManager lotSerialInventoryWithoutLastReceiptManager,
-       ILotSerialLocationManager lotSerialLocationManager,
-       ILotSerialLocationSummaryManager lotSerialLocationSummaryManager,
-       ILotSerialLocationSummaryNoAvailabilityManager lotSerialLocationSummaryNoAvailabilityManager,
-       ILotSerialSummaryManager lotSerialSummaryManager,
-       IMarketingCodeManager marketingCodeManager,
-       IMarketingListCodeManager marketingListCodeManager,
-       IMarketingListXrefManager marketingListXrefManager,
-       IMessagesManager messagesManager,
-       INoteCategoryManager noteCategoryManager,
-       INotesManager notesManager,
-       INoteStatusManager noteStatusManager,
-       INotesViewManager notesViewManager,
-       INumbersManager numbersManager,
-       IOrderDetailManager orderDetailManager,
-       IOrderDetailLotManager orderDetailLotManager,
-       IOrderDetailSummaryManager orderDetailSummaryManager,
-       IOrderDetailTopLevelComponentQuantityManager orderDetailTopLevelComponentQuantityManager,
-       IOrderManagementSummaryManager orderManagementSummaryManager,
-       IOrderPackagesManager orderPackagesManager,
-       IOrderPendingAssembliesManager orderPendingAssembliesManager,
-       IOrdersManager ordersManager,
-       IOrdersAvailableToShipManager ordersAvailableToShipManager,
-       IOrderWorkFlowStatusManager orderWorkFlowStatusManager,
-       IPaymentMethodManager paymentMethodManager,
-       IPicklistManager picklistManager,
-       IPicklistDetailManager picklistDetailManager,
-       IPicklistDetailLotManager picklistDetailLotManager,
-       IPicklistOrderManager picklistOrderManager,
-       IPOManager pOManager,
-       IPODetailManager pODetailManager,
-       IPODetailInvoicedManager pODetailInvoicedManager,
-       IPODetailInvoiceSummaryManager pODetailInvoiceSummaryManager,
-       IPODetailReceiptSummaryManager pODetailReceiptSummaryManager,
-       IPODetailReceivedManager pODetailReceivedManager,
-       IPODetailSimpleManager pODetailSimpleManager,
-       IPOInvoiceManager pOInvoiceManager,
-       IPOInvoiceDetailManager pOInvoiceDetailManager,
-       IPOManagementSummaryManager pOManagementSummaryManager)
+        IPOOnOrderManager _POOnOrderManager { get; set; }
+        IPriceCodeManager _PriceCodeManager { get; set; }
+        IPrinterAssignmentManager _PrinterAssignmentManager { get; set; }
+        IProductManager _ProductManager { get; set; }
+        IProductAltManager _ProductAltManager { get; set; }
+        IProductAltIDManager _ProductAltIDManager { get; set; }
+        public ExecController(
+          ICvAssembliesManager cvAssembliesManager,
+          IAccessManager AccessManager,
+          ICvAssemblyDetailsManager CvAssemblyDetailsManager,
+          IAccessPermissionManager accessPermissionManager,
+          IAccessPermissionMasterManager accessPermissionMasterManager,
+          IBranchManager branchManager,
+          IBusinessActivityHistoryManager businessActivityHistoryManager,
+          IBusinessActivityManager businessActivityManager,
+          IBusinessActivityRelatedItemsManager businessActivityRelatedItemsManager,
+          IBusinessActivityTimeAndMaterialsManager businessActivityTimeAndMaterialsManager,
+          ICarrierManager carrierManager,
+          ICarrierBillingOptionsManager carrierBillingOptionsManager,
+          ICarrierInsuranceOptionsManager carrierInsuranceOptionsManager,
+          ICarrierServiceManager carrierServiceManager,
+          ICarrierVoidOptionsManager carrierVoidOptionsManager,
+          IChargeManager chargeManager,
+          IClassManager classManager,
+          IContractTypeManager contractTypeManager,
+          ICostLayerIssuesManager costLayerIssues,
+          ICvAssemblyCustomerOrderManager cvAssemblyCustomerOrder,
+          ICvAssemblyDocumentMembersManager cvAssemblyDocumentMembersManager,
+          ICvAssemblyProductionRecordManager cvAssemblyProductionRecordManager,
+          ICvInventoryTransfersRepeaterManager cvInventoryTransfersRepeaterManager,
+          ICostLayerReceiptsManager costLayerReceiptsManager,
+          ICostLayersManager costLayersManager,
+          ICurrencyManager currencyManager,
+          ICustomDataListManager customDataListManager,
+          ICustomerManager customerManager,
+          ICustomerBalanceManager customerBalanceManager,
+          ICustomerChargeTotalManager customerChargeTotalDataAccess,
+          ICustomerContactManager customerContactDataAccess,
+          ICustomerContractManager customerContractManager,
+          ICustomerCreditStatusManager customerCreditStatusManager,
+          ICustomerEmailAddressListManager customerEmailAddressListManager,
+          IProductComponentManager productComponentManager,
+          ICustomerExportManager customerExportManager,
+          ICustomerFullNameManager customerFullNameManager,
+          ICustomerInfoManager customerInfoManager,
+          ICustomerInvoiceTotalManager customerInvoiceTotalManager,
+          ICustomerMarketingListXrefManager customerMarketingListXrefManager,
+          ICustomerPaymentManager customerPaymentManager,
+          ICustomerPaymentAppliedTotalManager customerPaymentAppliedTotalManager,
+          ICustomerPaymentChargeTotalManager customerPaymentChargeTotalManager,
+          ICustomerPaymentInvoiceManager customerPaymentInvoiceManager,
+          ICustomerPaymentInvoiceTotalManager customerPaymentInvoiceTotalManager,
+          ICustomerPaymentTotalManager customerPaymentTotalManager,
+          ICustomerPaymentViewManager customerPaymentViewManager,
+          ICustomerProductManager customerProductManager,
+          ICustomerShipManager customerShipManager,
+          ICustomerShipToInfoManager customerShipToInfoManager,
+          ICustomerShipViewManager customerShipViewManager,
+          ICustomerStatementManager customerStatementManager,
+          ICustomerTypeInfoManager customerTypeInfoManager,
+          ICustomerViewManager customerViewManager,
+          ICustomFieldManager customFeildManager,
+          IcvAccessGroupManager cvAccessGroupManager,
+          IcvAccessGroupUsersManager cvAccessGroupUsersManager,
+          IcvAssemblyComponentAvailabilityManager cvAssemblyComponentAvailabilityManager,
+          IcvAssemblyComponentLotAvailabilityManager cvAssemblyComponentLotAvailabilityManager,
+          IcvAssemblyOrderDetManager cvAssemblyOrderDetManager,
+          IcvAssemblyOrderDetailManager cvAssemblyOrderDetailManager,
+          IcvAssemblyOrderDetailStatsManager cvAssemblyOrderDetailStatsManager,
+          IcvAssemblyOrderDetailSummaryManager cvAssemblyOrderDetailSummaryManager,
+          IcvAssemblyOrderHeaderManager cvAssemblyOrderHeaderManager,
+          IcvAssemblyOrderMembersManager cvAssemblyOrderMembersManager,
+          IcvAssemblyOrderPackagingManager cvAssemblyOrderPackagingManager,
+          IcvAssemblyOrdersManager cvAssemblyOrdersManager,
+          IcvAssemblyOrdersExtendedManager cvAssemblyOrdersExtendedManager,
+          IcvAssemblyParentManager cvAssemblyParentManager,
+          IcvAssemblyParentComponentManager cvAssemblyParentComponentManager,
+          IcvAssemblyProductionPassFailManager cvAssemblyProductionPassFailManager,
+          IcvAssemblyProductionReportManager cvAssemblyProductionReportManager,
+          IcvAssemblyProductionReportInnerManager cvAssemblyProductionReportInnerManager,
+          IcvAssemblyProductLabelManager cvAssemblyProductLabelManager,
+          IcvAssemblySessionsManager cvAssemblySessionsManager,
+          IcvAssemblyUnallocatedComponentsManager cvAssemblyUnallocatedComponentsManager,
+          IcvBorsightTransfersForAssembliesManager cvBorsightTransfersForAssembliesManager,
+          IcvCustomerContactCleanPhoneManager cvCustomerContactCleanPhoneManager,
+          IcvIncomingInspectionBOMManager cvIncomingInspectionBOMManager,
+          IcvIncomingQCTemplateManager cvIncomingQCTemplateManager,
+          IcvIngredientClaimActivitiesManager cvIngredientClaimActivitiesManager,
+          IcvInventorySerialLotSummaryTransactionsManager cvInventorySerialLotSummaryTransactionsManager,
+          IcvInventoryTransfersManager cvInventoryTransfersManager,
+          IcvInvoiceBalanceManager cvInvoiceBalanceManager,
+          IcvINVTransactionDetailCrystalControlManager cvINVTransactionDetailCrystalControlManager,
+          IcvINVTransferDetailsManager cvINVTransferDetailsManager,
+          IcvIssueManager cvIssueManager,
+          IcvIssueAssemblyManager cvIssueAssemblyManager,
+          IcvIssueChangedAssignmentManager cvIssueChangedAssignmentManager,
+          IcvIssuesForMfgManager cvIssuesForMfgManager,
+          IcvIssuesForWarehouseManager cvIssuesForWarehouseManager,
+          IcvIssueViewersManager cvIssueViewersManager,
+          IcvIssueViewersAssembliesManager cvIssueViewersAssembliesManager,
+          IcvIssueViewersParentAssemblyManager cvIssueViewersParentAssemblyManager,
+          IcvLastPOForProductManager cvLastPOForProductManager,
+          IcvLinkConfigManager cvLinkConfigManager,
+          IcvLinkConfigDocumentFoldersManager cvLinkConfigDocumentFoldersManager,
+          IcvLinkConfigDocumentsManager cvLinkConfigDocumentsManager,
+          IcvLinkConfigGuidesManager cvLinkConfigGuidesManager,
+          IcvLinkConfigLabelsManager cvLinkConfigLabelsManager,
+          IcvLinkConfigReportsManager cvLinkConfigReportsManager,
+          IcvLinkConfigXrefManager cvLinkConfigXrefManager,
+          IcvLinkProductSelectorManager cvLinkProductSelectorManager,
+          IcvLocationSummaryManager cvLocationSummaryManager,
+          IcvLotSerialInventoryManager cvLotSerialInventoryManager,
+          IcvLotSerialLocationSummaryManager cvLotSerialLocationSummaryManager,
+          IcvNegativeLotLocationManager cvNegativeLotLocationManager,
+          IcvNegativeLotLocationNAHSManager cvNegativeLotLocationNAHSManager,
+          IcvOptionGroupManager cvOptionGroupManager,
+          IcvOptionsManager cvOptionsManager,
+          IcvOptionTypeManager cvOptionTypeManager,
+          IcvOrderDetTranslationManager cvOrderDetTranslationManager,
+          IcvPODetWhereUsedManager cvPODetWhereUsedManager,
+          IcvPODetWithReceiptsAssyNeededManager cvPODetWithReceiptsAssyNeededManager,
+          IcvPOReceiptManager cvPOReceiptManager,
+          IcvPOReceiptsAssyNeededManager cvPOReceiptsAssyNeededManager,
+          IcvPriorPOForProductManager cvPriorPOForProductManager,
+          IcvproductManager cvproductManager,
+          IcvProductAvailabilityManager cvProductAvailabilityManager,
+          IcvProductBatchManager cvProductBatchManager,
+          IcvProductComponentManager cvProductComponentManager,
+          IcvProductEffectivePriceManager cvProductEffectivePriceManager,
+          IcvProductExportNSSManager cvProductExportNSSManager,
+          IcvProductFinishedNSSManager cvProductFinishedNSSManager,
+          IcvProductIngredientNSSManager cvProductIngredientNSSManager,
+          IcvProductLocationSummaryManager cvProductLocationSummaryManager,
+          IcvProductMetricsManager cvProductMetricsManager,
+          IcvProductPackageUnitConversionManager cvProductPackageUnitConversionManager,
+          IcvProductPackagingManager cvProductPackagingManager,
+          IcvProductProcManager cvProductProcManager,
+          IcvProductPurchaseUnitConversionManager cvProductPurchaseUnitConversionManager,
+          IcvProductQCManager cvProductQCManager,
+          IcvProductSpecAssembliesManager cvProductSpecAssembliesManager,
+          IcvProductVendorPriceManager cvProductVendorPriceManager,
+          IcvReceiptTransactionDetailManager cvReceiptTransactionDetailManager,
+          IcvReceivingLogManager cvReceivingLogManager,
+          IcvRoleAccessManager cvRoleAccessManager,
+          IcvSuppManufactureManager cvSuppManufactureManager,
+          IcvSuppManufactureYieldManager cvSuppManufactureYieldManager,
+          IcvTrxDetailControlSeriesManager cvTrxDetailControlSeriesManager,
+          IcvTrxDetailControlValuesManager cvTrxDetailControlValuesManager,
+          IcvVendorRequestForQuotesManager cvVendorRequestForQuotesManager,
+          IDocumentManager documentManager,
+          IEDIAdditionalInformationManager eDIAdditionalInformationManager,
+          IEDIOrderDetailExManager eDIOrderDetailExManager,
+          IEDIOrdersExManager eDIOrdersExManager,
+          IEmployeeManager employeeManager,
+          IFIFOCostLayersManager fIFOCostLayersManager,
+          IFlattenedKitComponentsManager flattenedKitComponentsManager,
+          IGLAccountManager gLAccountManager,
+          IGLAccountSegmentManager gLAccountSegmentManager,
+          IImpExpDocumentColumnManager impExpDocumentColumnManager,
+          IImpExpDocumentTableManager impExpDocumentTableManager,
+          IImpExpDocumentTypeManager impExpDocumentTypeManager,
+          IImportManager importManager,
+          IImportConversionManager importConversionManager,
+          IImportDefaultConversionManager importDefaultConversionManager,
+          IImportDefaultMapManager importDefaultMapManager,
+          IImportDefaultNamespaceManager importDefaultNamespaceManager,
+          IImportDefaultSourceFieldsManager importDefaultSourceFieldsManager,
+          IImportDefaultTableManager iImportDefaultTableManager,
+          IImportErrorsManager importErrorsManager,
+          IImportMapManager importMapManager,
+          IImportNamespaceManager importNamespaceManager,
+          IImportSkippedManager importSkippedManager,
+          IImportSourceFieldsManager importSourceFieldsManager,
+          IImportSourceFileManager importSourceFileManager,
+          IImportSourceRelateFieldsManager importSourceRelateFieldsManager,
+          IImportTableManager importTableManager,
+          IImportTemplateOptionsManager importTemplateOptionsManager,
+          IImportTransformationManager importTransformationManager,
+          IInventoryJournalManager inventoryJournalManager,
+          IInventoryJournalDetailManager inventoryJournalDetailManager,
+          IInventoryJournalDetail_NoAccountsManager inventoryJournalDetail_NoAccountsManager,
+          IInventoryJournalSummaryManager inventoryJournalSummaryManager,
+          IINVLotSerialTraceManager iNVLotSerialTraceManager,
+          IINVLotSerialTraceDetailManager iNVLotSerialTraceDetailManager,
+          IInvoiceManager invoiceManager,
+          IInvoiceAmtSummaryManager invoiceAmtSummaryManager,
+          IInvoiceDetailManager invoiceDetailManager,
+          IInvoicesAndChargesManager invoicesAndChargesManager,
+          IINVRegisterManager iNVRegisterManager,
+          IINVTransactionManager iNVTransactionManager,
+          IINVTransactionDetailManager iNVTransactionDetailManager,
+          IINVTransactionDetailOnHandSummaryManager iNVTransactionDetailOnHandSummaryManager,
+          IINVTransactionDetailSummaryManager iNVTransactionDetailSummaryManager,
+          IIssueManager issueManager,
+          IIssueCodeManager issueCodeManager,
+          IIssueLogManager issueLogManager,
+          IIssuePriorityCodeManager issuePriorityCodeManager,
+          IIssueResolutionCodeManager issueResolutionCodeManager,
+          IIssueSchedulingClassManager issueSchedulingClassManager,
+          IIssueStatusCodeManager issueStatusCodeManager,
+          IIssueTypeManager issueTypeManager,
+          IIssueTypeCodeXrefManager issueTypeCodeXrefManager,
+          IIssueTypePriorityXrefManager issueTypePriorityXrefManager,
+          IIssueTypeResolutionXrefManager issueTypeResolutionXrefManager,
+          IIssueTypeSchedulingClassXrefManager issueTypeSchedulingClassXrefManager,
+          IIssueTypeStatusXrefManager issueTypeStatusXrefManager,
+          IIssueXrefManager issueXrefManager,
+          IJournalManager journalManager,
+          IJournalLineManager journalLineManager,
+          ILIFOCostLayersManager lIFOCostLayersManager,
+          ILocationSummaryManager locationSummaryManager,
+          ILocationSummaryNoAvailabilityManager locationSummaryNoAvailabilityManager,
+          ILostBusinessManager lostBusinessManager,
+          ILotSerialDefaultLocationManager lotSerialDefaultLocationManager,
+          ILotSerialInventoryManager lotSerialInventoryManager,
+          ILotSerialInventoryIssuesManager lotSerialInventoryIssuesManager,
+          ILotSerialInventoryReceiptsManager lotSerialInventoryReceiptsManager,
+          ILotSerialInventoryWithoutLastReceiptManager lotSerialInventoryWithoutLastReceiptManager,
+          ILotSerialLocationManager lotSerialLocationManager,
+          ILotSerialLocationSummaryManager lotSerialLocationSummaryManager,
+          ILotSerialLocationSummaryNoAvailabilityManager lotSerialLocationSummaryNoAvailabilityManager,
+          ILotSerialSummaryManager lotSerialSummaryManager,
+          IMarketingCodeManager marketingCodeManager,
+          IMarketingListCodeManager marketingListCodeManager,
+          IMarketingListXrefManager marketingListXrefManager,
+          IMessagesManager messagesManager,
+          INoteCategoryManager noteCategoryManager,
+          INotesManager notesManager,
+          INoteStatusManager noteStatusManager,
+          INotesViewManager notesViewManager,
+          INumbersManager numbersManager,
+          IOrderDetailManager orderDetailManager,
+          IOrderDetailLotManager orderDetailLotManager,
+          IOrderDetailSummaryManager orderDetailSummaryManager,
+          IOrderDetailTopLevelComponentQuantityManager orderDetailTopLevelComponentQuantityManager,
+          IOrderManagementSummaryManager orderManagementSummaryManager,
+          IOrderPackagesManager orderPackagesManager,
+          IOrderPendingAssembliesManager orderPendingAssembliesManager,
+          IOrdersManager ordersManager,
+          IOrdersAvailableToShipManager ordersAvailableToShipManager,
+          IOrderWorkFlowStatusManager orderWorkFlowStatusManager,
+          IPaymentMethodManager paymentMethodManager,
+          IPicklistManager picklistManager,
+          IPicklistDetailManager picklistDetailManager,
+          IPicklistDetailLotManager picklistDetailLotManager,
+          IPicklistOrderManager picklistOrderManager,
+          IPOManager pOManager,
+          IPODetailManager pODetailManager,
+          IPODetailInvoicedManager pODetailInvoicedManager,
+          IPODetailInvoiceSummaryManager pODetailInvoiceSummaryManager,
+          IPODetailReceiptSummaryManager pODetailReceiptSummaryManager,
+          IPODetailReceivedManager pODetailReceivedManager,
+          IPODetailSimpleManager pODetailSimpleManager,
+          IPOInvoiceManager pOInvoiceManager,
+          IPOInvoiceDetailManager pOInvoiceDetailManager,
+          IPOManagementSummaryManager pOManagementSummaryManager,
+          IPOOnOrderManager pOOnOrderManager,
+          IPriceCodeManager priceCodeManager,
+          IPrinterAssignmentManager printerAssignmentManager,
+          IProductManager productManager,
+          IProductAltManager productAltManager,
+          IProductAltIDManager productAltIDManager)
 
         {
             _CvAssembliesManager = cvAssembliesManager;
@@ -764,6 +776,108 @@ namespace CrystalData.API.Controllers
             _POInvoiceManager = pOInvoiceManager;
             _POInvoiceDetailManager = pOInvoiceDetailManager;
             _POManagementSummaryManager = pOManagementSummaryManager;
+            _POOnOrderManager = pOOnOrderManager;
+            _PriceCodeManager = priceCodeManager;
+            _PrinterAssignmentManager = printerAssignmentManager;
+            _ProductManager = productManager;
+            _ProductAltManager = productAltManager;
+            _ProductAltIDManager = productAltIDManager;
+        }
+
+        [HttpPost]
+        [Route("/api/Full/ProductAltID/Get")]
+        public ActionResult ProductAltIDGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_ProductAltIDManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/ProductAlt/Get")]
+        public ActionResult ProductAltGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_ProductAltManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/Product/Get")]
+        public ActionResult ProductGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_ProductManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/PrinterAssignment/Get")]
+        public ActionResult PrinterAssignmentGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_PrinterAssignmentManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/PriceCode/Get")]
+        public ActionResult PriceCodeGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_PriceCodeManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/POOnOrder/Get")]
+        public ActionResult POOnOrderGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_POOnOrderManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
         }
 
         [HttpPost]
