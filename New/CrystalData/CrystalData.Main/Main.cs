@@ -816,6 +816,9 @@ namespace CrystalData.Main
 
             Service.AddTransient<IWarehouseLocationManager, WarehouseLocationManager>();
             Service.AddTransient<IWarehouseLocationDataAccess, WarehouseLocationDataAccess>();
+
+            Service.AddTransient<IcvPureFishComponentsForOrdersManager, cvPureFishComponentsForOrdersManager>();
+            Service.AddTransient<IcvPureFishComponentsForOrdersDataAccess, cvPureFishComponentsForOrdersDataAccess>();
         }
     }
 }

@@ -269,6 +269,7 @@ namespace CrystalData.API.Controllers
         IProductManager _ProductManager { get; set; }
         IProductAltManager _ProductAltManager { get; set; }
         IProductAltIDManager _ProductAltIDManager { get; set; }
+        IcvPureFishComponentsForOrdersManager _cvPureFishComponentsForOrdersManager { get; set; }
         public ExecController(
           ICvAssembliesManager cvAssembliesManager,
           IAccessManager AccessManager,
@@ -524,7 +525,8 @@ namespace CrystalData.API.Controllers
           IPrinterAssignmentManager printerAssignmentManager,
           IProductManager productManager,
           IProductAltManager productAltManager,
-          IProductAltIDManager productAltIDManager)
+          IProductAltIDManager productAltIDManager,
+          IcvPureFishComponentsForOrdersManager cvPureFishComponentsForOrdersManager)
 
         {
             _CvAssembliesManager = cvAssembliesManager;
@@ -782,6 +784,23 @@ namespace CrystalData.API.Controllers
             _ProductManager = productManager;
             _ProductAltManager = productAltManager;
             _ProductAltIDManager = productAltIDManager;
+            _cvPureFishComponentsForOrdersManager = cvPureFishComponentsForOrdersManager;
+        }
+
+        [HttpPost]
+        [Route("/api/Full/cvPureFishComponentsForOrders/Get")]
+        public ActionResult cvPureFishComponentsForOrdersGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_cvPureFishComponentsForOrdersManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
         }
 
         [HttpPost]
