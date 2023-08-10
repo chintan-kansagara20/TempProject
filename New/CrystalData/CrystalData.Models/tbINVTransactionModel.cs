@@ -23,9 +23,9 @@ namespace CrystalData.Models
         public Int32? GLTransactionNumber { get; set; }
         public Guid? GUIDGLInventoryAccount { get; set; }
         public Guid? GUIDGLOffsetAccount { get; set; }
-        public Boolean PostedToGL { get; set; } = true;
-        public Boolean PostedToAP { get; set; } = true;
-        public Boolean PostedToINV { get; set; } = true;
+        public Boolean PostedToGL { get; set; } = false;
+        public Boolean PostedToAP { get; set; } = false;
+        public Boolean PostedToINV { get; set; } = false;
         public Guid? GUIDVendor { get; set; }
         public string VendorName { get; set; }
         public string PONumber { get; set; }
@@ -36,8 +36,8 @@ namespace CrystalData.Models
         public string Note { get; set; }
         public Int32? TransactionPeriod { get; set; }
         public Guid? GUIDProductionWorkflowStatus { get; set; }
-        public Boolean TaxIncluded { get; set; } = true;
-        public Boolean BeginningOfDay { get; set; } = true;
+        public Boolean TaxIncluded { get; set; } = false;
+        public Boolean BeginningOfDay { get; set; } = false;
         public Decimal? InvoiceAmount { get; set; }
         public Decimal? SalesTax { get; set; }
         public Guid? GUIDInProgressUser { get; set; }

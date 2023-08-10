@@ -41,9 +41,9 @@ namespace CrystalData.Models
         public string ToLocation { get; set; }
         public Guid? GUIDWHLocation { get; set; }
         public Guid? GUIDToWHLocation { get; set; }
-        public Boolean PostedToINV { get; set; } = true;
-        public Boolean PostedToAP { get; set; } = true;
-        public Boolean PostedToGL { get; set; } = true;
+        public Boolean PostedToINV { get; set; } = false;
+        public Boolean PostedToAP { get; set; } = false;
+        public Boolean PostedToGL { get; set; } = false;
         public string Note { get; set; }
         public Int32? InvoiceLineNumber { get; set; }
         public string InvoiceNumber { get; set; }
@@ -64,10 +64,10 @@ namespace CrystalData.Models
         public Guid? GUIDInvoiceDetail { get; set; }
         public Guid? GUIDOrderDetailLot { get; set; }
         public Guid? GUIDPODetail { get; set; }
-        public Boolean PriorPeriodAdjustment { get; set; } = true;
+        public Boolean PriorPeriodAdjustment { get; set; } = false;
         public string FromCostMethod { get; set; }
         public string ToCostMethod { get; set; }
-        public Boolean DoNotSync { get; set; } = true;
+        public Boolean DoNotSync { get; set; } = false;
         public Guid? GUIDTaxCode { get; set; }
         public Decimal? SalesTax { get; set; }
         public Guid? GUIDLayerBatch { get; set; }

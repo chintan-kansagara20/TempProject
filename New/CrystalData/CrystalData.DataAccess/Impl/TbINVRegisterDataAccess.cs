@@ -68,7 +68,7 @@ namespace CrystalData.DataAccess.Impl
         {
             if (!AutoCommit && _EC == null) { throw new Exception("When AutoCommit is False EasyCrud Object Needs to be passed"); }
             if (_EC == null) { _EC = new EasyCrud(ConnectionString); }
-            var recs = _EC.Add(model, "GUIDINVRegister", "GUIDINVRegister, PKIDINVRegister", AutoCommit);
+            var recs = _EC.Add(model, "GUIDINVRegister", "PKIDINVRegister", AutoCommit);
             return recs.ToString();
         }
 

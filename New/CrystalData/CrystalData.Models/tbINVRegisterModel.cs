@@ -19,13 +19,13 @@ namespace CrystalData.Models
         public string OpenedBy { get; set; }
         public string Description { get; set; }
         public Decimal? Amount { get; set; }
-        public Boolean PostedToINV { get; set; } = true;
+        public Boolean PostedToINV { get; set; } = false;
         public string PostedToINVBy { get; set; }
         public DateTime? DatePostedToINV { get; set; }
-        public Boolean PostedToGL { get; set; } = true;
+        public Boolean PostedToGL { get; set; } = false;
         public string PostedToGLBy { get; set; }
         public DateTime? DatePostedToGL { get; set; }
-        public Boolean PostedToAP { get; set; } = true;
+        public Boolean PostedToAP { get; set; } = false;
         public string PostedToAPBy { get; set; }
         public DateTime? DatePostedToAP { get; set; }
         public string Note { get; set; }
@@ -50,13 +50,13 @@ namespace CrystalData.Models
         public string OpenedBy { get; set; }
         public string Description { get; set; }
         public Decimal? Amount { get; set; }
-        public Boolean PostedToINV { get; set; } = true;
+        public Boolean PostedToINV { get; set; } = false;
         public string PostedToINVBy { get; set; }
         public DateTime? DatePostedToINV { get; set; }
-        public Boolean PostedToGL { get; set; } = true;
+        public Boolean PostedToGL { get; set; } = false;
         public string PostedToGLBy { get; set; }
         public DateTime? DatePostedToGL { get; set; }
-        public Boolean PostedToAP { get; set; } = true;
+        public Boolean PostedToAP { get; set; } = false;
         public string PostedToAPBy { get; set; }
         public DateTime? DatePostedToAP { get; set; }
         public string Note { get; set; }

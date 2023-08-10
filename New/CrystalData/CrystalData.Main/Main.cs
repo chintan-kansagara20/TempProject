@@ -813,6 +813,9 @@ namespace CrystalData.Main
 
             Service.AddTransient<IProductAltIDManager, ProductAltIDManager>();
             Service.AddTransient<IProductAltIDDataAccess, ProductAltIDDataAccess>();
+
+            Service.AddTransient<IWarehouseLocationManager, WarehouseLocationManager>();
+            Service.AddTransient<IWarehouseLocationDataAccess, WarehouseLocationDataAccess>();
         }
     }
 }
