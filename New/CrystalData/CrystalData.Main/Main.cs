@@ -852,6 +852,102 @@ namespace CrystalData.Main
 
             Service.AddTransient<IProductKitSummaryManager, ProductKitSummaryManager>();
             Service.AddTransient<IProductKitSummaryDataAccess, ProductKitSummaryDataAccess>();
+
+            Service.AddTransient<IProductOpenOrdersManager, ProductOpenOrdersManager>();
+            Service.AddTransient<IProductOpenOrdersDataAccess, ProductOpenOrdersDataAccess>();
+
+            Service.AddTransient<IProductPriceManager, ProductPriceManager>();
+            Service.AddTransient<IProductPriceDataAccess, ProductPriceDataAccess>();
+
+            Service.AddTransient<IProductSalesCategoryManager, ProductSalesCategoryManager>();
+            Service.AddTransient<IProductSalesCategoryDataAccess, ProductSalesCategoryDataAccess>();
+
+            Service.AddTransient<IProductSubstitutionsManager, ProductSubstitutionsManager>();
+            Service.AddTransient<IProductSubstitutionsDataAccess, ProductSubstitutionsDataAccess>();
+
+            Service.AddTransient<IProductSupplierManager, ProductSupplierManager>();
+            Service.AddTransient<IProductSupplierDataAccess, ProductSupplierDataAccess>();
+
+            Service.AddTransient<IProductTransactionsManager, ProductTransactionsManager>();
+            Service.AddTransient<IProductTransactionsDataAccess, ProductTransactionsDataAccess>();
+
+            Service.AddTransient<IProductTypeManager, ProductTypeManager>();
+            Service.AddTransient<IProductTypeDataAccess, ProductTypeDataAccess>();
+
+            Service.AddTransient<IProductUnitManager, ProductUnitManager>();
+            Service.AddTransient<IProductUnitDataAccess, ProductUnitDataAccess>();
+
+            Service.AddTransient<IProductWarehouseManager, ProductWarehouseManager>();
+            Service.AddTransient<IProductWarehouseDataAccess, ProductWarehouseDataAccess>();
+
+            Service.AddTransient<IProductWarehouseLastVoidedDateManager, ProductWarehouseLastVoidedDateManager>();
+            Service.AddTransient<IProductWarehouseLastVoidedDateDataAccess, ProductWarehouseLastVoidedDateDataAccess>();
+
+            Service.AddTransient<IProductWarehouseLocationManager, ProductWarehouseLocationManager>();
+            Service.AddTransient<IProductWarehouseLocationDataAccess, ProductWarehouseLocationDataAccess>();
+
+            Service.AddTransient<IProductWarehouseReorderManager, ProductWarehouseReorderManager>();
+            Service.AddTransient<IProductWarehouseReorderDataAccess, ProductWarehouseReorderDataAccess>();
+
+            Service.AddTransient<IProductWarehouseSummaryManager, ProductWarehouseSummaryManager>();
+            Service.AddTransient<IProductWarehouseSummaryDataAccess, ProductWarehouseSummaryDataAccess>();
+
+            Service.AddTransient<IReportAccessPermissionManager, ReportAccessPermissionManager>();
+            Service.AddTransient<IReportAccessPermissionDataAccess, ReportAccessPermissionDataAccess>();
+
+            Service.AddTransient<IReportDefinitionManager, ReportDefinitionManager>();
+            Service.AddTransient<IReportDefinitionDataAccess, ReportDefinitionDataAccess>();
+
+            Service.AddTransient<IReportParametersManager, ReportParametersManager>();
+            Service.AddTransient<IReportParametersDataAccess, ReportParametersDataAccess>();
+
+            Service.AddTransient<ISalespersonInfoManager, SalespersonInfoManager>();
+            Service.AddTransient<ISalespersonInfoDataAccess, SalespersonInfoDataAccess>();
+
+            Service.AddTransient<IShipmentManager, ShipmentManager>();
+            Service.AddTransient<IShipmentDataAccess, ShipmentDataAccess>();
+
+            Service.AddTransient<IShipmentAssociatedOrderDetailsManager, ShipmentAssociatedOrderDetailsManager>();
+            Service.AddTransient<IShipmentAssociatedOrderDetailsDataAccess, ShipmentAssociatedOrderDetailsDataAccess>();
+
+            Service.AddTransient<IShipmentItemManager, ShipmentItemManager>();
+            Service.AddTransient<IShipmentItemDataAccess, ShipmentItemDataAccess>();
+
+            Service.AddTransient<IShipmentOrderManager, ShipmentOrderManager>();
+            Service.AddTransient<IShipmentOrderDataAccess, ShipmentOrderDataAccess>();
+
+            Service.AddTransient<IShipmentOrderDetailManager, ShipmentOrderDetailManager>();
+            Service.AddTransient<IShipmentOrderDetailDataAccess, ShipmentOrderDetailDataAccess>();
+
+            Service.AddTransient<IShipmentOrderDetailToPackManager, ShipmentOrderDetailToPackManager>();
+            Service.AddTransient<IShipmentOrderDetailToPackDataAccess, ShipmentOrderDetailToPackDataAccess>();
+
+            Service.AddTransient<IShipmentOrderSummaryManager, ShipmentOrderSummaryManager>();
+            Service.AddTransient<IShipmentOrderSummaryDataAccess, ShipmentOrderSummaryDataAccess>();
+
+            Service.AddTransient<IShipmentOrderToPackManager, ShipmentOrderToPackManager>();
+            Service.AddTransient<IShipmentOrderToPackDataAccess, ShipmentOrderToPackDataAccess>();
+
+            Service.AddTransient<IShipmentPackManager, ShipmentPackManager>();
+            Service.AddTransient<IShipmentPackDataAccess, ShipmentPackDataAccess>();
+
+            Service.AddTransient<IShipmentPicklistManager, ShipmentPicklistManager>();
+            Service.AddTransient<IShipmentPicklistDataAccess, ShipmentPicklistDataAccess>();
+
+            Service.AddTransient<IShipmentPicklistDetailManager, ShipmentPicklistDetailManager>();
+            Service.AddTransient<IShipmentPicklistDetailDataAccess, ShipmentPicklistDetailDataAccess>();
+
+            Service.AddTransient<IShipmentSummaryManager, ShipmentSummaryManager>();
+            Service.AddTransient<IShipmentSummaryDataAccess, ShipmentSummaryDataAccess>();
+
+            Service.AddTransient<IShipToCommentsManager, ShipToCommentsManager>();
+            Service.AddTransient<IShipToCommentsDataAccess, ShipToCommentsDataAccess>();
+
+            Service.AddTransient<IShipViaManager, ShipViaManager>();
+            Service.AddTransient<IShipViaDataAccess, ShipViaDataAccess>();
+
+            Service.AddTransient<ISystemManager, SystemManager>();
+            Service.AddTransient<ISystemDataAccess, SystemDataAccess>();
         }
     }
 }
