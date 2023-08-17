@@ -415,7 +415,7 @@ namespace CrystalData.Main
             Service.AddTransient<IcvProductEffectivePriceManager, cvProductEffectivePriceManager>();
             Service.AddTransient<IcvProductEffectivePriceDataAccess, cvProductEffectivePriceDataAccess>();
 
-            Service.AddTransient<IcvProductExportNSSManager, cvProductExportNSSManager> ();
+            Service.AddTransient<IcvProductExportNSSManager, cvProductExportNSSManager>();
             Service.AddTransient<IcvProductExportNSSDataAccess, cvProductExportNSSDataAccess>();
 
             Service.AddTransient<IcvProductFinishedNSSManager, cvProductFinishedNSSManager>();
@@ -497,7 +497,7 @@ namespace CrystalData.Main
             Service.AddTransient<IFlattenedKitComponentsDataAccess, FlattenedKitComponentsDataAccess>();
 
             Service.AddTransient<IGLAccountManager, GLAccountManager>();
-            Service.AddTransient <IGLAccountDataAccess, GLAccountDataAccess>();
+            Service.AddTransient<IGLAccountDataAccess, GLAccountDataAccess>();
 
             Service.AddTransient<IGLAccountSegmentManager, GLAccountSegmentManager>();
             Service.AddTransient<IGLAccountSegmentDataAccess, GLAccountSegmentDataAccess>();
@@ -948,6 +948,39 @@ namespace CrystalData.Main
 
             Service.AddTransient<ISystemManager, SystemManager>();
             Service.AddTransient<ISystemDataAccess, SystemDataAccess>();
+
+            Service.AddTransient<ISystemOptionManager, SystemOptionManager>();
+            Service.AddTransient<ISystemOptionDataAccess, SystemOptionDataAccess>();
+
+            Service.AddTransient<ITaxCatDefinitionManager, TaxCatDefinitionManager>();
+            Service.AddTransient<ITaxCatDefinitionDataAccess, TaxCatDefinitionDataAccess>();
+
+            Service.AddTransient<ITaxCategoryManager, TaxCategoryManager>();
+            Service.AddTransient<ITaxCategoryDataAccess, TaxCategoryDataAccess>();
+
+            Service.AddTransient<ITaxCodeManager, TaxCodeManager>();
+            Service.AddTransient<ITaxCodeDataAccess, TaxCodeDataAccess>();
+
+            Service.AddTransient<ITaxIDManager, TaxIDManager>();
+            Service.AddTransient<ITaxIDDataAccess, TaxIDDataAccess>();
+
+            Service.AddTransient<ITermsCodeManager, TermsCodeManager>();
+            Service.AddTransient<ITermsCodeDataAccess, TermsCodeDataAccess>();
+
+            Service.AddTransient<IUnpostedComponentLocationSummaryManager, UnpostedComponentLocationSummaryManager>();
+            Service.AddTransient<IUnpostedComponentLocationSummaryDataAccess, UnpostedComponentLocationSummaryDataAccess>();
+
+            Service.AddTransient<IUnpostedComponentLotLocationSummaryManager, UnpostedComponentLotLocationSummaryManager>();
+            Service.AddTransient<IUnpostedComponentLotLocationSummaryDataAccess, UnpostedComponentLotLocationSummaryDataAccess>();
+
+            Service.AddTransient<IUnpostedComponentLotSummaryManager, UnpostedComponentLotSummaryManager>();
+            Service.AddTransient<IUnpostedComponentLotSummaryDataAccess, UnpostedComponentLotSummaryDataAccess>();
+
+            Service.AddTransient<IUnpostedAssemblySummaryManager, UnpostedAssemblySummaryManager>();
+            Service.AddTransient<IUnpostedAssemblySummaryDataAccess, UnpostedAssemblySummaryDataAccess>();
+
+            Service.AddTransient<IcvPureFishOrderDetailManager, cvPureFishOrderDetailManager>();
+            Service.AddTransient<IcvPureFishOrderDetailDataAccess, cvPureFishOrderDetailDataAccess>();
         }
     }
 }

@@ -313,6 +313,18 @@ namespace CrystalData.API.Controllers
         IShipToCommentsManager _ShipToCommentsManager { get; set; }
         IShipViaManager _ShipViaManager { get; set; }
         ISystemManager _SystemManager { get; set; }
+        ISystemOptionManager _SystemOptionManager { get; set; }
+        ITaxCatDefinitionManager _TaxCatDefinitionManager { get; set; }
+        ITaxCategoryManager _TaxCategoryManager { get; set; }
+        ITaxCodeManager _TaxCodeManager { get; set; }
+        ITaxIDManager _TaxIDManager { get; set; }
+        ITermsCodeManager _TermsCodeManager { get; set; }
+        IUnpostedAssemblySummaryManager _UnpostedAssemblySummaryManager { get; set; }
+        IUnpostedComponentLocationSummaryManager _UnpostedComponentLocationSummaryManager { get; set; }
+        IUnpostedComponentLotLocationSummaryManager _UnpostedComponentLotLocationSummaryManager { get; set; }
+        IUnpostedComponentLotSummaryManager _UnpostedComponentLotSummaryManager { get; set; }
+        IcvPureFishOrderDetailManager _cvPureFishOrderDetailManager { get; set; }
+
         public ExecController(
           ICvAssembliesManager cvAssembliesManager,
           IAccessManager AccessManager,
@@ -612,7 +624,18 @@ namespace CrystalData.API.Controllers
           IShipmentSummaryManager shipmentSummaryManager,
           IShipToCommentsManager shipToCommentsManager,
           IShipViaManager shipViaManager,
-          ISystemManager systemManager)
+          ISystemManager systemManager,
+          ISystemOptionManager systemOptionManager,
+          ITaxCatDefinitionManager taxCatDefinitionManager,
+          ITaxCategoryManager taxCategoryManager,
+          ITaxCodeManager taxCodeManager,
+          ITaxIDManager taxIDManager,
+          ITermsCodeManager termsCodeManager,
+          IUnpostedAssemblySummaryManager unpostedAssemblySummaryManager,
+          IUnpostedComponentLocationSummaryManager unpostedComponentLocationSummaryManager,
+          IUnpostedComponentLotLocationSummaryManager unpostedComponentLotLocationSummaryManager,
+          IUnpostedComponentLotSummaryManager unpostedComponentLotSummaryManager,
+          IcvPureFishOrderDetailManager cvPureFishOrderDetailManager)
 
         {
             _CvAssembliesManager = cvAssembliesManager;
@@ -914,6 +937,193 @@ namespace CrystalData.API.Controllers
             _ShipToCommentsManager = shipToCommentsManager;
             _ShipViaManager = shipViaManager;
             _SystemManager = systemManager;
+            _SystemOptionManager = systemOptionManager;
+            _TaxCatDefinitionManager = taxCatDefinitionManager;
+            _TaxCategoryManager = taxCategoryManager;
+            _TaxCodeManager = taxCodeManager;
+            _TaxIDManager = taxIDManager;
+            _TermsCodeManager = termsCodeManager;
+            _UnpostedAssemblySummaryManager = unpostedAssemblySummaryManager;
+            _UnpostedComponentLocationSummaryManager = unpostedComponentLocationSummaryManager;
+            _UnpostedComponentLotLocationSummaryManager = unpostedComponentLotLocationSummaryManager;
+            _UnpostedComponentLotSummaryManager = unpostedComponentLotSummaryManager;
+            _cvPureFishOrderDetailManager = cvPureFishOrderDetailManager;
+        }
+
+        [HttpPost]
+        [Route("/api/cvPureFishOrderDetail/Get")]
+        public ActionResult cvPureFishOrderDetailGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_cvPureFishOrderDetailManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/UnpostedComponentLotSummary/Get")]
+        public ActionResult UnpostedComponentLotSummaryGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_UnpostedComponentLotSummaryManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/UnpostedComponentLotLocationSummary/Get")]
+        public ActionResult UnpostedComponentLotLocationSummaryGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_UnpostedComponentLotLocationSummaryManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/UnpostedComponentLocationSummary/Get")]
+        public ActionResult UnpostedComponentLocationSummaryGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_UnpostedComponentLocationSummaryManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/UnpostedAssemblySummary/Get")]
+        public ActionResult UnpostedAssemblySummaryGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_UnpostedAssemblySummaryManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/TermsCode/Get")]
+        public ActionResult TermsCodeGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_TermsCodeManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/TaxId/Get")]
+        public ActionResult TaxIdGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_TaxIDManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/TaxCode/Get")]
+        public ActionResult TaxCodeGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_TaxCodeManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/TaxCategory/Get")]
+        public ActionResult TaxCategoryGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_TaxCategoryManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/TaxCatDefinition/Get")]
+        public ActionResult TaxCatDefinitionGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_TaxCatDefinitionManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Full/SystemOption/Get")]
+        public ActionResult SystemOptionGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_SystemOptionManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
         }
 
         [HttpPost]
