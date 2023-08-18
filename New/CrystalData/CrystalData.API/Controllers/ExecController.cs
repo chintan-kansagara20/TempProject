@@ -324,6 +324,7 @@ namespace CrystalData.API.Controllers
         IUnpostedComponentLotLocationSummaryManager _UnpostedComponentLotLocationSummaryManager { get; set; }
         IUnpostedComponentLotSummaryManager _UnpostedComponentLotSummaryManager { get; set; }
         IcvPureFishOrderDetailManager _cvPureFishOrderDetailManager { get; set; }
+        IcvPureFishComponentsForFGOrdersManager _cvPureFishComponentsForFGOrdersManager { get; set; }
 
         public ExecController(
           ICvAssembliesManager cvAssembliesManager,
@@ -635,7 +636,8 @@ namespace CrystalData.API.Controllers
           IUnpostedComponentLocationSummaryManager unpostedComponentLocationSummaryManager,
           IUnpostedComponentLotLocationSummaryManager unpostedComponentLotLocationSummaryManager,
           IUnpostedComponentLotSummaryManager unpostedComponentLotSummaryManager,
-          IcvPureFishOrderDetailManager cvPureFishOrderDetailManager)
+          IcvPureFishOrderDetailManager cvPureFishOrderDetailManager,
+          IcvPureFishComponentsForFGOrdersManager cvPureFishComponentsForFGOrdersManager)
 
         {
             _CvAssembliesManager = cvAssembliesManager;
@@ -948,6 +950,23 @@ namespace CrystalData.API.Controllers
             _UnpostedComponentLotLocationSummaryManager = unpostedComponentLotLocationSummaryManager;
             _UnpostedComponentLotSummaryManager = unpostedComponentLotSummaryManager;
             _cvPureFishOrderDetailManager = cvPureFishOrderDetailManager;
+            _cvPureFishComponentsForFGOrdersManager = cvPureFishComponentsForFGOrdersManager;
+        }
+
+        [HttpPost]
+        [Route("/api/cvPureFishComponentsForFGOrders/Get")]
+        public ActionResult cvPureFishComponentsForFGOrdersGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_cvPureFishComponentsForFGOrdersManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
         }
 
         [HttpPost]

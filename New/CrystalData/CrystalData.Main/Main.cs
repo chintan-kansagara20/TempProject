@@ -981,6 +981,9 @@ namespace CrystalData.Main
 
             Service.AddTransient<IcvPureFishOrderDetailManager, cvPureFishOrderDetailManager>();
             Service.AddTransient<IcvPureFishOrderDetailDataAccess, cvPureFishOrderDetailDataAccess>();
+
+            Service.AddTransient<IcvPureFishComponentsForFGOrdersManager, cvPureFishComponentsForFGOrdersManager>();
+            Service.AddTransient<IcvPureFishComponentsForFGOrdersDataAccess, cvPureFishComponentsForFGOrdersDataAccess>();
         }
     }
 }
