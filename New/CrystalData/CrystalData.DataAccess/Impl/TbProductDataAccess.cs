@@ -98,7 +98,7 @@ namespace CrystalData.DataAccess.Impl
             Parameters.Add(new SqlParameter("@ProductID", ProductID));
             string WhereCondition = " WHERE ProductID = @ProductID ";
 
-            var recs = _EC.Remove<tbINVRegisterModel>(WhereCondition, "ProductID", Parameters, AutoCommit);
+            var recs = _EC.Remove<tbProductModel>(WhereCondition, "ProductID", Parameters, AutoCommit);
 
             if (recs == null)
                 return false;

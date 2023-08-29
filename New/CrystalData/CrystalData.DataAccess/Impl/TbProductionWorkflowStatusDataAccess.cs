@@ -98,7 +98,7 @@ namespace CrystalData.DataAccess.Impl
             Parameters.Add(new SqlParameter("@GUIDProductionWorkflowStatus", GUIDProductionWorkflowStatus));
             string WhereCondition = " WHERE GUIDProductionWorkflowStatus = @GUIDProductionWorkflowStatus ";
 
-            var recs = _EC.Remove<tbINVRegisterModel>(WhereCondition, "GUIDProductionWorkflowStatus", Parameters, AutoCommit);
+            var recs = _EC.Remove<tbProductionWorkflowStatusModel>(WhereCondition, "GUIDProductionWorkflowStatus", Parameters, AutoCommit);
 
             if (recs == null)
                 return false;

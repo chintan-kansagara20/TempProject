@@ -98,7 +98,7 @@ namespace CrystalData.DataAccess.Impl
             Parameters.Add(new SqlParameter("@GUIDWarehouse", GUIDWarehouse));
             string WhereCondition = " WHERE GUIDWarehouse = @GUIDWarehouse ";
 
-            var recs = _EC.Remove<tbINVRegisterModel>(WhereCondition, "GUIDWarehouse", Parameters, AutoCommit);
+            var recs = _EC.Remove<tbWarehouseModel>(WhereCondition, "GUIDWarehouse", Parameters, AutoCommit);
 
             if (recs == null)
                 return false;
