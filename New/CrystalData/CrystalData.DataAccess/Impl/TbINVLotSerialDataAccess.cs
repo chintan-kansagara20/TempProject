@@ -98,7 +98,7 @@ namespace CrystalData.DataAccess.Impl
             Parameters.Add(new SqlParameter("@GUIDINVLotSerial", GUIDINVLotSerial));
             string WhereCondition = " WHERE GUIDINVLotSerial = @GUIDINVLotSerial ";
 
-            var recs = _EC.Remove<tbINVRegisterModel>(WhereCondition, "GUIDINVLotSerial", Parameters, AutoCommit);
+            var recs = _EC.Remove<tbINVLotSerialModel>(WhereCondition, "GUIDINVLotSerial", Parameters, AutoCommit);
 
             if (recs == null)
                 return false;

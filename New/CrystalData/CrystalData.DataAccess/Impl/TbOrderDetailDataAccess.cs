@@ -98,7 +98,7 @@ namespace CrystalData.DataAccess.Impl
             Parameters.Add(new SqlParameter("@GUIDOrderDetail", GUIDOrderDetail));
             string WhereCondition = " WHERE GUIDOrderDetail = @GUIDOrderDetail ";
 
-            var recs = _EC.Remove<tbINVRegisterModel>(WhereCondition, "GUIDOrderDetail", Parameters, AutoCommit);
+            var recs = _EC.Remove<tbOrderDetailModel>(WhereCondition, "GUIDOrderDetail", Parameters, AutoCommit);
 
             if (recs == null)
                 return false;

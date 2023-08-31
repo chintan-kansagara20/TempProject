@@ -98,7 +98,7 @@ namespace CrystalData.DataAccess.Impl
             Parameters.Add(new SqlParameter("@GUIDINVTransaction", GUIDINVTransaction));
             string WhereCondition = " WHERE GUIDINVTransaction = @GUIDINVTransaction ";
 
-            var recs = _EC.Remove<tbINVRegisterModel>(WhereCondition, "GUIDINVTransaction", Parameters, AutoCommit);
+            var recs = _EC.Remove<tbINVTransactionModel>(WhereCondition, "GUIDINVTransaction", Parameters, AutoCommit);
 
             if (recs == null)
                 return false;
