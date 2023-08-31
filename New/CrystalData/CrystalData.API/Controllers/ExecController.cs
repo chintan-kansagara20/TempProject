@@ -325,6 +325,18 @@ namespace CrystalData.API.Controllers
         IUnpostedComponentLotSummaryManager _UnpostedComponentLotSummaryManager { get; set; }
         IcvPureFishOrderDetailManager _cvPureFishOrderDetailManager { get; set; }
         IcvPureFishComponentsForFGOrdersManager _cvPureFishComponentsForFGOrdersManager { get; set; }
+        IUnpostedComponentSummaryManager _UnpostedComponentSummaryManager { get; set; }
+        IUnpostedTransferLocationSummaryManager _UnpostedTransferLocationSummaryManager { get; set; }
+        IUnpostedTransferLotLocationSummaryManager _UnpostedTransferLotLocationSummaryManager { get; set; }
+        IUnpostedTransferLotSummaryManager _UnpostedTransferLotSummaryManager { get; set; }
+        IUnpostedTransferSummaryManager _UnpostedTransferSummaryManager { get; set; }
+        IVendorManager _VendorManager { get; set; }
+        IVendorInfoManager _VendorInfoManager { get; set; }
+        IVendorTypeManager _VendorTypeManager { get; set; }
+        IWarehouseManager _WarehouseManager { get; set; }
+        IYearManager _YearManager { get; set; }
+        IYearMonthManager _YearMonthManager { get; set; }
+        IYearWeekManager _YearWeekManager { get; set; }
 
         public ExecController(
           ICvAssembliesManager cvAssembliesManager,
@@ -637,7 +649,19 @@ namespace CrystalData.API.Controllers
           IUnpostedComponentLotLocationSummaryManager unpostedComponentLotLocationSummaryManager,
           IUnpostedComponentLotSummaryManager unpostedComponentLotSummaryManager,
           IcvPureFishOrderDetailManager cvPureFishOrderDetailManager,
-          IcvPureFishComponentsForFGOrdersManager cvPureFishComponentsForFGOrdersManager)
+          IcvPureFishComponentsForFGOrdersManager cvPureFishComponentsForFGOrdersManager,
+          IUnpostedComponentSummaryManager unpostedComponentSummaryManager,
+          IUnpostedTransferLocationSummaryManager unpostedTransferLocationSummaryManager,
+          IUnpostedTransferLotLocationSummaryManager unpostedTransferLotLocationSummaryManager,
+          IUnpostedTransferLotSummaryManager unpostedTransferLotSummaryManager,
+          IUnpostedTransferSummaryManager unpostedTransferSummaryManager,
+          IVendorManager vendorManager,
+          IVendorInfoManager vendorInfoManager,
+          IVendorTypeManager vendorTypeManager,
+          IWarehouseManager warehouseManager,
+          IYearManager yearManager,
+          IYearMonthManager yearMonthManager,
+          IYearWeekManager yearWeekManager)
 
         {
             _CvAssembliesManager = cvAssembliesManager;
@@ -951,6 +975,210 @@ namespace CrystalData.API.Controllers
             _UnpostedComponentLotSummaryManager = unpostedComponentLotSummaryManager;
             _cvPureFishOrderDetailManager = cvPureFishOrderDetailManager;
             _cvPureFishComponentsForFGOrdersManager = cvPureFishComponentsForFGOrdersManager;
+            _UnpostedComponentSummaryManager = unpostedComponentSummaryManager;
+            _UnpostedTransferLocationSummaryManager = unpostedTransferLocationSummaryManager;
+            _UnpostedTransferLotLocationSummaryManager = unpostedTransferLotLocationSummaryManager;
+            _UnpostedTransferLotSummaryManager = unpostedTransferLotSummaryManager;
+            _UnpostedTransferSummaryManager = unpostedTransferSummaryManager;
+            _VendorManager = vendorManager;
+            _VendorInfoManager = vendorInfoManager;
+            _VendorTypeManager = vendorTypeManager;
+            _WarehouseManager = warehouseManager;
+            _YearManager = yearManager;
+            _YearMonthManager = yearMonthManager;
+            _YearWeekManager = yearWeekManager;
+        }
+
+        [HttpPost]
+        [Route("/api/YearWeek/Get")]
+        public ActionResult YearWeekGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_YearWeekManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/YearMonth/Get")]
+        public ActionResult YearMonthGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_YearMonthManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Year/Get")]
+        public ActionResult YearGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_YearManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Warehouse/Get")]
+        public ActionResult WarehouseGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_WarehouseManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/VendorType/Get")]
+        public ActionResult VendorTypeGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_VendorTypeManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/VendorInfo/Get")]
+        public ActionResult VendorInfoGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_VendorInfoManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/Vendor/Get")]
+        public ActionResult VendorGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_VendorManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/UnpostedTransferSummary/Get")]
+        public ActionResult UnpostedTransferSummaryGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_UnpostedTransferSummaryManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/UnpostedTransferLotSummary/Get")]
+        public ActionResult UnpostedTransferLotSummaryGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_UnpostedTransferLotSummaryManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/UnpostedTransferLotLocationSummary/Get")]
+        public ActionResult UnpostedTransferLotLocationSummaryGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_UnpostedTransferLotLocationSummaryManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/UnpostedTransferLocationSummary/Get")]
+        public ActionResult UnpostedTransferLocationSummaryGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_UnpostedTransferLocationSummaryManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
+        }
+
+        [HttpPost]
+        [Route("/api/UnpostedComponentSummary/Get")]
+        public ActionResult UnpostedComponentSummaryGet(FullGetModel model)
+        {
+            try
+            {
+                if (model.orderBy == null) { model.orderBy = new List<OrderByModel>(); }
+                if (model.filtersList == null) { model.filtersList = new List<AdvanceFilterByModel>(); }
+                return Ok(_UnpostedComponentSummaryManager.Get(model.page, model.itemsPerPage, model.orderBy, model.filtersList));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new APIResponse(ResponseCode.ERROR, ex.Message, JsonConvert.SerializeObject(ex)));
+            }
         }
 
         [HttpPost]

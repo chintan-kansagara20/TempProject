@@ -984,6 +984,45 @@ namespace CrystalData.Main
 
             Service.AddTransient<IcvPureFishComponentsForFGOrdersManager, cvPureFishComponentsForFGOrdersManager>();
             Service.AddTransient<IcvPureFishComponentsForFGOrdersDataAccess, cvPureFishComponentsForFGOrdersDataAccess>();
+
+            Service.AddTransient<IUnpostedComponentSummaryManager, UnpostedComponentSummaryManager>();
+            Service.AddTransient<IUnpostedComponentSummaryDataAccess, UnpostedComponentSummaryDataAccess>();
+
+            Service.AddTransient<IUnpostedTransferLocationSummaryManager, UnpostedTransferLocationSummaryManager>();
+            Service.AddTransient<IUnpostedTransferLocationSummaryDataAccess, UnpostedTransferLocationSummaryDataAccess>();
+
+            Service.AddTransient<IUnpostedTransferLotLocationSummaryManager, UnpostedTransferLotLocationSummaryManager>();
+            Service.AddTransient<IUnpostedTransferLotLocationSummaryDataAccess, UnpostedTransferLotLocationSummaryDataAccess>();
+
+            Service.AddTransient<IUnpostedTransferLotSummaryManager, UnpostedTransferLotSummaryManager>();
+            Service.AddTransient<IUnpostedTransferLotSummaryDataAccess, UnpostedTransferLotSummaryDataAccess>();
+
+            Service.AddTransient<IUnpostedTransferSummaryManager, UnpostedTransferSummaryManager>();
+            Service.AddTransient<IUnpostedTransferSummaryDataAccess, UnpostedTransferSummaryDataAccess>();
+
+            Service.AddTransient<IVendorManager, VendorManager>();
+            Service.AddTransient<IVendorDataAccess, VendorDataAccess>();
+
+            Service.AddTransient<IVendorInfoManager, VendorInfoManager>();
+            Service.AddTransient<IVendorInfoDataAccess, VendorInfoDataAccess>();
+
+            Service.AddTransient<IVendorTypeManager, VendorTypeManager>();
+            Service.AddTransient<IVendorTypeDataAccess, VendorTypeDataAccess>();
+
+            Service.AddTransient<IWarehouseManager, WarehouseManager>();
+            Service.AddTransient<IWarehouseDataAccess, WarehouseDataAccess>();
+
+            Service.AddTransient<IYearManager, YearManager>();
+            Service.AddTransient<IYearDataAccess, YearDataAccess>();
+
+            Service.AddTransient<IYearMonthManager, YearMonthManager>();
+            Service.AddTransient<IYearMonthDataAccess, YearMonthDataAccess>();
+
+            Service.AddTransient<IYearWeekManager, YearWeekManager>();
+            Service.AddTransient<IYearWeekDataAccess, YearWeekDataAccess>();
+
+            Service.AddTransient<ITbAccessPermissionManager, TbAccessPermissionManager>();
+            Service.AddTransient<ITbAccessPermissionDataAccess, TbAccessPermissionDataAccess>();
         }
     }
 }
