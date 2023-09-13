@@ -1,8 +1,6 @@
 ﻿using AuthLayer.ActionFilters;
 using AuthLayer.Utility;
-using CrystalData.Manager.Impl;
 using CrystalData.Manager.Interface;
-using CrystalData.Models;
 using EasyCrudLibrary.Model;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
