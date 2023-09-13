@@ -11,10 +11,10 @@ using System.Threading.Tasks;
 
 namespace CrystalData.Manager.Impl
 {
-    public class TbProductManager : ITbProductManager
+    public class TbActivityLogManager : ITbActivityLogManager
     {
-        private readonly ITbProductDataAccess DataAccess = null;
-        public TbProductManager(ITbProductDataAccess dataAccess)
+        private readonly ITbActivityLogDataAccess DataAccess = null;
+        public TbActivityLogManager(ITbActivityLogDataAccess dataAccess)
         {
             DataAccess = dataAccess;
         }
@@ -34,7 +34,7 @@ namespace CrystalData.Manager.Impl
             }
         }
 
-        public APIResponse Insert(tbProductModel model)
+        public APIResponse Insert(tbActivityLogModel model)
         {
             var result = DataAccess.Add(model);
             if (result != null)
@@ -47,9 +47,9 @@ namespace CrystalData.Manager.Impl
             }
         }
 
-        public APIResponse Update(string ProductID, tbProductModel model)
+        public APIResponse Update(Int32 PK, tbActivityLogModel model)
         {
-            var result = DataAccess.Update(ProductID, model);
+            var result = DataAccess.Update(PK, model);
             if (result)
             {
                 return new APIResponse(ResponseCode.SUCCESS, "Record Updated", result);
@@ -60,9 +60,9 @@ namespace CrystalData.Manager.Impl
             }
         }
 
-        public APIResponse HardDelete(string ProductID)
+        public APIResponse HardDelete(Int32 PK)
         {
-            var result = DataAccess.HardDelete(ProductID);
+            var result = DataAccess.HardDelete(PK);
             if (result)
             {
                 return new APIResponse(ResponseCode.SUCCESS, "Record Deleted", result);

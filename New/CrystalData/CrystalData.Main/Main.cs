@@ -1023,6 +1023,114 @@ namespace CrystalData.Main
 
             Service.AddTransient<ITbAccessPermissionManager, TbAccessPermissionManager>();
             Service.AddTransient<ITbAccessPermissionDataAccess, TbAccessPermissionDataAccess>();
+
+            Service.AddTransient<ITbAccessPermissionGroupManager, TbAccessPermissionGroupManager>();
+            Service.AddTransient<ITbAccessPermissionGroupDataAccess, TbAccessPermissionGroupDataAccess>();
+
+            Service.AddTransient<ITbAccessPermissionMasterManager, TbAccessPermissionMasterManager>();
+            Service.AddTransient<ITbAccessPermissionMasterDataAccess, TbAccessPermissionMasterDataAccess>();
+
+            Service.AddTransient<ITbActivityLogManager, TbActivityLogManager>();
+            Service.AddTransient<ITbActivityLogDataAccess, TbActivityLogDataAccess>();
+
+            Service.AddTransient<ITbBarcodeTypeManager, TbBarcodeTypeManager>();
+            Service.AddTransient<ITbBarcodeTypeDataAccess, TbBarcodeTypeDataAccess>();
+
+            Service.AddTransient<ITbBranchManager, TbBranchManager>();
+            Service.AddTransient<ITbBranchDataAccess, TbBranchDataAccess>();
+
+            Service.AddTransient<ITbCarrierManager, TbCarrierManager>();
+            Service.AddTransient<ITbCarrierDataAccess, TbCarrierDataAccess>();
+
+            Service.AddTransient<ItbChargeManager, tbChargeManager>();
+            Service.AddTransient<ItbChargeDataAccess, tbChargeDataAccess>();
+
+            Service.AddTransient<ITbClassManager, TbClassManager>();
+            Service.AddTransient<ITbClassDataAccess, TbClassDataAccess>();
+
+            Service.AddTransient<ITbContractTypeManager, TbContractTypeManager>();
+            Service.AddTransient<ITbContractTypeDataAccess, TbContractTypeDataAccess>();
+
+            Service.AddTransient<ITbCurrencyManager, TbCurrencyManager>();
+            Service.AddTransient<ITbCurrencyDataAccess, TbCurrencyDataAccess>();
+
+            Service.AddTransient<ITbCustomerManager, TbCustomerManager>();
+            Service.AddTransient<ITbCustomerDataAccess, TbCustomerDataAccess>();
+
+            Service.AddTransient<ITbCustomerContactManager, TbCustomerContactManager>();
+            Service.AddTransient<ITbCustomerContactDataAccess, TbCustomerContactDataAccess>();
+
+            Service.AddTransient<ITbCustomerContractManager, TbCustomerContractManager>();
+            Service.AddTransient<ITbCustomerContractDataAccess, TbCustomerContractDataAccess>();
+
+            Service.AddTransient<ITbCustomerInfoManager, TbCustomerInfoManager>();
+            Service.AddTransient<ITbCustomerInfoDataAccess, TbCustomerInfoDataAccess>();
+
+            Service.AddTransient<ITbCustomerMarketingListXrefManager, TbCustomerMarketingListXrefManager>();
+            Service.AddTransient<ITbCustomerMarketingListXrefDataAccess, TbCustomerMarketingListXrefDataAccess>();
+
+            Service.AddTransient<ITbCustomerNotesManager, TbCustomerNotesManager>();
+            Service.AddTransient<ITbCustomerNotesDataAccess, TbCustomerNotesDataAccess>();
+
+            Service.AddTransient<ITbCustomerPaymentManager, TbCustomerPaymentManager>();
+            Service.AddTransient<ITbCustomerPaymentDataAccess, TbCustomerPaymentDataAccess>();
+
+            Service.AddTransient<ITbCustomerPaymentInvoiceManager, TbCustomerPaymentInvoiceManager>();
+            Service.AddTransient<ITbCustomerPaymentInvoiceDataAccess, TbCustomerPaymentInvoiceDataAccess>();
+
+            Service.AddTransient<ITbCustomerShipManager, TbCustomerShipManager>();
+            Service.AddTransient<ITbCustomerShipDataAccess, TbCustomerShipDataAccess>();
+
+            Service.AddTransient<ITbCustomerShipNotesManager, TbCustomerShipNotesManager>();
+            Service.AddTransient<ITbCustomerShipNotesDataAccess, TbCustomerShipNotesDataAccess>();
+
+            Service.AddTransient<ITbCustomerShipToInfoManager, TbCustomerShipToInfoManager>();
+            Service.AddTransient<ITbCustomerShipToInfoDataAccess, TbCustomerShipToInfoDataAccess>();
+
+            Service.AddTransient<ITbCustomerTypeInfoManager, TbCustomerTypeInfoManager>();
+            Service.AddTransient<ITbCustomerTypeInfoDataAccess, TbCustomerTypeInfoDataAccess>();
+
+            Service.AddTransient<ITbCustomFieldManager, TbCustomFieldManager>();
+            Service.AddTransient<ITbCustomFieldDataAccess, TbCustomFieldDataAccess>();
+
+            Service.AddTransient<ITbDocumentManager, TbDocumentManager>();
+            Service.AddTransient<ITbDocumentDataAccess, TbDocumentDataAccess>();
+
+            Service.AddTransient<ITbDocumentMgmtBarManager, TbDocumentMgmtBarManager>();
+            Service.AddTransient<ITbDocumentMgmtBarDataAccess, TbDocumentMgmtBarDataAccess>();
+
+            Service.AddTransient<ITbEDIAdditionalInformationManager, TbEDIAdditionalInformationManager>();
+            Service.AddTransient<ITbEDIAdditionalInformationDataAccess, TbEDIAdditionalInformationDataAccess>();
+
+            Service.AddTransient<ITbEDICreditDetailManager, TbEDICreditDetailManager>();
+            Service.AddTransient<ITbEDICreditDetailDataAccess, TbEDICreditDetailDataAccess>();
+
+            Service.AddTransient<ITbEDICreditHeaderManager, TbEDICreditHeaderManager>();
+            Service.AddTransient<ITbEDICreditHeaderDataAccess, TbEDICreditHeaderDataAccess>();
+
+            Service.AddTransient<ITbEDIDiscountsAndChargesManager, TbEDIDiscountsAndChargesManager>();
+            Service.AddTransient<ITbEDIDiscountsAndChargesDataAccess, TbEDIDiscountsAndChargesDataAccess>();
+
+            Service.AddTransient<ITbEDIImportLogManager, TbEDIImportLogManager>();
+            Service.AddTransient<ITbEDIImportLogDataAccess, TbEDIImportLogDataAccess>();
+
+            Service.AddTransient<ITbEDIImportStatusManager, TbEDIImportStatusManager>();
+            Service.AddTransient<ITbEDIImportStatusDataAccess, TbEDIImportStatusDataAccess>();
+
+            Service.AddTransient<ITbEDIOrderDetailExManager, TbEDIOrderDetailExManager>();
+            Service.AddTransient<ITbEDIOrderDetailExDataAccess, TbEDIOrderDetailExDataAccess>();
+
+            Service.AddTransient<ITbEDIOrdersExManager, TbEDIOrdersExManager>();
+            Service.AddTransient<ITbEDIOrdersExDataAccess, TbEDIOrdersExDataAccess>();
+
+            Service.AddTransient<ITbEDIPartnerManager, TbEDIPartnerManager>();
+            Service.AddTransient<ITbEDIPartnerDataAccess, TbEDIPartnerDataAccess>();
+
+            Service.AddTransient<ITbEDIPartnerOptionManager, TbEDIPartnerOptionManager>();
+            Service.AddTransient<ITbEDIPartnerOptionDataAccess, TbEDIPartnerOptionDataAccess>();
+
+            Service.AddTransient<ITbEDIPartnerTransactionManager, TbEDIPartnerTransactionManager>();
+            Service.AddTransient<ITbEDIPartnerTransactionDataAccess, TbEDIPartnerTransactionDataAccess>();
         }
     }
 }

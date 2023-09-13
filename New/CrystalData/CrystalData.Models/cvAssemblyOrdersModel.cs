@@ -69,6 +69,7 @@ namespace CrystalData.Models
         public Guid? FProductGUIDProduct { get; set; }
         public Boolean PostedToGL { get; set; }
         public Boolean PostedToINV { get; set; }
+        public DateTime? RegDate { get; set; }
         public string VoidedBy { get; set; }
         public DateTime? VoidedDate { get; set; }
         public Int32 parent { get; set; } 
